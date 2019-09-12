@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="./ext.js"></script>
+	<script src="./lib/CSInterface.js"></script>
+	<script src="./lib/Vulcan.js"></script>
+</head>
+<body onLoad="onLoaded()">
+
+</body>
+<script>
+	document.body.onbeforeunload = function () {
+		var csInterface = new CSInterface();
+		var OSVersion = csInterface.getOSInformation();
+		var appVersion = csInterface.hostEnvironment.appVersion;
+		var versionAsFloat = parseFloat(appVersion);
+		
+		csInterface.evalScript('$._PPP_.closeLog()');
+
+		if (versionAsFloat < 10.3) {
+			var path = "file:///Library/Application Support/Adobe/CEP/extensions/PProPanel/payloads/onbeforeunload.html";
+
+			if (OSVersion.indexOf("Windows") >= 0) {
+				path =
+					"file:///C:/Program%20Files%20(x86)/Common%20Files/Adobe/CEP/extensions/PProPanel/payloads/onbeforeunload.html"
+			}
+			csInterface.openURLInDefaultBrowser(path);
+		}
+	};
+
+	var createFolders = function () {
+		var csInterface = new CSInterface();
+		csInterface.callScript(
+			'$._PPP_',
+			'createDeepFolderStructure',
+			function (res) {
+				console.log('Successfully created folders!');
+			},
+			function (err) {
+				console.error(err);
+				alert(err.message);
+			}, ['This', 'is', 'a', 'very', 'deep', 'folder', 'structure'], // 1st argument
+			6 // 2nd argument
+		);
+	};
+</script>
+
+</html>
