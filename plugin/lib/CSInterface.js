@@ -568,7 +568,7 @@ CSInterface.prototype.loadBinSync  = function(pathName)
     {
         console.log(err);
         return false;
-    }
+    }Ch
     //control should not come here
     return false;
 };

@@ -14,11 +14,11 @@
 * written permission of Adobe. 
 **************************************************************************/
 -->	
-<ExtensionManifest Version="5.0" ExtensionBundleId="com.adobe.TwitchImport" ExtensionBundleVersion="11.1"
-ExtensionBundleName="Premiere Pro sample panel" 
+<ExtensionManifest Version="5.0" ExtensionBundleId="{id}" ExtensionBundleVersion="11.1"
+ExtensionBundleName="{title}" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="com.adobe.TwitchImport" Version="1.0.0" />
+		<Extension Id="{id}" Version="10.3.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
@@ -33,11 +33,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	</ExecutionEnvironment>
 
 	<DispatchInfoList>
-		<Extension Id="com.adobe.TwitchImport">
+		<Extension Id="{id}">
 			<DispatchInfo >
 				<Resources>
 					<MainPath>./index.html</MainPath>
-					<ScriptPath>./PProPanel.jsx</ScriptPath>
+					<ScriptPath>./index.jsx</ScriptPath>
 					<CEFCommandLine>
 						<Parameter>--allow-file-access</Parameter>
 						<Parameter>--allow-file-access-from-files</Parameter>
@@ -48,11 +48,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Twitch Clip Import</Menu>
+					<Menu>{title}</Menu>
 					<Geometry>
 						<Size>
-							<Height>300</Height>
-							<Width>180</Width>
+							<Height>{height}</Height>
+							<Width>{width}</Width>
 						</Size>
 					</Geometry>
 				</UI>
