@@ -1,7 +1,7 @@
 export const getHostEnvironment = () =>
     JSON.parse(window.__adobe_cep__.getHostEnvironment());
 
-export const evalJsxScript = (method, ...params) =>
+const invoke = (method, params) =>
     new Promise(resolve => {
         const stringifiedParams = params
             .reduce((prev, param) => {
@@ -9,15 +9,15 @@ export const evalJsxScript = (method, ...params) =>
                     case 'object':
                         return `${prev},${JSON.stringify(param)}`;
                     default:
-                        return `${prev},'${param.replace(/\\/g, '\\\\')}'`;
+                        return `${prev},'${param}'`;
                 }
             }, '')
             .substring(1);
-        console.log(`$._PPP_.${method}(${stringifiedParams})`);
+
         window.__adobe_cep__.evalScript(
             `$._PPP_.${method}(${stringifiedParams})`,
             (...callbackParams) => {
-                const stringifiedCallbackParams = callbackParams.map(param => {
+                const parsedParams = callbackParams.map(param => {
                     let result = param;
                     switch (typeof param) {
                         case 'string':
@@ -33,7 +33,14 @@ export const evalJsxScript = (method, ...params) =>
                     }
                     return result;
                 });
-                resolve(stringifiedCallbackParams);
+                resolve(parsedParams);
             }
         );
     });
+
+export const evalJsxScript = new Proxy(
+    {},
+    {
+        get: (proxy, method) => (...params) => invoke(method, params)
+    }
+);
