@@ -51,6 +51,7 @@ export class Body extends React.Component {
             count
         );
         await this.setStateAsync({ progress: 2 });
+        console.log(path.replace(/\\/g, '\\\\'));
         await importTwitchClips(fullPath);
         await this.setStateAsync({ progress: 3 });
         await addTwitchMetaData(data);

@@ -449,27 +449,14 @@ $._PPP_ = {
         }
     },
 
-    writeFile: function(filename, data) {
-        var projectPath = new File(app.project.path);
-        var outPath = projectPath.parent + $._PPP_.getSep() + filename
-        var outFile = new File(outPath)
-        if (outFile) {
-            outFile.encoding = "UTF8";
-            outFile.open("w", "TEXT", "????");
-            outFile.write(data);
-            outFile.close();
-        }
-    },
-
     importTwitchClips: function(fullPath) {
         if (app.project) {
             var files = [];
-            var folder = Folder(fullPath);
+            var folder = Folder($._PPP_.getProjectPath()) + '\\media\\twitch';
             var temp = folder.getFiles("*.mp4");
             var index = 0;
 
-            $._PPP_.writeFile('debug.txt', fullPath)
-
+            alert('hello')
             for (var i = 0; i < temp.length; i++) {
                 var file = temp[i];
                 var exists = $._PPP_.findClip(file.name);
