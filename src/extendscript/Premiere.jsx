@@ -12,7 +12,7 @@
  * written permission of Adobe.
  **************************************************************************/
 //#include "PPro_API_Constants.jsx"
-//#include "JSON.jsx";
+//@include "json.jsx"
 
 $._PPP_ = {
     createDeepFolderStructure: function(foldersArray, maxDepth) {
@@ -145,6 +145,43 @@ $._PPP_ = {
             "onSourceClipSelectedInProjectPanel",
             $._PPP_.projectPanelSelectionChanged
         );
+    },
+
+    loadSettings: function() {
+        var filename = 'premiere-twitch-import.settings.json';
+        var projectPath = new File(app.project.path);
+        var outPath = projectPath.parent + $._PPP_.getSep() + filename
+        var outFile = new File(outPath)
+        var json = '{}';
+
+        if (outFile) {
+            outFile.encoding = "UTF8";
+            outFile.open("r", "TEXT", "????");
+            if (outFile) {
+                try {
+                    const data = outFile.read()
+                    JSON.parse(data); // just want to see if it's valid json
+                    json = data
+                } catch (e) {}
+            }
+            outFile.close();
+        }
+        projectPath.close();
+        return json;
+    },
+
+    saveSettings: function(json) {
+        var filename = 'premiere-twitch-import.settings.json';
+        var projectPath = new File(app.project.path);
+        var outPath = projectPath.parent + $._PPP_.getSep() + filename
+        var outFile = new File(outPath)
+        if (outFile) {
+            outFile.encoding = "UTF8";
+            outFile.open("w", "TEXT", "????");
+            outFile.write(JSON.stringify(json));
+            outFile.close();
+        }
+        projectPath.close()
     },
 
     saveCurrentProjectLayout: function() {

@@ -9,6 +9,7 @@ import {
     getProjectPath,
     addTwitchMetaData
 } from '../extendscript/Premiere';
+import { settings } from '../settings';
 import { clips } from '../api';
 
 const BodyStyle = styled.div`
@@ -57,6 +58,25 @@ export class Body extends React.Component {
         setTimeout(() => this.setState({ progress: 0 }), 500);
     };
 
+    async componentDidMount() {
+        await this.load();
+        await this.save();
+    }
+
+    save = async () => {
+        await settings.save(this.state);
+    };
+
+    load = async () => {
+        const { path, oauth, game, count } = await settings.load();
+        await this.setStateAsync({
+            path: path ? path : this.state.path,
+            oauth: oauth ? oauth : this.state.oauth,
+            game: game ? game : this.state.game,
+            count: count ? count : this.state.count
+        });
+    };
+
     render() {
         const {
             oauth,
@@ -74,6 +94,7 @@ export class Body extends React.Component {
                     name="oauth"
                     title="oauth"
                     onChange={value => this.setState({ oauth: value })}
+                    onStill={this.save}
                     enabled={!working}
                 />
                 <Input
@@ -81,6 +102,7 @@ export class Body extends React.Component {
                     name="game"
                     title="game"
                     onChange={value => this.setState({ game: value })}
+                    onStill={this.save}
                     enabled={!working}
                 />
                 <Input
@@ -88,6 +110,7 @@ export class Body extends React.Component {
                     name="start"
                     title="start date"
                     onChange={value => this.setState({ start: value })}
+                    onStill={this.save}
                     enabled={!working}
                 />
                 <Input
@@ -95,6 +118,7 @@ export class Body extends React.Component {
                     name="count"
                     title="video count"
                     onChange={value => this.setState({ count: value })}
+                    onStill={this.save}
                     enabled={!working}
                 />
                 <Button

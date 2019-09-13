@@ -6,5 +6,7 @@ export const {
     updateEventPanel,
     getProjectPath,
     importTwitchClips,
-    addTwitchMetaData
+    addTwitchMetaData,
+    loadSettings,
+    saveSettings
 } = evalJsxScript;
