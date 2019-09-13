@@ -449,14 +449,14 @@ $._PPP_ = {
         }
     },
 
-    writeFile: function(filename, data) {
+    log: function(filename, data) {
         var projectPath = new File(app.project.path);
-        var outPath = projectPath.parent + $._PPP_.getSep() + filename
+        var outPath = projectPath.parent + $._PPP_.getSep() + 'debug.txt'
         var outFile = new File(outPath)
         if (outFile) {
             outFile.encoding = "UTF8";
-            outFile.open("w", "TEXT", "????");
-            outFile.write(data);
+            outFile.open("a", "TEXT", "????");
+            outFile.write(data + '\n');
             outFile.close();
         }
     },
@@ -468,7 +468,7 @@ $._PPP_ = {
             var temp = folder.getFiles("*.mp4");
             var index = 0;
 
-            $._PPP_.writeFile('debug.txt', fullPath)
+            $._PPP_.log('debug.txt', 'hello')
 
             for (var i = 0; i < temp.length; i++) {
                 var file = temp[i];
