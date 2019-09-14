@@ -37789,7 +37789,7 @@ var invoke = function invoke(method, params) {
           return prev + "," + JSON.stringify(param);
 
         default:
-          return prev + ",'" + param.replace(/\\/g, '\\\\') + "'";
+          return prev + ",'" + param.toString().replace(/\\/g, '\\\\') + "'";
       }
     }, '').substring(1);
 
