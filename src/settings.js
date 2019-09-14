@@ -8,9 +8,9 @@ export class SettingsClass {
             return;
         }
 
-        const { path, oauth, game, count } = settings;
+        const { start, end, oauth, game, count } = settings;
         this.io = true;
-        const result = await saveSettings({ path, oauth, game, count });
+        const result = await saveSettings({ start, end, oauth, game, count });
         this.io = false;
         return result;
     };
@@ -21,9 +21,9 @@ export class SettingsClass {
         }
 
         this.io = true;
-        const [{ path, oauth, game, count } = {}] = await loadSettings();
+        const [{ start, end, oauth, game, count } = {}] = await loadSettings();
         this.io = false;
-        return { path, oauth, game, count };
+        return { start, end, oauth, game, count };
     };
 }
 

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Reload } from './reload.jsx';
 import { Input } from './input.jsx';
 import { Button } from './button.jsx';
+import { StartDateDisplay } from './startDateDisplay.jsx';
+import { EndDateDisplay } from './endDateDisplay.jsx';
 import { Progress } from './progress.jsx';
 import {
     importTwitchClips,
@@ -24,6 +26,7 @@ export class Body extends React.Component {
         oauth: 'l0vmpckj22o9xdk003tytq9xw0swgk',
         game: 'Overwatch',
         start: '2019-09-09',
+        end: '2019-09-16',
         count: '30',
         progress: 0,
         captions: [
@@ -37,7 +40,7 @@ export class Body extends React.Component {
         new Promise(resolve => this.setState(state, resolve));
 
     importClips = async () => {
-        const { oauth, game, start, count } = this.state;
+        const { oauth, game, start, end, count } = this.state;
         await this.setStateAsync({ working: true, progress: 0 });
         const [path] = await getProjectPath();
         const fullPath =
@@ -48,6 +51,7 @@ export class Body extends React.Component {
             game,
             fullPath.replace('\\\\?\\', ''),
             start,
+            end,
             count
         );
         await this.setStateAsync({ progress: 2 });
@@ -68,9 +72,10 @@ export class Body extends React.Component {
     };
 
     load = async () => {
-        const { path, oauth, game, count } = await settings.load();
+        const { start, end, oauth, game, count } = await settings.load();
         await this.setStateAsync({
-            path: path ? path : this.state.path,
+            start: start ? start : this.state.start,
+            end: end ? end : this.state.end,
             oauth: oauth ? oauth : this.state.oauth,
             game: game ? game : this.state.game,
             count: count ? count : this.state.count
@@ -82,6 +87,7 @@ export class Body extends React.Component {
             oauth,
             game,
             start,
+            end,
             count,
             working,
             captions,
@@ -105,13 +111,18 @@ export class Body extends React.Component {
                     onStill={this.save}
                     enabled={!working}
                 />
-                <Input
+                <StartDateDisplay
                     value={start}
-                    name="start"
-                    title="start date"
                     onChange={value => this.setState({ start: value })}
                     onStill={this.save}
                     enabled={!working}
+                />
+                <EndDateDisplay
+                    value={end}
+                    onChange={value => this.setState({ end: value })}
+                    onStill={this.save}
+                    enabled={!working}
+                    start={start}
                 />
                 <Input
                     value={count.toString()}

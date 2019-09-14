@@ -37,7 +37,9 @@ export class Input extends React.Component {
         }
         this.typingTimeout = setTimeout(this.onStill, 1000);
 
-        onChange(event.target.value);
+        if (onChange) {
+            onChange(event.target.value);
+        }
     };
 
     onStill = async () => {
