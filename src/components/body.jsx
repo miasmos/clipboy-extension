@@ -57,7 +57,11 @@ export class Body extends React.Component {
         await this.setStateAsync({ progress: 2 });
         await importTwitchClips(fullPath);
         await this.setStateAsync({ progress: 3 });
-        await addTwitchMetaData(data);
+        await addTwitchMetaData(data, {
+            start,
+            end,
+            game
+        });
         await this.setStateAsync({ progress: 4, working: false });
         setTimeout(() => this.setState({ progress: 0 }), 500);
     };

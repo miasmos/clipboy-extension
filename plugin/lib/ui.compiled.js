@@ -36836,7 +36836,11 @@ function (_React$Component) {
 
             case 19:
               _context.next = 21;
-              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["addTwitchMetaData"])(data);
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["addTwitchMetaData"])(data, {
+                start: start,
+                end: end,
+                game: game
+              });
 
             case 21:
               _context.next = 23;

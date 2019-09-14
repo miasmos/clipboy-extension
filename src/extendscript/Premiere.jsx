@@ -549,7 +549,7 @@ $._PPP_ = {
         }
     },
 
-    addTwitchMetaData: function(data) {
+    addTwitchMetaData: function(data, sequenceData) {
         if (ExternalObject.AdobeXMPScript === undefined) {
             ExternalObject.AdobeXMPScript = new ExternalObject(
                 'lib:AdobeXMPScript'
@@ -587,6 +587,23 @@ $._PPP_ = {
                     );
                     item.setXMPMetadata(xmp.serialize());
                 }
+            }
+
+            var sequence = $._PPP_.findClip('Sequence');
+            if (sequence) {
+                var xmpBlob = sequence.getXMPMetadata();
+                var xmp = new XMPMeta(xmpBlob);
+
+                xmp.setProperty(
+                    XMPConst.NS_DC,
+                    'identifier',
+                    sequenceData.game
+                );
+                xmp.setProperty(XMPConst.NS_DC, 'date', sequenceData.start);
+                xmp.setProperty(XMPConst.NS_DC, 'title', sequenceData.end);
+                sequence.setXMPMetadata(xmp.serialize());
+            } else {
+                $._PPP_.updateEventPanel('Sequence not found');
             }
         }
     },
