@@ -556,7 +556,6 @@ $._PPP_ = {
             );
         }
 
-        $._PPP_.log(JSON.stringify(data));
         if (app.project) {
             for (var id in data) {
                 var metadata = data[id];
