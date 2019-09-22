@@ -494,6 +494,16 @@ $._PPP_ = {
         }
     },
 
+    createTwitchClip: function(id, path, data) {
+        var outPath = path + $._PPP_.getSep() + id + '.mp4';
+        var outFile = new File(outPath);
+        if (outFile) {
+            outFile.open('w');
+            outFile.write(data);
+            outFile.close();
+        }
+    },
+
     importTwitchClips: function(fullPath) {
         if (app.project) {
             var files = [];
@@ -587,23 +597,6 @@ $._PPP_ = {
                     );
                     item.setXMPMetadata(xmp.serialize());
                 }
-            }
-
-            var sequence = $._PPP_.findClip('Sequence');
-            if (sequence) {
-                var xmpBlob = sequence.getXMPMetadata();
-                var xmp = new XMPMeta(xmpBlob);
-
-                xmp.setProperty(
-                    XMPConst.NS_DC,
-                    'identifier',
-                    sequenceData.game
-                );
-                xmp.setProperty(XMPConst.NS_DC, 'date', sequenceData.start);
-                xmp.setProperty(XMPConst.NS_DC, 'title', sequenceData.end);
-                sequence.setXMPMetadata(xmp.serialize());
-            } else {
-                $._PPP_.updateEventPanel('Sequence not found');
             }
         }
     },

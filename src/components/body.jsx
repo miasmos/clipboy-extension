@@ -9,10 +9,11 @@ import { Progress } from './progress.jsx';
 import {
     importTwitchClips,
     getProjectPath,
-    addTwitchMetaData
+    addTwitchMetaData,
+    createTwitchClip
 } from '../extendscript/Premiere';
 import { settings } from '../settings';
-import { clips } from '../api';
+import { clips, getClip } from '../api';
 
 const BodyStyle = styled.div`
     background-color: ${({ theme }) => theme.colors.background};
@@ -46,17 +47,13 @@ export class Body extends React.Component {
         const fullPath =
             path.substring(0, path.lastIndexOf('\\')) + '\\media\\twitch';
         await this.setStateAsync({ progress: 1 });
-        const data = await clips(
-            oauth,
-            game,
-            fullPath.replace('\\\\?\\', ''),
-            start,
-            end,
-            count
-        );
+        const data = await clips(oauth, game, start, end, count);
         await this.setStateAsync({ progress: 2 });
-        await importTwitchClips(fullPath);
+        const clipData = await getClip(data[0].clip_url);
+        await createTwitchClip(clip.id, fullPath, clipData);
         await this.setStateAsync({ progress: 3 });
+        await importTwitchClips(fullPath);
+        await this.setStateAsync({ progress: 4 });
         await addTwitchMetaData(data, {
             start,
             end,

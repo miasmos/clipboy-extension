@@ -1,4 +1,4 @@
-export const clips = (oauth, game, fullPath, start, end, count = 30) =>
+export const clips = (oauth, game, start, end, count = 30) =>
     fetch('http://localhost:3000/clips', {
         headers: {
             'Content-Type': 'application/json'
@@ -7,9 +7,10 @@ export const clips = (oauth, game, fullPath, start, end, count = 30) =>
         body: JSON.stringify({
             oauth,
             game,
-            path: fullPath,
             start,
             end,
             count
         })
     }).then(response => response.json());
+
+export const getClip = url => fetch(url).then(response => response.blob());

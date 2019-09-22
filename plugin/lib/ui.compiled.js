@@ -36639,13 +36639,14 @@ module.exports = function(originalModule) {
 /*!********************!*\
   !*** ./src/api.js ***!
   \********************/
-/*! exports provided: clips */
+/*! exports provided: clips, getClip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clips", function() { return clips; });
-var clips = function clips(oauth, game, fullPath, start, end, count) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClip", function() { return getClip; });
+var clips = function clips(oauth, game, start, end, count) {
   if (count === void 0) {
     count = 30;
   }
@@ -36658,13 +36659,17 @@ var clips = function clips(oauth, game, fullPath, start, end, count) {
     body: JSON.stringify({
       oauth: oauth,
       game: game,
-      path: fullPath,
       start: start,
       end: end,
       count: count
     })
   }).then(function (response) {
     return response.json();
+  });
+};
+var getClip = function getClip(url) {
+  return fetch(url).then(function (response) {
+    return response.blob();
   });
 };
 
@@ -36787,7 +36792,7 @@ function (_React$Component) {
     _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _this$state, oauth, game, start, end, count, _ref3, path, fullPath, data;
+      var _this$state, oauth, game, start, end, count, _ref3, path, fullPath, data, clipData;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -36815,7 +36820,7 @@ function (_React$Component) {
 
             case 10:
               _context.next = 12;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_13__["clips"])(oauth, game, fullPath.replace('\\\\?\\', ''), start, end, count);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_13__["clips"])(oauth, game, start, end, count);
 
             case 12:
               data = _context.sent;
@@ -36826,37 +36831,52 @@ function (_React$Component) {
 
             case 15:
               _context.next = 17;
-              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["importTwitchClips"])(fullPath);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_13__["getClip"])(data[0].clip_url);
 
             case 17:
-              _context.next = 19;
+              clipData = _context.sent;
+              _context.next = 20;
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["createTwitchClip"])(clip.id, fullPath, clipData);
+
+            case 20:
+              _context.next = 22;
               return _this.setStateAsync({
                 progress: 3
               });
 
-            case 19:
-              _context.next = 21;
+            case 22:
+              _context.next = 24;
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["importTwitchClips"])(fullPath);
+
+            case 24:
+              _context.next = 26;
+              return _this.setStateAsync({
+                progress: 4
+              });
+
+            case 26:
+              _context.next = 28;
               return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_11__["addTwitchMetaData"])(data, {
                 start: start,
                 end: end,
                 game: game
               });
 
-            case 21:
-              _context.next = 23;
+            case 28:
+              _context.next = 30;
               return _this.setStateAsync({
                 progress: 4,
                 working: false
               });
 
-            case 23:
+            case 30:
               setTimeout(function () {
                 return _this.setState({
                   progress: 0
                 });
               }, 500);
 
-            case 24:
+            case 31:
             case "end":
               return _context.stop();
           }
@@ -37744,7 +37764,7 @@ var GlobalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createG
 /*!**************************************!*\
   !*** ./src/extendscript/Premiere.js ***!
   \**************************************/
-/*! exports provided: getVersionInfo, updateEventPanel, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings */
+/*! exports provided: getVersionInfo, updateEventPanel, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, createTwitchClip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37756,6 +37776,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTwitchMetaData", function() { return addTwitchMetaData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadSettings", function() { return loadSettings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveSettings", function() { return saveSettings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTwitchClip", function() { return createTwitchClip; });
 /* harmony import */ var _util_cep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util/cep */ "./src/extendscript/util/cep.js");
 // this file exports the methods in Premiere.jsx
 
@@ -37765,7 +37786,8 @@ var getVersionInfo = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].get
     importTwitchClips = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].importTwitchClips,
     addTwitchMetaData = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].addTwitchMetaData,
     loadSettings = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].loadSettings,
-    saveSettings = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings;
+    saveSettings = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings,
+    createTwitchClip = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].createTwitchClip;
 
 
 /***/ }),
