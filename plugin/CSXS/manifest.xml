@@ -15,7 +15,7 @@
 **************************************************************************/
 -->	
 <ExtensionManifest Version="5.0" ExtensionBundleId="premiere-twitch-import" ExtensionBundleVersion="11.1"
-ExtensionBundleName="Twitch Clip Import" 
+ExtensionBundleName="Clipherder for Twitch" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
 		<Extension Id="premiere-twitch-import" Version="10.3.0" />
@@ -48,7 +48,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Twitch Clip Import</Menu>
+					<Menu>Clipherder for Twitch</Menu>
 					<Geometry>
 						<Size>
 							<Height>300</Height>

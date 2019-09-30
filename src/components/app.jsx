@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@material-ui/styles';
 import { Reset } from 'styled-reset';
 import { Body } from './body.jsx';
 import { getTheme } from '../theme';

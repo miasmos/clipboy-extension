@@ -496,6 +496,7 @@ $._PPP_ = {
 
     createTwitchClip: function(id, path, data) {
         var outPath = path + $._PPP_.getSep() + id + '.mp4';
+        $._PPP_.log(outPath);
         var outFile = new File(outPath);
         if (outFile) {
             outFile.open('w');

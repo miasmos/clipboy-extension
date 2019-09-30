@@ -14,14 +14,13 @@ const ProgressStyle = styled.div`
 
     .foreground {
         position: absolute;
-        background-color: ${({ theme }) => theme.colors.input};
+        /* background-color: ${({ theme }) => theme.colors.input}; */
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
         transition: width 0.2s linear;
-        width: ${({ progress, captions }) =>
-            (progress / captions.length) * 100}%;
+        width: 100%;
     }
 
     .status {
@@ -33,9 +32,9 @@ const ProgressStyle = styled.div`
     }
 `;
 
-export const Progress = ({ captions, progress, show }) => (
-    <ProgressStyle captions={captions} progress={progress} show={show}>
-        <div className="status">{captions[progress]}</div>
+export const Progress = ({ caption, show }) => (
+    <ProgressStyle caption={caption} show={show}>
+        <div className="status">{caption}</div>
         <div className="foreground"></div>
     </ProgressStyle>
 );

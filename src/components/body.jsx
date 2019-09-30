@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import FormGroup from '@material-ui/core/FormGroup';
+import Typography from '@material-ui/core/Typography';
 import { Reload } from './reload.jsx';
 import { Input } from './input.jsx';
 import { Button } from './button.jsx';
-import { StartDateDisplay } from './startDateDisplay.jsx';
-import { EndDateDisplay } from './endDateDisplay.jsx';
+import { Slider } from './slider.jsx';
+import { Switch } from './switch.jsx';
+import { DateDisplay } from './DateDisplay.jsx';
 import { Progress } from './progress.jsx';
 import {
     importTwitchClips,
     getProjectPath,
     addTwitchMetaData,
-    createTwitchClip
+    createTwitchClip,
+    log
 } from '../extendscript/Premiere';
 import { settings } from '../settings';
 import { clips, getClip } from '../api';
 
 const BodyStyle = styled.div`
-    background-color: ${({ theme }) => theme.colors.background};
     padding: 0.3125rem;
 `;
 
@@ -24,43 +27,62 @@ export class Body extends React.Component {
     state = {
         working: false,
         path: '',
-        oauth: 'l0vmpckj22o9xdk003tytq9xw0swgk',
-        game: 'Overwatch',
-        start: '2019-09-09',
-        end: '2019-09-16',
-        count: '30',
+        target: '',
+        targetIsValid: false,
+        start: new Date(),
+        startIsValid: false,
+        end: new Date(),
+        endIsValid: false,
+        count: 30,
+        countIsValid: true,
         progress: 0,
-        captions: [
-            'get project path',
-            'fetch clips',
-            'import clips',
-            'add metadata'
-        ]
+        caption: '',
+        mode: false,
+        formIsValid: false,
+        hasError: false,
+        message: ''
     };
+
     setStateAsync = state =>
         new Promise(resolve => this.setState(state, resolve));
 
     importClips = async () => {
-        const { oauth, game, start, end, count } = this.state;
-        await this.setStateAsync({ working: true, progress: 0 });
-        const [path] = await getProjectPath();
-        const fullPath =
-            path.substring(0, path.lastIndexOf('\\')) + '\\media\\twitch';
-        await this.setStateAsync({ progress: 1 });
-        const data = await clips(oauth, game, start, end, count);
-        await this.setStateAsync({ progress: 2 });
-        const clipData = await getClip(data[0].clip_url);
-        await createTwitchClip(clip.id, fullPath, clipData);
-        await this.setStateAsync({ progress: 3 });
-        await importTwitchClips(fullPath);
-        await this.setStateAsync({ progress: 4 });
-        await addTwitchMetaData(data, {
-            start,
-            end,
-            game
-        });
-        await this.setStateAsync({ progress: 4, working: false });
-        setTimeout(() => this.setState({ progress: 0 }), 500);
+        try {
+            const { target, start, end, count, mode } = this.state;
+            await this.setStateAsync({ working: true, caption: 'get path' });
+            // const [path] = await getProjectPath();
+            // const fullPath = path.substring(0, path.lastIndexOf('\\'));
+            // await this.setStateAsync({ caption: 'get clip urls' });
+            const data = await clips(target, start, end, mode, count);
+            console.log(data);
+            // await this.setStateAsync({ caption: 'get clip data' });
+            // const clipData = await getClip(data[0].clip_url);
+            // await log(JSON.stringify(clipData));
+            // console.log(clipData.body);
+
+            // await this.setStateAsync({ caption: 'write clip to disk' });
+            // await createTwitchClip(data[0].id, fullPath, clipData);
+            // await log(data[0].clip_url);
+            // await this.setStateAsync({ caption: 'import clip to premiere' });
+            // await importTwitchClips(fullPath);
+            // await this.setStateAsync({ caption: 'add metadata' });
+            // await addTwitchMetaData(data, {
+            //     start,
+            //     end,
+            //     target
+            // });
+            await this.setStateAsync({ working: false });
+            setTimeout(() => this.setState({ caption: '' }), 500);
+        } catch (error) {
+            const { message } = error;
+            console.log(message, error);
+            this.setState({
+                working: false,
+                caption: '',
+                hasError: true,
+                message: message || error
+            });
+        }
     };
 
     async componentDidMount() {
@@ -73,76 +95,133 @@ export class Body extends React.Component {
     };
 
     load = async () => {
-        const { start, end, oauth, game, count } = await settings.load();
+        const { start, end, target, count, mode } = await settings.load();
         await this.setStateAsync({
             start: start ? start : this.state.start,
+            startIsValid: start ? true : false,
             end: end ? end : this.state.end,
-            oauth: oauth ? oauth : this.state.oauth,
-            game: game ? game : this.state.game,
-            count: count ? count : this.state.count
+            endIsValid: end ? true : false,
+            target: target ? target : this.state.target,
+            targetIsValid: target && target.length > 0 ? true : false,
+            count: count ? count : this.state.count,
+            countIsValid: true,
+            mode: mode ? mode : this.state.mode
+        });
+        this.updateFormValidity();
+    };
+
+    updateFormValidity = () => {
+        const {
+            targetIsValid,
+            startIsValid,
+            endIsValid,
+            countIsValid
+        } = this.state;
+        this.setState({
+            formIsValid:
+                targetIsValid && startIsValid && endIsValid && countIsValid
         });
     };
 
     render() {
         const {
-            oauth,
-            game,
+            target,
             start,
             end,
             count,
             working,
-            captions,
-            progress
+            caption,
+            mode,
+            formIsValid,
+            hasError,
+            message
         } = this.state;
+
         return (
             <BodyStyle>
-                <Input
-                    value={oauth}
-                    name="oauth"
-                    title="oauth"
-                    onChange={value => this.setState({ oauth: value })}
-                    onStill={this.save}
-                    enabled={!working}
-                />
-                <Input
-                    value={game}
-                    name="game"
-                    title="game"
-                    onChange={value => this.setState({ game: value })}
-                    onStill={this.save}
-                    enabled={!working}
-                />
-                <StartDateDisplay
+                <FormGroup>
+                    <Input
+                        value={target}
+                        name="target"
+                        label={mode ? 'Broadcaster' : 'Game'}
+                        onChange={async value => {
+                            await this.setStateAsync({
+                                target: value,
+                                targetIsValid: value.length > 0
+                            });
+                            this.updateFormValidity();
+                        }}
+                        onStill={this.save}
+                        enabled={!working}
+                    />
+                    <Switch
+                        onChange={async value => {
+                            await this.setStateAsync({
+                                mode: value,
+                                target: '',
+                                targetIsValid: false,
+                                formIsValid: false
+                            });
+                            this.save();
+                        }}
+                        enabled={!working}
+                        value={mode}
+                    />
+                </FormGroup>
+                <DateDisplay
                     value={start}
-                    onChange={value => this.setState({ start: value })}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            start: value,
+                            startIsValid: value instanceof Date
+                        });
+                        this.updateFormValidity();
+                        this.save();
+                    }}
                     onStill={this.save}
                     enabled={!working}
+                    maxDate={end}
+                    label="Start"
                 />
-                <EndDateDisplay
+                <DateDisplay
                     value={end}
-                    onChange={value => this.setState({ end: value })}
-                    onStill={this.save}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            end: value,
+                            endIsValid: value instanceof Date
+                        });
+                        this.updateFormValidity();
+                        this.save();
+                    }}
                     enabled={!working}
-                    start={start}
+                    minDate={start}
+                    label="End"
                 />
-                <Input
-                    value={count.toString()}
-                    name="count"
-                    title="video count"
-                    onChange={value => this.setState({ count: value })}
-                    onStill={this.save}
+                <Slider
+                    defaultValue={count}
+                    step={10}
+                    min={10}
+                    max={100}
+                    marks={true}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            count: value,
+                            countIsValid: count >= 10 && count <= 100
+                        });
+                        this.updateFormValidity();
+                    }}
                     enabled={!working}
+                    label="Clips"
                 />
+                {hasError && message && (
+                    <Typography color="error">{message}</Typography>
+                )}
                 <Button
-                    title="Import"
-                    enabled={!working}
+                    label="Import"
+                    enabled={!working && formIsValid}
                     onClick={this.importClips}
                 />
-                <Progress
-                    captions={captions}
-                    progress={progress}
-                    show={working}
-                />
+                <Progress caption={caption} show={working} />
                 <Reload />
             </BodyStyle>
         );

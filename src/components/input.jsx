@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
 
 const InputStyle = styled.div`
     width: 100%;
@@ -51,26 +52,27 @@ export class Input extends React.Component {
     };
 
     render() {
-        const { title, name, value, enabled = true } = this.props;
+        const { label, name, value, enabled = true } = this.props;
         return (
             <InputStyle enabled={enabled}>
-                <>
-                    <label htmlFor={name}>{title}</label>
-                    <input
-                        type="text"
-                        name={name}
-                        value={value}
-                        onChange={this.onChange}
-                        disabled={!enabled}
-                    />
-                </>
+                <TextField
+                    id={name}
+                    name={name}
+                    label={label}
+                    value={value}
+                    onChange={this.onChange}
+                    disabled={!enabled}
+                    margin="normal"
+                    variant="filled"
+                    spellCheck={false}
+                />
             </InputStyle>
         );
     }
 }
 
 Input.propTypes = {
-    title: PropTypes.string,
+    label: PropTypes.string,
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
