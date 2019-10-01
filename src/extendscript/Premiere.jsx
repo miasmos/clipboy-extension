@@ -482,6 +482,17 @@ $._PPP_ = {
         }
     },
 
+    clearLog: function() {
+        var projectPath = new File(app.project.path);
+        var outPath = projectPath.parent + $._PPP_.getSep() + 'debug.txt';
+        var outFile = new File(outPath);
+        if (outFile) {
+            outFile.encoding = 'UTF8';
+            outFile.open('w', 'TEXT', '????');
+            outFile.close();
+        }
+    },
+
     log: function(data) {
         var projectPath = new File(app.project.path);
         var outPath = projectPath.parent + $._PPP_.getSep() + 'debug.txt';
@@ -490,17 +501,6 @@ $._PPP_ = {
             outFile.encoding = 'UTF8';
             outFile.open('a', 'TEXT', '????');
             outFile.write(data + '\n');
-            outFile.close();
-        }
-    },
-
-    createTwitchClip: function(id, path, data) {
-        var outPath = path + $._PPP_.getSep() + id + '.mp4';
-        $._PPP_.log(outPath);
-        var outFile = new File(outPath);
-        if (outFile) {
-            outFile.open('w');
-            outFile.write(data);
             outFile.close();
         }
     },
@@ -560,7 +560,7 @@ $._PPP_ = {
         }
     },
 
-    addTwitchMetaData: function(data, sequenceData) {
+    addTwitchMetaData: function(data) {
         if (ExternalObject.AdobeXMPScript === undefined) {
             ExternalObject.AdobeXMPScript = new ExternalObject(
                 'lib:AdobeXMPScript'
@@ -568,9 +568,9 @@ $._PPP_ = {
         }
 
         if (app.project) {
-            for (var id in data) {
-                var metadata = data[id];
-                var item = $._PPP_.findClip(id + '.mp4');
+            for (var i = 0; i < data.length; i++) {
+                var metadata = data[i];
+                var item = $._PPP_.findClip(metadata['id'] + '.mp4');
 
                 if (item) {
                     var xmpBlob = item.getXMPMetadata();

@@ -17080,7 +17080,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/styles/index.js ***!
   \************************************************************/
-/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme */
+/*! exports provided: createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, useTheme, withStyles, withTheme, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24775,6 +24775,170 @@ function _typeof(obj) {
 
   return _typeof(obj);
 }
+
+/***/ }),
+
+/***/ "./node_modules/base64-js/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/base64-js/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.byteLength = byteLength
+exports.toByteArray = toByteArray
+exports.fromByteArray = fromByteArray
+
+var lookup = []
+var revLookup = []
+var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
+
+var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+for (var i = 0, len = code.length; i < len; ++i) {
+  lookup[i] = code[i]
+  revLookup[code.charCodeAt(i)] = i
+}
+
+// Support decoding URL-safe base64 strings, as Node.js does.
+// See: https://en.wikipedia.org/wiki/Base64#URL_applications
+revLookup['-'.charCodeAt(0)] = 62
+revLookup['_'.charCodeAt(0)] = 63
+
+function getLens (b64) {
+  var len = b64.length
+
+  if (len % 4 > 0) {
+    throw new Error('Invalid string. Length must be a multiple of 4')
+  }
+
+  // Trim off extra bytes after placeholder bytes are found
+  // See: https://github.com/beatgammit/base64-js/issues/42
+  var validLen = b64.indexOf('=')
+  if (validLen === -1) validLen = len
+
+  var placeHoldersLen = validLen === len
+    ? 0
+    : 4 - (validLen % 4)
+
+  return [validLen, placeHoldersLen]
+}
+
+// base64 is 4/3 + up to two characters of the original data
+function byteLength (b64) {
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function _byteLength (b64, validLen, placeHoldersLen) {
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function toByteArray (b64) {
+  var tmp
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+
+  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
+
+  var curByte = 0
+
+  // if there are placeholders, only get up to the last complete 4 chars
+  var len = placeHoldersLen > 0
+    ? validLen - 4
+    : validLen
+
+  var i
+  for (i = 0; i < len; i += 4) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 18) |
+      (revLookup[b64.charCodeAt(i + 1)] << 12) |
+      (revLookup[b64.charCodeAt(i + 2)] << 6) |
+      revLookup[b64.charCodeAt(i + 3)]
+    arr[curByte++] = (tmp >> 16) & 0xFF
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 2) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 2) |
+      (revLookup[b64.charCodeAt(i + 1)] >> 4)
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 1) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 10) |
+      (revLookup[b64.charCodeAt(i + 1)] << 4) |
+      (revLookup[b64.charCodeAt(i + 2)] >> 2)
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  return arr
+}
+
+function tripletToBase64 (num) {
+  return lookup[num >> 18 & 0x3F] +
+    lookup[num >> 12 & 0x3F] +
+    lookup[num >> 6 & 0x3F] +
+    lookup[num & 0x3F]
+}
+
+function encodeChunk (uint8, start, end) {
+  var tmp
+  var output = []
+  for (var i = start; i < end; i += 3) {
+    tmp =
+      ((uint8[i] << 16) & 0xFF0000) +
+      ((uint8[i + 1] << 8) & 0xFF00) +
+      (uint8[i + 2] & 0xFF)
+    output.push(tripletToBase64(tmp))
+  }
+  return output.join('')
+}
+
+function fromByteArray (uint8) {
+  var tmp
+  var len = uint8.length
+  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+  var parts = []
+  var maxChunkLength = 16383 // must be multiple of 3
+
+  // go through the array every three bytes, we'll deal with trailing stuff later
+  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+    parts.push(encodeChunk(
+      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
+    ))
+  }
+
+  // pad the end with zeros, but make sure to not forget the extra bytes
+  if (extraBytes === 1) {
+    tmp = uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 2] +
+      lookup[(tmp << 4) & 0x3F] +
+      '=='
+    )
+  } else if (extraBytes === 2) {
+    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 10] +
+      lookup[(tmp >> 4) & 0x3F] +
+      lookup[(tmp << 2) & 0x3F] +
+      '='
+    )
+  }
+
+  return parts.join('')
+}
+
 
 /***/ }),
 
@@ -84313,19 +84477,46 @@ module.exports = function(originalModule) {
 /*!********************!*\
   !*** ./src/api.js ***!
   \********************/
-/*! exports provided: clips, getClip */
+/*! exports provided: getClipMetadata, getClips */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clips", function() { return clips; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClip", function() { return getClip; });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClipMetadata", function() { return getClipMetadata; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClips", function() { return getClips; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
 
 
+
+
+
+var fs = cep_node.require('fs');
+
+var util = cep_node.require('util');
+
+var writeFileAsync = util.promisify(fs.writeFile);
+var existsAsync = util.promisify(fs.exists);
 var HOST = 'http://localhost:3000';
+
+Promise.series = function series(providers) {
+  var ret = Promise.resolve(null);
+  var results = [];
+  return providers.reduce(function (result, provider, index) {
+    return result.then(function () {
+      return provider().then(function (val) {
+        results[index] = val;
+      });
+    });
+  }, ret).then(function () {
+    return results;
+  });
+};
 
 var get = function get(path, body, method) {
   if (body === void 0) {
@@ -84365,30 +84556,116 @@ var post = function post(path, body) {
   return get(path, body, 'POST');
 };
 
-var clips = function clips(target, start, end, mode, count) {
+var getClipMetadata = function getClipMetadata(target, start, end, mode, count) {
   if (count === void 0) {
     count = 30;
   }
 
-  return post('/clips', _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, !mode && {
+  return post('/clips', _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({}, !mode && {
     game: target
   }, {}, mode && {
     broadcaster: target
   }, {
-    start: Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(start, 'yyyy-MM-dd'),
-    end: Object(date_fns__WEBPACK_IMPORTED_MODULE_1__["format"])(end, 'yyyy-MM-dd'),
+    start: Object(date_fns__WEBPACK_IMPORTED_MODULE_3__["format"])(start, 'yyyy-MM-dd'),
+    end: Object(date_fns__WEBPACK_IMPORTED_MODULE_3__["format"])(end, 'yyyy-MM-dd'),
     count: count
   }));
 };
-var getClip = function getClip(url) {
-  var headers = {
-    'Content-Type': 'application/octet-stream'
+var getClips = function getClips(data, path) {
+  return Promise.series(data.map(function (_ref2) {
+    var clip_url = _ref2.clip_url,
+        id = _ref2.id;
+    return function () {
+      return writeClip(clip_url, path, id);
+    };
+  }));
+};
+
+var writeClip =
+/*#__PURE__*/
+function () {
+  var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url, path, id) {
+    var filePath, exists, buffer, payload;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            filePath = "" + path + id + ".mp4";
+            _context.next = 3;
+            return existsAsync(filePath);
+
+          case 3:
+            exists = _context.sent;
+
+            if (!exists) {
+              _context.next = 6;
+              break;
+            }
+
+            return _context.abrupt("return");
+
+          case 6:
+            _context.next = 8;
+            return fetchClip(url);
+
+          case 8:
+            buffer = _context.sent;
+            payload = new Uint8Array(buffer);
+            _context.prev = 10;
+            _context.next = 13;
+            return writeFileAsync(filePath, payload);
+
+          case 13:
+            _context.next = 18;
+            break;
+
+          case 15:
+            _context.prev = 15;
+            _context.t0 = _context["catch"](10);
+            throw new Error("Writing to " + filePath + " failed");
+
+          case 18:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[10, 15]]);
+  }));
+
+  return function writeClip(_x, _x2, _x3) {
+    return _ref3.apply(this, arguments);
   };
-  console.log(result);
-  console.log(Origin);
-  console.log(headers);
-  return fetch(url, {
-    headers: headers
+}();
+
+var fetchClip = function fetchClip(url) {
+  return fetch(url).then(function (response) {
+    var reader = response.body.getReader();
+    return new ReadableStream({
+      start: function start(controller) {
+        function pump() {
+          return reader.read().then(function (_ref4) {
+            var done = _ref4.done,
+                value = _ref4.value;
+
+            if (done) {
+              controller.close();
+              return;
+            }
+
+            controller.enqueue(value);
+            return pump();
+          });
+        }
+
+        return pump();
+      }
+    });
+  }).then(function (stream) {
+    return new Response(stream);
+  }).then(function (response) {
+    return response.arrayBuffer();
   });
 };
 
@@ -84535,6 +84812,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var base64 = __webpack_require__(/*! base64-js */ "./node_modules/base64-js/index.js");
+
 var BodyStyle = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div.withConfig({
   displayName: "body__BodyStyle",
   componentId: "sc-15xyg0s-0"
@@ -84582,7 +84862,7 @@ function (_React$Component) {
     _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _this$state, target, start, end, count, mode, data, message;
+      var _this$state, target, start, end, count, mode, seperator, _ref2, path, fullPath, data, filePath, message;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -84598,59 +84878,101 @@ function (_React$Component) {
 
             case 4:
               _context.next = 6;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_16__["clips"])(target, start, end, mode, count);
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["getSep"])();
 
             case 6:
-              data = _context.sent;
-              console.log(data); // await this.setStateAsync({ caption: 'get clip data' });
-              // const clipData = await getClip(data[0].clip_url);
-              // await log(JSON.stringify(clipData));
-              // console.log(clipData.body);
-              // await this.setStateAsync({ caption: 'write clip to disk' });
-              // await createTwitchClip(data[0].id, fullPath, clipData);
-              // await log(data[0].clip_url);
-              // await this.setStateAsync({ caption: 'import clip to premiere' });
-              // await importTwitchClips(fullPath);
-              // await this.setStateAsync({ caption: 'add metadata' });
-              // await addTwitchMetaData(data, {
-              //     start,
-              //     end,
-              //     target
-              // });
+              seperator = _context.sent;
+              _context.next = 9;
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["getProjectPath"])();
 
-              _context.next = 10;
+            case 9:
+              _ref2 = _context.sent;
+              path = _ref2[0];
+              fullPath = path.substring(0, path.lastIndexOf('\\'));
+              _context.next = 14;
+              return _this.setStateAsync({
+                caption: 'get metadata'
+              });
+
+            case 14:
+              _context.next = 16;
+              return Object(_api__WEBPACK_IMPORTED_MODULE_16__["getClipMetadata"])(target, start, end, mode, count);
+
+            case 16:
+              data = _context.sent;
+              _context.next = 19;
+              return _this.setStateAsync({
+                caption: 'fetch'
+              });
+
+            case 19:
+              filePath = "" + fullPath + seperator;
+              _context.prev = 20;
+              _context.next = 23;
+              return Object(_api__WEBPACK_IMPORTED_MODULE_16__["getClips"])(data, filePath);
+
+            case 23:
+              _context.next = 28;
+              break;
+
+            case 25:
+              _context.prev = 25;
+              _context.t0 = _context["catch"](20);
+              Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["log"])(JSON.stringify(_context.t0));
+
+            case 28:
+              _context.next = 30;
+              return _this.setStateAsync({
+                caption: 'import'
+              });
+
+            case 30:
+              _context.next = 32;
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["importTwitchClips"])(fullPath);
+
+            case 32:
+              _context.next = 34;
+              return _this.setStateAsync({
+                caption: 'add metadata'
+              });
+
+            case 34:
+              _context.next = 36;
+              return Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["addTwitchMetaData"])(data);
+
+            case 36:
+              _context.next = 38;
               return _this.setStateAsync({
                 working: false
               });
 
-            case 10:
+            case 38:
               setTimeout(function () {
                 return _this.setState({
                   caption: ''
                 });
               }, 500);
-              _context.next = 18;
+              _context.next = 45;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](0);
-              message = _context.t0.message;
-              console.log(message, _context.t0);
+            case 41:
+              _context.prev = 41;
+              _context.t1 = _context["catch"](0);
+              message = _context.t1.message;
 
               _this.setState({
                 working: false,
                 caption: '',
                 hasError: true,
-                message: message || _context.t0
+                message: message || _context.t1
               });
 
-            case 18:
+            case 45:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 13]]);
+      }, _callee, null, [[0, 41], [20, 25]]);
     }));
     _this.save =
     /*#__PURE__*/
@@ -84676,7 +84998,7 @@ function (_React$Component) {
     _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-      var _ref4, start, end, target, count, mode;
+      var _ref5, start, end, target, count, mode;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
@@ -84686,12 +85008,12 @@ function (_React$Component) {
               return _settings__WEBPACK_IMPORTED_MODULE_15__["settings"].load();
 
             case 2:
-              _ref4 = _context3.sent;
-              start = _ref4.start;
-              end = _ref4.end;
-              target = _ref4.target;
-              count = _ref4.count;
-              mode = _ref4.mode;
+              _ref5 = _context3.sent;
+              start = _ref5.start;
+              end = _ref5.end;
+              target = _ref5.target;
+              count = _ref5.count;
+              mode = _ref5.mode;
               _context3.next = 10;
               return _this.setStateAsync({
                 start: start ? start : _this.state.start,
@@ -84724,7 +85046,9 @@ function (_React$Component) {
           countIsValid = _this$state2.countIsValid;
 
       _this.setState({
-        formIsValid: targetIsValid && startIsValid && endIsValid && countIsValid
+        formIsValid: targetIsValid && startIsValid && endIsValid && countIsValid,
+        message: '',
+        hasError: false
       });
     };
 
@@ -84751,6 +85075,9 @@ function (_React$Component) {
               return this.save();
 
             case 4:
+              Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_14__["clearLog"])();
+
+            case 5:
             case "end":
               return _context4.stop();
           }
@@ -84786,7 +85113,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref5 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref6 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
@@ -84811,7 +85138,7 @@ function (_React$Component) {
         }));
 
         return function (_x) {
-          return _ref5.apply(this, arguments);
+          return _ref6.apply(this, arguments);
         };
       }(),
       onStill: this.save,
@@ -84820,7 +85147,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref6 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref7 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -84847,7 +85174,7 @@ function (_React$Component) {
         }));
 
         return function (_x2) {
-          return _ref6.apply(this, arguments);
+          return _ref7.apply(this, arguments);
         };
       }(),
       enabled: !working,
@@ -84857,7 +85184,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref7 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref8 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
@@ -84884,7 +85211,7 @@ function (_React$Component) {
         }));
 
         return function (_x3) {
-          return _ref7.apply(this, arguments);
+          return _ref8.apply(this, arguments);
         };
       }(),
       onStill: this.save,
@@ -84896,7 +85223,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref8 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref9 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
@@ -84923,7 +85250,7 @@ function (_React$Component) {
         }));
 
         return function (_x4) {
-          return _ref8.apply(this, arguments);
+          return _ref9.apply(this, arguments);
         };
       }(),
       enabled: !working,
@@ -84938,7 +85265,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref9 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+        var _ref10 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
@@ -84963,14 +85290,15 @@ function (_React$Component) {
         }));
 
         return function (_x5) {
-          return _ref9.apply(this, arguments);
+          return _ref10.apply(this, arguments);
         };
       }(),
       enabled: !working,
       label: "Clips"
-    }), hasError && message && react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      color: "error"
-    }, message), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_button_jsx__WEBPACK_IMPORTED_MODULE_9__["Button"], {
+    }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      color: "error",
+      component: "div"
+    }, hasError ? message : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", null, "\xA0")), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_button_jsx__WEBPACK_IMPORTED_MODULE_9__["Button"], {
       label: "Import",
       enabled: !working && formIsValid,
       onClick: this.importClips
@@ -85511,7 +85839,7 @@ Switch.propTypes = {
 /*!**************************************!*\
   !*** ./src/extendscript/Premiere.js ***!
   \**************************************/
-/*! exports provided: getVersionInfo, updateEventPanel, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, createTwitchClip, log */
+/*! exports provided: getVersionInfo, updateEventPanel, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85523,8 +85851,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTwitchMetaData", function() { return addTwitchMetaData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadSettings", function() { return loadSettings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveSettings", function() { return saveSettings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTwitchClip", function() { return createTwitchClip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log", function() { return log; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearLog", function() { return clearLog; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSep", function() { return getSep; });
 /* harmony import */ var _util_cep__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util/cep */ "./src/extendscript/util/cep.js");
 // this file exports the methods in Premiere.jsx
 
@@ -85535,8 +85864,9 @@ var getVersionInfo = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].get
     addTwitchMetaData = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].addTwitchMetaData,
     loadSettings = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].loadSettings,
     saveSettings = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings,
-    createTwitchClip = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].createTwitchClip,
-    log = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].log;
+    log = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].log,
+    clearLog = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].clearLog,
+    getSep = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getSep;
 
 
 /***/ }),

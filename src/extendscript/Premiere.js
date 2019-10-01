@@ -9,6 +9,7 @@ export const {
     addTwitchMetaData,
     loadSettings,
     saveSettings,
-    createTwitchClip,
-    log
+    log,
+    clearLog,
+    getSep
 } = evalJsxScript;

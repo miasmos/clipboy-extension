@@ -13,11 +13,13 @@ import {
     importTwitchClips,
     getProjectPath,
     addTwitchMetaData,
-    createTwitchClip,
-    log
+    log,
+    clearLog,
+    getSep
 } from '../extendscript/Premiere';
 import { settings } from '../settings';
-import { clips, getClip } from '../api';
+import { getClipMetadata, getClips } from '../api';
+const base64 = require('base64-js');
 
 const BodyStyle = styled.div`
     padding: 0.3125rem;
@@ -50,32 +52,28 @@ export class Body extends React.Component {
         try {
             const { target, start, end, count, mode } = this.state;
             await this.setStateAsync({ working: true, caption: 'get path' });
-            // const [path] = await getProjectPath();
-            // const fullPath = path.substring(0, path.lastIndexOf('\\'));
-            // await this.setStateAsync({ caption: 'get clip urls' });
-            const data = await clips(target, start, end, mode, count);
-            console.log(data);
-            // await this.setStateAsync({ caption: 'get clip data' });
-            // const clipData = await getClip(data[0].clip_url);
-            // await log(JSON.stringify(clipData));
-            // console.log(clipData.body);
+            const seperator = await getSep();
+            const [path] = await getProjectPath();
+            const fullPath = path.substring(0, path.lastIndexOf('\\'));
+            await this.setStateAsync({ caption: 'get metadata' });
+            const data = await getClipMetadata(target, start, end, mode, count);
 
-            // await this.setStateAsync({ caption: 'write clip to disk' });
-            // await createTwitchClip(data[0].id, fullPath, clipData);
-            // await log(data[0].clip_url);
-            // await this.setStateAsync({ caption: 'import clip to premiere' });
-            // await importTwitchClips(fullPath);
-            // await this.setStateAsync({ caption: 'add metadata' });
-            // await addTwitchMetaData(data, {
-            //     start,
-            //     end,
-            //     target
-            // });
+            await this.setStateAsync({ caption: 'fetch' });
+            const filePath = `${fullPath}${seperator}`;
+            try {
+                await getClips(data, filePath);
+            } catch (error) {
+                log(JSON.stringify(error));
+            }
+            await this.setStateAsync({ caption: 'import' });
+            await importTwitchClips(fullPath);
+            await this.setStateAsync({ caption: 'add metadata' });
+            await addTwitchMetaData(data);
             await this.setStateAsync({ working: false });
             setTimeout(() => this.setState({ caption: '' }), 500);
         } catch (error) {
             const { message } = error;
-            console.log(message, error);
+
             this.setState({
                 working: false,
                 caption: '',
@@ -88,6 +86,7 @@ export class Body extends React.Component {
     async componentDidMount() {
         await this.load();
         await this.save();
+        clearLog();
     }
 
     save = async () => {
@@ -119,7 +118,9 @@ export class Body extends React.Component {
         } = this.state;
         this.setState({
             formIsValid:
-                targetIsValid && startIsValid && endIsValid && countIsValid
+                targetIsValid && startIsValid && endIsValid && countIsValid,
+            message: '',
+            hasError: false
         });
     };
 
@@ -213,9 +214,10 @@ export class Body extends React.Component {
                     enabled={!working}
                     label="Clips"
                 />
-                {hasError && message && (
-                    <Typography color="error">{message}</Typography>
-                )}
+                <Typography color="error" component="div">
+                    {hasError ? message : <div>&nbsp;</div>}
+                </Typography>
+
                 <Button
                     label="Import"
                     enabled={!working && formIsValid}
