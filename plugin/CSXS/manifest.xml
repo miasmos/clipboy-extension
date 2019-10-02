@@ -15,7 +15,7 @@
 **************************************************************************/
 -->	
 <ExtensionManifest Version="5.0" ExtensionBundleId="premiere-twitch-import" ExtensionBundleVersion="11.1"
-ExtensionBundleName="Clipherder for Twitch" 
+ExtensionBundleName="Clipboy for Twitch" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
 		<Extension Id="premiere-twitch-import" Version="10.3.0" />
@@ -49,10 +49,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Clipherder for Twitch</Menu>
+					<Menu>Clipboy for Twitch</Menu>
 					<Geometry>
 						<Size>
-							<Height>300</Height>
+							<Height>445</Height>
 							<Width>300</Width>
 						</Size>
 					</Geometry>

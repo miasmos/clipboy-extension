@@ -8,9 +8,9 @@
         "build": "gulp && webpack --mode=development"
     },
     "extendscript": {
-        "title": "Clipherder for Twitch",
+        "title": "Clipboy for Twitch",
         "width": 300,
-        "height": 300
+        "height": 445
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",
@@ -21,6 +21,7 @@
         "babel-loader": "^8.0.6",
         "babel-plugin-styled-components": "^1.10.6",
         "copy-webpack-plugin": "^5.0.4",
+        "file-loader": "^4.2.0",
         "gulp": "^4.0.2",
         "gulp-rename": "^1.4.0",
         "gulp-replace": "^1.0.0",
@@ -36,9 +37,12 @@
         "date-fns": "^2.0.0-beta.5",
         "dayjs": "^1.8.16",
         "fetch": "^1.1.0",
+        "i18next": "^17.0.17",
         "prop-types": "^15.7.2",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
+        "react-i18next": "^10.13.1",
+        "react-transition-group": "^4.3.0",
         "styled-components": "^4.3.2",
         "styled-reset": "^4.0.0"
     }

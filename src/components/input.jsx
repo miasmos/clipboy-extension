@@ -17,6 +17,10 @@ const InputStyle = styled.div`
         opacity: ${({ enabled = true }) => (enabled ? 1 : 0.2)};
         transition: opacity 0.4s;
     }
+
+    .MuiFormControl-root {
+        width: 100%;
+    }
 `;
 
 export class Input extends React.Component {
@@ -52,9 +56,9 @@ export class Input extends React.Component {
     };
 
     render() {
-        const { label, name, value, enabled = true } = this.props;
+        const { className, label, name, value, enabled = true } = this.props;
         return (
-            <InputStyle enabled={enabled}>
+            <InputStyle className={className} enabled={enabled}>
                 <TextField
                     id={name}
                     name={name}
@@ -77,5 +81,6 @@ Input.propTypes = {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onStill: PropTypes.func,
-    enabled: PropTypes.bool
+    enabled: PropTypes.bool,
+    className: PropTypes.string
 };

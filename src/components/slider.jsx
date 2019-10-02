@@ -50,13 +50,14 @@ export class Slider extends Component {
             min,
             max,
             defaultValue,
-            marks
+            marks,
+            name
         } = this.props;
 
         return (
             <SliderStyle>
                 {label && (
-                    <Typography id={label} gutterBottom>
+                    <Typography id={label} color="textPrimary" gutterBottom>
                         {label}
                     </Typography>
                 )}
@@ -72,6 +73,7 @@ export class Slider extends Component {
                     marks={marks}
                     onChange={this.onChange}
                     disabled={!enabled}
+                    name={name}
                 />
             </SliderStyle>
         );
@@ -88,5 +90,6 @@ Slider.propTypes = {
     min: PropTypes.number,
     max: PropTypes.number,
     defaultValue: PropTypes.number,
-    marks: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
+    marks: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+    name: PropTypes.string
 };

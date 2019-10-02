@@ -4,17 +4,18 @@ import styled from 'styled-components';
 import MaterialButton from '@material-ui/core/Button';
 
 const ButtonStyle = styled.div`
-    width: 100%;
     margin-top: 0.625rem;
 `;
 
-export const Button = ({ label, onClick, enabled = true }) => (
+export const Button = ({ className, css, label, onClick, enabled = true }) => (
     <ButtonStyle>
         <MaterialButton
+            css={css}
             variant="contained"
             color="primary"
             onClick={onClick}
             disabled={!enabled}
+            className={className}
         >
             {label}
         </MaterialButton>
@@ -25,5 +26,7 @@ Button.propTypes = {
     label: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     enabled: PropTypes.bool,
-    style: PropTypes.object
+    style: PropTypes.object,
+    className: PropTypes.string,
+    css: PropTypes.object
 };

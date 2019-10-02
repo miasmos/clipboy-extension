@@ -1,13 +1,23 @@
 <html>
     <head>
         <link
-            href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,600,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap"
             rel="stylesheet"
         />
     </head>
     <body>
         <div id="app"></div>
         <script>
+            cep_node = {
+                require: key => {
+                    const map = {
+                        util: { promisify: () => {} },
+                        fs: { exists: true, writeFile: true }
+                    };
+                    return map[key];
+                }
+            };
+            $ = { locale: 'en' };
             window.__adobe_cep__ = {};
             window.__adobe_cep__.getHostEnvironment = function() {
                 return JSON.stringify({

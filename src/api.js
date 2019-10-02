@@ -33,7 +33,7 @@ const get = (path, body = {}, method = 'GET') =>
         .then(response => response.json())
         .then(({ status, error, data }) => {
             if (status === 'error') {
-                throw new Error(error || 'An error occurred');
+                throw new Error(error || 'error.generic');
             } else {
                 return data;
             }
@@ -41,18 +41,27 @@ const get = (path, body = {}, method = 'GET') =>
 
 const post = (path, body = {}) => get(path, body, 'POST');
 
-export const getClipMetadata = (target, start, end, mode, count = 30) =>
+export const getClipMetadata = (
+    target,
+    startDate,
+    endDate,
+    mode,
+    clipCount = 30
+) =>
     post('/clips', {
         ...(!mode && { game: target }),
         ...(mode && { broadcaster: target }),
-        start: format(start, 'yyyy-MM-dd'),
-        end: format(end, 'yyyy-MM-dd'),
-        count
+        startDate: format(startDate, 'yyyy-MM-dd'),
+        endDate: format(endDate, 'yyyy-MM-dd'),
+        clipCount
     });
 
-export const getClips = (data, path) =>
+export const getClips = (data, path, onItemCompleted) =>
     Promise.series(
-        data.map(({ clip_url, id }) => () => writeClip(clip_url, path, id))
+        data.map(({ clip_url, id }) => async () => {
+            await writeClip(clip_url, path, id);
+            onItemCompleted();
+        })
     );
 
 const writeClip = async (url, path, id) => {

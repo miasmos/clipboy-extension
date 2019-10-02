@@ -5,8 +5,14 @@ import MaterialSwitch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export const Switch = ({ label, value, onChange, enabled = true }) => (
-    <FormGroup>
+export const Switch = ({
+    className = '',
+    label,
+    value,
+    onChange,
+    enabled = true
+}) => (
+    <FormGroup className={className}>
         <FormControlLabel
             control={
                 <MaterialSwitch
@@ -29,5 +35,6 @@ Switch.propTypes = {
     onChange: PropTypes.func.isRequired,
     onStill: PropTypes.func,
     enabled: PropTypes.bool,
-    value: PropTypes.bool
+    value: PropTypes.bool,
+    className: PropTypes.string
 };

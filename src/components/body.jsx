@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
-import { Reload } from './reload.jsx';
+import { withTranslation } from 'react-i18next';
+import { Logo } from './logo.jsx';
 import { Input } from './input.jsx';
 import { Button } from './button.jsx';
 import { Slider } from './slider.jsx';
 import { Switch } from './switch.jsx';
 import { DateDisplay } from './DateDisplay.jsx';
-import { Progress } from './progress.jsx';
+import { ProgressModal } from './progressModal.jsx';
 import {
     importTwitchClips,
     getProjectPath,
@@ -19,13 +20,29 @@ import {
 } from '../extendscript/Premiere';
 import { settings } from '../settings';
 import { getClipMetadata, getClips } from '../api';
-const base64 = require('base64-js');
 
 const BodyStyle = styled.div`
-    padding: 0.3125rem;
+    padding: 3.75rem 1.25rem 1.25rem 1.25rem;
+    overflow-x: hidden;
+
+    .target-group {
+        position: relative;
+    }
+
+    .target-switch {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0.1875rem;
+    }
+
+    .target-input .MuiInputBase-input {
+        padding-right: 4.5rem;
+    }
 `;
 
-export class Body extends React.Component {
+class BodyComponent extends React.Component {
     state = {
         working: false,
         path: '',
@@ -38,47 +55,54 @@ export class Body extends React.Component {
         count: 30,
         countIsValid: true,
         progress: 0,
-        caption: '',
         mode: false,
         formIsValid: false,
         hasError: false,
-        message: ''
+        error: '',
+        currentItem: 0,
+        totalItems: 1,
+        progress: 0,
+        complete: false
     };
 
     setStateAsync = state =>
         new Promise(resolve => this.setState(state, resolve));
 
     importClips = async () => {
+        const { formIsValid } = this.state;
+        if (!formIsValid) {
+            return;
+        }
+
         try {
             const { target, start, end, count, mode } = this.state;
-            await this.setStateAsync({ working: true, caption: 'get path' });
+            await this.setStateAsync({ working: true });
             const seperator = await getSep();
             const [path] = await getProjectPath();
             const fullPath = path.substring(0, path.lastIndexOf('\\'));
-            await this.setStateAsync({ caption: 'get metadata' });
             const data = await getClipMetadata(target, start, end, mode, count);
-
-            await this.setStateAsync({ caption: 'fetch' });
+            await this.setStateAsync({ totalItems: data.length || 1 });
             const filePath = `${fullPath}${seperator}`;
             try {
-                await getClips(data, filePath);
+                await getClips(data, filePath, this.updateProgress);
             } catch (error) {
-                log(JSON.stringify(error));
+                console.error(error);
             }
-            await this.setStateAsync({ caption: 'import' });
             await importTwitchClips(fullPath);
-            await this.setStateAsync({ caption: 'add metadata' });
             await addTwitchMetaData(data);
-            await this.setStateAsync({ working: false });
-            setTimeout(() => this.setState({ caption: '' }), 500);
+            await this.setStateAsync({
+                complete: true
+            });
         } catch (error) {
             const { message } = error;
-
+            console.error(error);
             this.setState({
                 working: false,
-                caption: '',
                 hasError: true,
-                message: message || error
+                error: message,
+                currentItem: 0,
+                totalItems: 1,
+                progress: 0
             });
         }
     };
@@ -87,6 +111,7 @@ export class Body extends React.Component {
         await this.load();
         await this.save();
         clearLog();
+        this.updateFormValidity();
     }
 
     save = async () => {
@@ -95,18 +120,41 @@ export class Body extends React.Component {
 
     load = async () => {
         const { start, end, target, count, mode } = await settings.load();
-        await this.setStateAsync({
+        const init = {
             start: start ? start : this.state.start,
-            startIsValid: start ? true : false,
             end: end ? end : this.state.end,
-            endIsValid: end ? true : false,
             target: target ? target : this.state.target,
-            targetIsValid: target && target.length > 0 ? true : false,
             count: count ? count : this.state.count,
-            countIsValid: true,
             mode: mode ? mode : this.state.mode
+        };
+        await this.setStateAsync({
+            ...init,
+            startIsValid: init.start,
+            endIsValid: init.end,
+            targetIsValid:
+                target && typeof target === 'string' && target.length > 0,
+            countIsValid: count && !isNaN(count) && count > 0
         });
-        this.updateFormValidity();
+    };
+
+    updateProgress = () => {
+        const { currentItem, totalItems } = this.state;
+        this.setState({
+            currentItem: currentItem + 1,
+            progress: ((currentItem + 1) / totalItems) * 100
+        });
+    };
+
+    resetProgress = async () => {
+        await this.setStateAsync({
+            working: false
+        });
+        this.setState({
+            complete: false,
+            currentItem: 0,
+            totalItems: 1,
+            progress: 0
+        });
     };
 
     updateFormValidity = () => {
@@ -119,7 +167,7 @@ export class Body extends React.Component {
         this.setState({
             formIsValid:
                 targetIsValid && startIsValid && endIsValid && countIsValid,
-            message: '',
+            error: '',
             hasError: false
         });
     };
@@ -131,20 +179,29 @@ export class Body extends React.Component {
             end,
             count,
             working,
-            caption,
             mode,
             formIsValid,
             hasError,
-            message
+            error,
+            currentItem,
+            totalItems,
+            progress
         } = this.state;
+        const { t } = this.props;
 
         return (
             <BodyStyle>
-                <FormGroup>
+                <Logo />
+                <FormGroup className="target-group">
                     <Input
+                        className="target-input"
                         value={target}
                         name="target"
-                        label={mode ? 'Broadcaster' : 'Game'}
+                        label={
+                            mode
+                                ? t('form.field.broadcaster.label')
+                                : t('form.field.game.label')
+                        }
                         onChange={async value => {
                             await this.setStateAsync({
                                 target: value,
@@ -156,6 +213,7 @@ export class Body extends React.Component {
                         enabled={!working}
                     />
                     <Switch
+                        className="target-switch"
                         onChange={async value => {
                             await this.setStateAsync({
                                 mode: value,
@@ -182,7 +240,8 @@ export class Body extends React.Component {
                     onStill={this.save}
                     enabled={!working}
                     maxDate={end}
-                    label="Start"
+                    label={t('form.field.startDate.label')}
+                    name="startDate"
                 />
                 <DateDisplay
                     value={end}
@@ -196,7 +255,8 @@ export class Body extends React.Component {
                     }}
                     enabled={!working}
                     minDate={start}
-                    label="End"
+                    label={t('form.field.endDate.label')}
+                    name="endDate"
                 />
                 <Slider
                     defaultValue={count}
@@ -212,20 +272,30 @@ export class Body extends React.Component {
                         this.updateFormValidity();
                     }}
                     enabled={!working}
-                    label="Clips"
+                    label={t('form.field.clipCount.label')}
+                    name="clipCount"
                 />
                 <Typography color="error" component="div">
-                    {hasError ? message : <div>&nbsp;</div>}
+                    {hasError ? t(error) : <div>&nbsp;</div>}
                 </Typography>
 
                 <Button
-                    label="Import"
+                    label={t('form.button.submit')}
                     enabled={!working && formIsValid}
                     onClick={this.importClips}
                 />
-                <Progress caption={caption} show={working} />
-                <Reload />
+                <ProgressModal
+                    open={working}
+                    onClose={this.resetProgress}
+                    message={t('progress.progress.clipsleft', {
+                        current: currentItem,
+                        total: totalItems
+                    })}
+                    progress={progress}
+                />
             </BodyStyle>
         );
     }
 }
+
+export const Body = withTranslation()(BodyComponent);

@@ -22,14 +22,18 @@ const DateDisplayStyle = styled.div`
             margin-left: 0.125rem;
         }
     }
+
+    .MuiFormControl-root {
+        width: 100%;
+    }
 `;
 
 export const DateDisplay = ({
     value,
     onChange,
-    onStill,
     enabled,
     label,
+    name,
     minDate,
     maxDate
 }) => (
@@ -47,7 +51,7 @@ export const DateDisplay = ({
                 minDate={minDate}
                 maxDate={maxDate}
                 value={value}
-                name={label}
+                name={name}
                 label={label}
                 onChange={onChange}
                 disabled={!enabled}
@@ -63,5 +67,6 @@ DateDisplay.propTypes = {
     enabled: PropTypes.bool,
     label: PropTypes.string,
     minDate: PropTypes.instanceOf(Date),
-    maxDate: PropTypes.instanceOf(Date)
+    maxDate: PropTypes.instanceOf(Date),
+    name: PropTypes.string
 };

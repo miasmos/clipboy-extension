@@ -28,37 +28,65 @@ const getAppInfo = () => {
     };
 };
 
+const light = {
+    palette: {
+        common: { black: '#000', white: '#fff' },
+        primary: {
+            main: 'rgba(145, 71, 255, 1)'
+        },
+        secondary: {
+            main: 'rgba(0,0,0,1)'
+        },
+        error: {
+            main: 'rgba(233, 25, 22, 1)'
+        },
+        text: {
+            primary: 'rgba(0, 0, 0, 0.87)',
+            secondary: 'rgba(0, 0, 0, 0.54)',
+            disabled: 'rgba(0, 0, 0, 0.38)',
+            hint: 'rgba(0, 0, 0, 0.38)'
+        }
+    }
+};
+
+const dark = {
+    palette: {
+        common: { black: '#000', white: '#fff' },
+        primary: {
+            main: 'rgba(145, 71, 255, 1)'
+        },
+        secondary: {
+            main: 'rgba(255,255,255,1)'
+        },
+        error: {
+            main: 'rgba(233, 25, 22, 1)'
+        },
+        text: {
+            primary: 'rgba(255, 255, 255, 0.87)',
+            secondary: 'rgba(255, 255, 255, 0.54)',
+            disabled: 'rgba(255, 255, 255, 0.38)',
+            hint: 'rgba(255, 255, 255, 0.38)'
+        }
+    }
+};
+
 export const getTheme = () => {
     const { colors, type, fontSize, fontFamily } = getAppInfo();
     document.body.bgColor = colors.panel;
+    console.log(type);
 
     return createMuiTheme({
         type,
-        typography: {
-            fontSize,
-            fontFamily: `'Libre Franklin', ${fontFamily}, sans-serif;`
-        },
         palette: {
-            common: { black: '#000', white: '#fff' },
-            background: { paper: '#fff', default: '#fafafa' },
-            primary: {
-                main: 'rgba(145, 71, 255, 1)',
-                contrastText: '#fff'
-            },
-            secondary: {
-                main: 'rgba(0, 0, 0, 0.05)',
-                contrastText: 'rgba(0, 0, 0, 0)'
-            },
-            error: {
-                main: 'rgba(233, 25, 22, 1)',
-                contrastText: '#fff'
-            },
-            text: {
-                primary: 'rgba(0, 0, 0, 0.87)',
-                secondary: 'rgba(0, 0, 0, 0.54)',
-                disabled: 'rgba(0, 0, 0, 0.38)',
-                hint: 'rgba(0, 0, 0, 0.38)'
-            }
+            background: { default: colors.panel },
+            ...(type === 'dark' ? dark.palette : light.palette)
+        },
+        typography: {
+            fontSize: fontSize,
+            fontFamily: `'Ubuntu', ${fontFamily}, sans-serif;`
+        },
+        secondary: {
+            main: 'rgba(0, 0, 0, 0.05)'
         }
     });
 };
