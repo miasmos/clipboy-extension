@@ -88774,7 +88774,11 @@ __webpack_require__.r(__webpack_exports__);
 var BodyStyle = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
   displayName: "body__BodyStyle",
   componentId: "sc-15xyg0s-0"
-})(["padding:3.75rem 1.25rem 1.25rem 1.25rem;overflow-x:hidden;.target-group{position:relative;}.target-switch{position:absolute;right:0;top:50%;transform:translateY(-50%);margin-top:0.1875rem;}.target-input .MuiInputBase-input{padding-right:4.5rem;}"]);
+})(["display:flex;justify-content:center;flex-direction:column;padding:3.75rem 1.25rem 1.25rem 1.25rem;overflow-x:hidden;.target-group{position:relative;}.target-switch{position:absolute;right:0;top:50%;transform:translateY(-50%);margin-top:0.1875rem;}.target-input .MuiInputBase-input{padding-right:4.5rem;}"]);
+var ImportButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_5__["default"])(_button_jsx__WEBPACK_IMPORTED_MODULE_11__["Button"]).withConfig({
+  displayName: "body__ImportButton",
+  componentId: "sc-15xyg0s-1"
+})(["&&{padding-left:0.3125rem;padding-right:0.3125rem;}"]);
 
 var BodyComponent =
 /*#__PURE__*/
@@ -88792,7 +88796,7 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
     _this.state = (_this$state = {
-      working: false,
+      working: true,
       path: '',
       target: '',
       targetIsValid: false,
@@ -89298,7 +89302,7 @@ function (_React$Component) {
     }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__["default"], {
       color: "error",
       component: "div"
-    }, hasError ? t(error) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "\xA0")), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_button_jsx__WEBPACK_IMPORTED_MODULE_11__["Button"], {
+    }, hasError ? t(error) : react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("div", null, "\xA0")), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(ImportButton, {
       label: t('form.button.submit'),
       enabled: !working && formIsValid,
       onClick: this.importClips
@@ -89341,13 +89345,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ButtonStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
   displayName: "button__ButtonStyle",
   componentId: "sc-1n05y5o-0"
-})(["margin-top:0.625rem;"]);
+})([""]);
 
-var _StyledMaterialButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
-  displayName: "button___StyledMaterialButton",
+var _StyledButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(ButtonStyle).withConfig({
+  displayName: "button___StyledButtonStyle",
   componentId: "sc-1n05y5o-1"
 })(["", ""], function (p) {
   return p._css;
@@ -89360,14 +89364,14 @@ var Button = function Button(_ref) {
       onClick = _ref.onClick,
       _ref$enabled = _ref.enabled,
       enabled = _ref$enabled === void 0 ? true : _ref$enabled;
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ButtonStyle, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledMaterialButton, {
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledButtonStyle, {
     variant: "contained",
     color: "primary",
     onClick: onClick,
     disabled: !enabled,
     className: className,
     _css: css
-  }, label));
+  }, label);
 };
 Button.propTypes = {
   label: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
@@ -89409,13 +89413,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var InputStyle = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
+var InputStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_5__["default"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
   displayName: "input__InputStyle",
   componentId: "sc-1x2ydj0-0"
 })(["width:100%;label{display:block;margin-bottom:0.1875rem;}input{width:100%;margin-bottom:0.5rem;opacity:", ";transition:opacity 0.4s;}.MuiFormControl-root{width:100%;}"], function (_ref) {
-  var _ref$enabled = _ref.enabled,
-      enabled = _ref$enabled === void 0 ? true : _ref$enabled;
-  return enabled ? 1 : 0.2;
+  var _ref$disabled = _ref.disabled,
+      disabled = _ref$disabled === void 0 ? false : _ref$disabled;
+  return disabled ? 0.2 : 1;
 });
 var Input =
 /*#__PURE__*/
@@ -89506,8 +89510,6 @@ function (_React$Component) {
         enabled = _this$props$enabled === void 0 ? true : _this$props$enabled;
     return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(InputStyle, {
       className: className,
-      enabled: enabled
-    }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"], {
       id: name,
       name: name,
       label: label,
@@ -89517,7 +89519,7 @@ function (_React$Component) {
       margin: "normal",
       variant: "filled",
       spellCheck: false
-    }));
+    });
   };
 
   return Input;
@@ -89569,71 +89571,18 @@ var Logo = function Logo() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgressModal", function() { return ProgressModal; });
-/* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteralLoose */ "./node_modules/@babel/runtime/helpers/taggedTemplateLiteralLoose.js");
-/* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
-/* harmony import */ var _button_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./button.jsx */ "./src/components/button.jsx");
-/* harmony import */ var _material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/CircularProgress */ "./node_modules/@material-ui/core/esm/CircularProgress/index.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
-/* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
-/* harmony import */ var _material_ui_core_Backdrop__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Backdrop */ "./node_modules/@material-ui/core/esm/Backdrop/index.js");
-/* harmony import */ var _material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Fade */ "./node_modules/@material-ui/core/esm/Fade/index.js");
-
-
-function _templateObject5() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default()(["\n    /* visibility: ", "; */\n"]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default()(["\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default()(["\n    margin: ", "px;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default()(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    background-color: ", ";\n    border: 0.125rem solid #000;\n    box-shadow: ", ";\n    padding: ", ";\n    outline: 0;\n    border-radius: 10px;\n    border: 0;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _babel_runtime_helpers_taggedTemplateLiteralLoose__WEBPACK_IMPORTED_MODULE_0___default()(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
+/* harmony import */ var _button_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./button.jsx */ "./src/components/button.jsx");
+/* harmony import */ var _material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/CircularProgress */ "./node_modules/@material-ui/core/esm/CircularProgress/index.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
+/* harmony import */ var _material_ui_core_Backdrop__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Backdrop */ "./node_modules/@material-ui/core/esm/Backdrop/index.js");
+/* harmony import */ var _material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Fade */ "./node_modules/@material-ui/core/esm/Fade/index.js");
 
 
 
@@ -89644,9 +89593,14 @@ function _templateObject() {
 
 
 
-
-var ModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_8__["default"])(_templateObject());
-var PaperStyle = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2(), function (_ref) {
+var ModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_7__["default"]).withConfig({
+  displayName: "progressModal__ModalStyle",
+  componentId: "sc-8v3vof-0"
+})(["display:flex;align-items:center;justify-content:center;"]);
+var PaperStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "progressModal__PaperStyle",
+  componentId: "sc-8v3vof-1"
+})(["display:flex;align-items:center;justify-content:center;flex-direction:column;background-color:", ";border:0.125rem solid #000;box-shadow:", ";padding:", ";outline:0;border-radius:10px;border:0;"], function (_ref) {
   var theme = _ref.theme;
   return theme.palette.background["default"];
 }, function (_ref2) {
@@ -89654,63 +89608,69 @@ var PaperStyle = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_
   return theme.shadows[5];
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.spacing(2, 1, 3);
+  return theme.spacing(1, 1, 3);
 });
-var ProgressStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_6__["default"])(_templateObject3(), function (_ref4) {
+var ProgressStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_5__["default"]).withConfig({
+  displayName: "progressModal__ProgressStyle",
+  componentId: "sc-8v3vof-2"
+})(["margin:", "px;"], function (_ref4) {
   var theme = _ref4.theme;
   return theme.spacing(2);
 });
-var TitleStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__["default"])(_templateObject4());
-var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_button_jsx__WEBPACK_IMPORTED_MODULE_5__["Button"])(_templateObject5(), function (_ref5) {
-  var complete = _ref5.complete;
-  return complete ? 'visible' : 'hidden';
-});
-var ProgressModal = function ProgressModal(_ref6) {
-  var open = _ref6.open,
-      onClose = _ref6.onClose,
-      _ref6$complete = _ref6.complete,
-      complete = _ref6$complete === void 0 ? false : _ref6$complete,
-      _ref6$progress = _ref6.progress,
-      progress = _ref6$progress === void 0 ? 0 : _ref6$progress,
-      _ref6$message = _ref6.message,
-      message = _ref6$message === void 0 ? '' : _ref6$message;
+var TitleStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
+  displayName: "progressModal__TitleStyle",
+  componentId: "sc-8v3vof-3"
+})(["position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"]);
+var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_button_jsx__WEBPACK_IMPORTED_MODULE_4__["Button"]).withConfig({
+  displayName: "progressModal__ButtonStyle",
+  componentId: "sc-8v3vof-4"
+})([""]);
+var ProgressModal = function ProgressModal(_ref5) {
+  var open = _ref5.open,
+      onClose = _ref5.onClose,
+      _ref5$complete = _ref5.complete,
+      complete = _ref5$complete === void 0 ? false : _ref5$complete,
+      _ref5$progress = _ref5.progress,
+      progress = _ref5$progress === void 0 ? 0 : _ref5$progress,
+      _ref5$message = _ref5.message,
+      message = _ref5$message === void 0 ? '' : _ref5$message;
 
-  var _useTranslation = Object(react_i18next__WEBPACK_IMPORTED_MODULE_4__["useTranslation"])(),
+  var _useTranslation = Object(react_i18next__WEBPACK_IMPORTED_MODULE_3__["useTranslation"])(),
       t = _useTranslation.t;
 
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ModalStyle, {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalStyle, {
     "aria-labelledby": "transition-modal-title",
     "aria-describedby": "transition-modal-description",
     open: open,
     closeAfterTransition: true,
-    BackdropComponent: _material_ui_core_Backdrop__WEBPACK_IMPORTED_MODULE_9__["default"],
+    BackdropComponent: _material_ui_core_Backdrop__WEBPACK_IMPORTED_MODULE_8__["default"],
     BackdropProps: {
       timeout: 500
     }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_9__["default"], {
     "in": open
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PaperStyle, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PaperStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       position: 'relative'
     }
-  }, !complete && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ProgressStyle, {
+  }, !complete && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProgressStyle, {
     variant: progress < 100 ? 'indeterminate' : 'indeterminate',
     value: progress,
     size: 100,
     thickness: 1
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(TitleStyle, {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TitleStyle, {
     color: "textPrimary"
-  }, message)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ButtonStyle, {
+  }, message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonStyle, {
     label: t('progress.button.done'),
     onClick: onClose
   }))));
 };
 ProgressModal.propTypes = {
-  open: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
-  onClose: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-  message: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
-  progress: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
-  complete: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
+  open: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
+  onClose: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
+  message: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  progress: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+  complete: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool
 };
 
 /***/ }),
@@ -89749,7 +89709,7 @@ __webpack_require__.r(__webpack_exports__);
 var SliderStyle = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
   displayName: "slider__SliderStyle",
   componentId: "sc-1lwr7ud-0"
-})(["width:100%;margin-top:0.625rem;"]);
+})(["width:100%;margin-top:0.625rem;padding:0 0.5rem;box-sizing:border-box;"]);
 var Slider =
 /*#__PURE__*/
 function (_Component) {
@@ -89923,11 +89883,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _material_ui_core_Switch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Switch */ "./node_modules/@material-ui/core/esm/Switch/index.js");
-/* harmony import */ var _material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/FormGroup */ "./node_modules/@material-ui/core/esm/FormGroup/index.js");
-/* harmony import */ var _material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/FormControlLabel */ "./node_modules/@material-ui/core/esm/FormControlLabel/index.js");
-
+/* harmony import */ var _material_ui_core_Switch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Switch */ "./node_modules/@material-ui/core/esm/Switch/index.js");
+/* harmony import */ var _material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/FormGroup */ "./node_modules/@material-ui/core/esm/FormGroup/index.js");
+/* harmony import */ var _material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/FormControlLabel */ "./node_modules/@material-ui/core/esm/FormControlLabel/index.js");
 
 
 
@@ -89941,10 +89899,10 @@ var Switch = function Switch(_ref) {
       _onChange = _ref.onChange,
       _ref$enabled = _ref.enabled,
       enabled = _ref$enabled === void 0 ? true : _ref$enabled;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: className
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    control: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Switch__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    control: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Switch__WEBPACK_IMPORTED_MODULE_2__["default"], {
       size: "small",
       checked: value,
       onChange: function onChange(event, value) {
@@ -90351,7 +90309,7 @@ var dark = {
       main: 'rgba(233, 25, 22, 1)'
     },
     text: {
-      primary: 'rgba(255, 255, 255, 0.87)',
+      primary: 'rgba(255, 255, 255, 0.7)',
       secondary: 'rgba(255, 255, 255, 0.54)',
       disabled: 'rgba(255, 255, 255, 0.38)',
       hint: 'rgba(255, 255, 255, 0.38)'

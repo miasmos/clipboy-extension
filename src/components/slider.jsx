@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 const SliderStyle = styled.div`
     width: 100%;
     margin-top: 0.625rem;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 `;
 
 export class Slider extends Component {

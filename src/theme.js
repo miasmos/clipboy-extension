@@ -62,7 +62,7 @@ const dark = {
             main: 'rgba(233, 25, 22, 1)'
         },
         text: {
-            primary: 'rgba(255, 255, 255, 0.87)',
+            primary: 'rgba(255, 255, 255, 0.7)',
             secondary: 'rgba(255, 255, 255, 0.54)',
             disabled: 'rgba(255, 255, 255, 0.38)',
             hint: 'rgba(255, 255, 255, 0.38)'

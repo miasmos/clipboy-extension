@@ -23,7 +23,7 @@ const PaperStyle = styled.div`
     background-color: ${({ theme }) => theme.palette.background.default};
     border: 0.125rem solid #000;
     box-shadow: ${({ theme }) => theme.shadows[5]};
-    padding: ${({ theme }) => theme.spacing(2, 1, 3)};
+    padding: ${({ theme }) => theme.spacing(1, 1, 3)};
     outline: 0;
     border-radius: 10px;
     border: 0;

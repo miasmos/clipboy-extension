@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 
-const InputStyle = styled.div`
+const InputStyle = styled(TextField)`
     width: 100%;
 
     label {
@@ -14,7 +14,7 @@ const InputStyle = styled.div`
     input {
         width: 100%;
         margin-bottom: 0.5rem;
-        opacity: ${({ enabled = true }) => (enabled ? 1 : 0.2)};
+        opacity: ${({ disabled = false }) => (disabled ? 0.2 : 1)};
         transition: opacity 0.4s;
     }
 
@@ -58,19 +58,18 @@ export class Input extends React.Component {
     render() {
         const { className, label, name, value, enabled = true } = this.props;
         return (
-            <InputStyle className={className} enabled={enabled}>
-                <TextField
-                    id={name}
-                    name={name}
-                    label={label}
-                    value={value}
-                    onChange={this.onChange}
-                    disabled={!enabled}
-                    margin="normal"
-                    variant="filled"
-                    spellCheck={false}
-                />
-            </InputStyle>
+            <InputStyle
+                className={className}
+                id={name}
+                name={name}
+                label={label}
+                value={value}
+                onChange={this.onChange}
+                disabled={!enabled}
+                margin="normal"
+                variant="filled"
+                spellCheck={false}
+            />
         );
     }
 }

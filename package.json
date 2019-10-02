@@ -10,7 +10,7 @@
     "extendscript": {
         "title": "Clipboy for Twitch",
         "width": 300,
-        "height": 445
+        "height": 435
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",

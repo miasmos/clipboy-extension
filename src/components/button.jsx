@@ -3,22 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MaterialButton from '@material-ui/core/Button';
 
-const ButtonStyle = styled.div`
-    margin-top: 0.625rem;
-`;
+const ButtonStyle = styled(MaterialButton)``;
 
 export const Button = ({ className, css, label, onClick, enabled = true }) => (
-    <ButtonStyle>
-        <MaterialButton
-            css={css}
-            variant="contained"
-            color="primary"
-            onClick={onClick}
-            disabled={!enabled}
-            className={className}
-        >
-            {label}
-        </MaterialButton>
+    <ButtonStyle
+        css={css}
+        variant="contained"
+        color="primary"
+        onClick={onClick}
+        disabled={!enabled}
+        className={className}
+    >
+        {label}
     </ButtonStyle>
 );
 

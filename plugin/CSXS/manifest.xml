@@ -52,7 +52,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 					<Menu>Clipboy for Twitch</Menu>
 					<Geometry>
 						<Size>
-							<Height>445</Height>
+							<Height>435</Height>
 							<Width>300</Width>
 						</Size>
 					</Geometry>

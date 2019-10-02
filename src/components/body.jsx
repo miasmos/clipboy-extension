@@ -22,6 +22,9 @@ import { settings } from '../settings';
 import { getClipMetadata, getClips } from '../api';
 
 const BodyStyle = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     padding: 3.75rem 1.25rem 1.25rem 1.25rem;
     overflow-x: hidden;
 
@@ -42,9 +45,16 @@ const BodyStyle = styled.div`
     }
 `;
 
+const ImportButton = styled(Button)`
+    && {
+        padding-left: 0.3125rem;
+        padding-right: 0.3125rem;
+    }
+`;
+
 class BodyComponent extends React.Component {
     state = {
-        working: false,
+        working: true,
         path: '',
         target: '',
         targetIsValid: false,
@@ -279,7 +289,7 @@ class BodyComponent extends React.Component {
                     {hasError ? t(error) : <div>&nbsp;</div>}
                 </Typography>
 
-                <Button
+                <ImportButton
                     label={t('form.button.submit')}
                     enabled={!working && formIsValid}
                     onClick={this.importClips}
