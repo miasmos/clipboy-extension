@@ -4,12 +4,16 @@ import { createMuiTheme } from '@material-ui/core/styles';
 var color = require('color');
 
 const isDark = color => {
-    const average = color.blue + color.green + color.red / 3;
+    const average =
+        (color.blue * color.alpha +
+            color.green * color.alpha +
+            color.red * color.alpha) /
+        3;
     return average < 255 / 2;
 };
 
 const getAppInfo = () => {
-    const host = getHostEnvironment();
+    const host = getHostEnvironment('dark');
     const {
         panelBackgroundColor: panel,
         baseFontSize,
@@ -35,7 +39,7 @@ const light = {
             main: 'rgba(145, 71, 255, 1)'
         },
         secondary: {
-            main: 'rgba(0,0,0,1)'
+            main: 'rgba(255,255,255,1)'
         },
         error: {
             main: 'rgba(233, 25, 22, 1)'
@@ -56,16 +60,16 @@ const dark = {
             main: 'rgba(145, 71, 255, 1)'
         },
         secondary: {
-            main: 'rgba(255,255,255,1)'
+            main: 'rgba(0,0,0,1)'
         },
         error: {
             main: 'rgba(233, 25, 22, 1)'
         },
         text: {
-            primary: 'rgba(255, 255, 255, 0.7)',
-            secondary: 'rgba(255, 255, 255, 0.54)',
-            disabled: 'rgba(255, 255, 255, 0.38)',
-            hint: 'rgba(255, 255, 255, 0.38)'
+            primary: 'rgba(0, 0, 0, 0.87)',
+            secondary: 'rgba(0, 0, 0, 0.54)',
+            disabled: 'rgba(0, 0, 0, 0.38)',
+            hint: 'rgba(0, 0, 0, 0.38)'
         }
     }
 };
@@ -73,20 +77,40 @@ const dark = {
 export const getTheme = () => {
     const { colors, type, fontSize, fontFamily } = getAppInfo();
     document.body.bgColor = colors.panel;
-    console.log(type);
+    const palette = type === 'dark' ? dark.palette : light.palette;
 
     return createMuiTheme({
         type,
         palette: {
             background: { default: colors.panel },
-            ...(type === 'dark' ? dark.palette : light.palette)
+            ...palette
         },
         typography: {
             fontSize: fontSize,
             fontFamily: `'Ubuntu', ${fontFamily}, sans-serif;`
         },
-        secondary: {
-            main: 'rgba(0, 0, 0, 0.05)'
+        overrides: {
+            MuiBackdrop: {
+                root: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.65)'
+                }
+            },
+            MuiFilledInput: {
+                root: {
+                    backgroundColor:
+                        type === 'dark' ? 'rgba(0,0,0,.2)' : 'rgba(0,0,0,.09)'
+                }
+            },
+            MuiFormLabel: {
+                root: {
+                    fontSize: `${fontSize + 4}px`
+                }
+            },
+            MuiButton: {
+                root: {
+                    textTransform: 'none'
+                }
+            }
         }
     });
 };

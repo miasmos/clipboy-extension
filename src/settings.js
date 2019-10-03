@@ -24,8 +24,8 @@ export class SettingsClass {
         const [{ start, end, target, count, mode } = {}] = await loadSettings();
         this.io = false;
         return {
-            start: new Date(start),
-            end: new Date(end),
+            start: start ? new Date(start) : new Date(),
+            end: end ? new Date(end) : new Date(),
             target,
             count: Number(count),
             mode

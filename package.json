@@ -9,7 +9,7 @@
     },
     "extendscript": {
         "title": "Clipboy for Twitch",
-        "width": 300,
+        "width": 340,
         "height": 435
     },
     "devDependencies": {

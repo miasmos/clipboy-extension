@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { format } from 'date-fns';
 import styled from 'styled-components';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -35,14 +34,15 @@ export const DateDisplay = ({
     label,
     name,
     minDate,
-    maxDate
+    maxDate,
+    error
 }) => (
     <DateDisplayStyle>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
                 disableToolbar
                 disableFuture
-                invalidDateMessage="Invalid date"
+                invalidDateMessage={error}
                 variant="inline"
                 inputVariant="filled"
                 format="yyyy-MM-dd"
@@ -68,5 +68,6 @@ DateDisplay.propTypes = {
     label: PropTypes.string,
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
-    name: PropTypes.string
+    name: PropTypes.string,
+    error: PropTypes.string.isRequired
 };

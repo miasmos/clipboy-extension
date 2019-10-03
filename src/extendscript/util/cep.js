@@ -1,5 +1,5 @@
-export const getHostEnvironment = () =>
-    JSON.parse(window.__adobe_cep__.getHostEnvironment());
+export const getHostEnvironment = type =>
+    JSON.parse(window.__adobe_cep__.getHostEnvironment(type));
 
 const invoke = (method, params) =>
     new Promise(resolve => {

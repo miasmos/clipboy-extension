@@ -19,14 +19,44 @@
             };
             $ = { locale: 'en' };
             window.__adobe_cep__ = {};
-            window.__adobe_cep__.getHostEnvironment = function() {
+            window.__adobe_cep__.getHostEnvironment = function(type) {
+                if (type === 'light') {
+                    return JSON.stringify({
+                        appSkinInfo: {
+                            appBarBackgroundColor: {
+                                color: {
+                                    red: 255,
+                                    green: 255,
+                                    blue: 255,
+                                    alpha: 0.7
+                                }
+                            },
+                            panelBackgroundColor: {
+                                color: {
+                                    red: 255,
+                                    green: 255,
+                                    blue: 255,
+                                    alpha: 0.7
+                                }
+                            },
+                            systemHighlightColor: {
+                                red: 255,
+                                green: 255,
+                                blue: 255,
+                                alpha: 0.7
+                            },
+                            baseFontSize: 14,
+                            baseFontFamily: 'Arial'
+                        }
+                    });
+                }
                 return JSON.stringify({
                     appSkinInfo: {
                         appBarBackgroundColor: {
                             color: {
-                                red: 0,
-                                green: 0,
-                                blue: 0,
+                                red: 22,
+                                green: 33,
+                                blue: 44,
                                 alpha: 0.7
                             }
                         },
@@ -39,9 +69,9 @@
                             }
                         },
                         systemHighlightColor: {
-                            red: 0,
-                            green: 0,
-                            blue: 0,
+                            red: 22,
+                            green: 33,
+                            blue: 44,
                             alpha: 0.7
                         },
                         baseFontSize: 14,

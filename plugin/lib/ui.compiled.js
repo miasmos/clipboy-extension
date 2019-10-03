@@ -88632,17 +88632,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _date_io_date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @date-io/date-fns */ "./node_modules/@date-io/date-fns/build/index.esm.js");
-/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/pickers */ "./node_modules/@material-ui/pickers/esm/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _date_io_date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @date-io/date-fns */ "./node_modules/@date-io/date-fns/build/index.esm.js");
+/* harmony import */ var _material_ui_pickers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/pickers */ "./node_modules/@material-ui/pickers/esm/index.js");
 
 
 
 
 
-
-var DateDisplayStyle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
+var DateDisplayStyle = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "DateDisplay__DateDisplayStyle",
   componentId: "sc-1pthtz0-0"
 })(["display:flex;.input-wrapper{flex-grow:1;}.button-wrapper{display:flex;> *{margin-left:0.125rem;}}.MuiFormControl-root{width:100%;}"]);
@@ -88655,13 +88653,14 @@ var DateDisplay = function DateDisplay(_ref) {
       label = _ref.label,
       name = _ref.name,
       minDate = _ref.minDate,
-      maxDate = _ref.maxDate;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DateDisplayStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_5__["MuiPickersUtilsProvider"], {
-    utils: _date_io_date_fns__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_5__["KeyboardDatePicker"], (_React$createElement = {
+      maxDate = _ref.maxDate,
+      error = _ref.error;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DateDisplayStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_4__["MuiPickersUtilsProvider"], {
+    utils: _date_io_date_fns__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_pickers__WEBPACK_IMPORTED_MODULE_4__["KeyboardDatePicker"], (_React$createElement = {
     disableToolbar: true,
     disableFuture: true,
-    invalidDateMessage: "Invalid date",
+    invalidDateMessage: error,
     variant: "inline",
     inputVariant: "filled",
     format: "yyyy-MM-dd",
@@ -88675,7 +88674,8 @@ DateDisplay.propTypes = {
   label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
   minDate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(Date),
   maxDate: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.instanceOf(Date),
-  name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string
+  name: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  error: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string.isRequired
 };
 
 /***/ }),
@@ -88771,6 +88771,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var wait = function wait(ms) {
+  return new Promise(function (resolve) {
+    return setTimeout(resolve, ms);
+  });
+};
+
 var BodyStyle = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
   displayName: "body__BodyStyle",
   componentId: "sc-15xyg0s-0"
@@ -88796,7 +88803,7 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
     _this.state = (_this$state = {
-      working: true,
+      working: false,
       path: '',
       target: '',
       targetIsValid: false,
@@ -88846,7 +88853,10 @@ function (_React$Component) {
               _this$state2 = _this.state, target = _this$state2.target, start = _this$state2.start, end = _this$state2.end, count = _this$state2.count, mode = _this$state2.mode;
               _context.next = 7;
               return _this.setStateAsync({
-                working: true
+                working: true,
+                complete: false,
+                error: '',
+                hasError: false
               });
 
             case 7:
@@ -88917,7 +88927,8 @@ function (_React$Component) {
                 error: message,
                 currentItem: 0,
                 totalItems: 1,
-                progress: 0
+                progress: 0,
+                complete: true
               });
 
             case 42:
@@ -88976,10 +88987,10 @@ function (_React$Component) {
               };
               _context3.next = 11;
               return _this.setStateAsync(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, init, {
-                startIsValid: init.start,
-                endIsValid: init.end,
-                targetIsValid: target && typeof target === 'string' && target.length > 0,
-                countIsValid: count && !isNaN(count) && count > 0
+                startIsValid: !!init.start,
+                endIsValid: !!init.end,
+                targetIsValid: !!(target && typeof target === 'string' && target.length > 0),
+                countIsValid: !!(count && !isNaN(count) && count > 0)
               }));
 
             case 11:
@@ -88994,6 +89005,7 @@ function (_React$Component) {
       var _this$state3 = _this.state,
           currentItem = _this$state3.currentItem,
           totalItems = _this$state3.totalItems;
+      console.log((currentItem + 1) / totalItems * 100);
 
       _this.setState({
         currentItem: currentItem + 1,
@@ -89016,6 +89028,10 @@ function (_React$Component) {
               });
 
             case 2:
+              _context4.next = 4;
+              return wait(500);
+
+            case 4:
               _this.setState({
                 complete: false,
                 currentItem: 0,
@@ -89023,7 +89039,7 @@ function (_React$Component) {
                 progress: 0
               });
 
-            case 3:
+            case 5:
             case "end":
               return _context4.stop();
           }
@@ -89068,10 +89084,9 @@ function (_React$Component) {
               return this.save();
 
             case 4:
-              Object(_extendscript_Premiere__WEBPACK_IMPORTED_MODULE_16__["clearLog"])();
               this.updateFormValidity();
 
-            case 6:
+            case 5:
             case "end":
               return _context5.stop();
           }
@@ -89101,9 +89116,12 @@ function (_React$Component) {
         error = _this$state5.error,
         currentItem = _this$state5.currentItem,
         totalItems = _this$state5.totalItems,
-        progress = _this$state5.progress;
+        progress = _this$state5.progress,
+        complete = _this$state5.complete;
     var t = this.props.t;
-    return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(BodyStyle, null, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_logo_jsx__WEBPACK_IMPORTED_MODULE_9__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(BodyStyle, {
+      working: working
+    }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_logo_jsx__WEBPACK_IMPORTED_MODULE_9__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: "target-group"
     }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_input_jsx__WEBPACK_IMPORTED_MODULE_10__["Input"], {
       className: "target-input",
@@ -89219,7 +89237,8 @@ function (_React$Component) {
       enabled: !working,
       maxDate: end,
       label: t('form.field.startDate.label'),
-      name: "startDate"
+      name: "startDate",
+      error: t('form.field.startDate.invalid')
     }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_DateDisplay_jsx__WEBPACK_IMPORTED_MODULE_14__["DateDisplay"], {
       value: end,
       onChange:
@@ -89258,7 +89277,8 @@ function (_React$Component) {
       enabled: !working,
       minDate: start,
       label: t('form.field.endDate.label'),
-      name: "endDate"
+      name: "endDate",
+      error: t('form.field.endDate.invalid')
     }), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_slider_jsx__WEBPACK_IMPORTED_MODULE_12__["Slider"], {
       defaultValue: count,
       step: 10,
@@ -89313,7 +89333,9 @@ function (_React$Component) {
         current: currentItem,
         total: totalItems
       }),
-      progress: progress
+      completeMessage: t('progress.message.done'),
+      progress: progress,
+      complete: complete
     }));
   };
 
@@ -89620,29 +89642,37 @@ var ProgressStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["defau
 var TitleStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
   displayName: "progressModal__TitleStyle",
   componentId: "sc-8v3vof-3"
-})(["position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"]);
+})(["position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.2s;"]);
 var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_button_jsx__WEBPACK_IMPORTED_MODULE_4__["Button"]).withConfig({
   displayName: "progressModal__ButtonStyle",
   componentId: "sc-8v3vof-4"
-})([""]);
-var ProgressModal = function ProgressModal(_ref5) {
-  var open = _ref5.open,
-      onClose = _ref5.onClose,
-      _ref5$complete = _ref5.complete,
-      complete = _ref5$complete === void 0 ? false : _ref5$complete,
-      _ref5$progress = _ref5.progress,
-      progress = _ref5$progress === void 0 ? 0 : _ref5$progress,
-      _ref5$message = _ref5.message,
-      message = _ref5$message === void 0 ? '' : _ref5$message;
+})(["&&{transition:opacity 0.2s;cursor:default;opacity:0;", ";}"], function (_ref5) {
+  var complete = _ref5.complete;
+  return complete ? "\n        opacity: 1;\n        cursor: pointer;\n    " : '';
+});
+var ProgressModal = function ProgressModal(_ref6) {
+  var open = _ref6.open,
+      onClose = _ref6.onClose,
+      _ref6$complete = _ref6.complete,
+      complete = _ref6$complete === void 0 ? false : _ref6$complete,
+      _ref6$progress = _ref6.progress,
+      progress = _ref6$progress === void 0 ? 0 : _ref6$progress,
+      _ref6$message = _ref6.message,
+      message = _ref6$message === void 0 ? '' : _ref6$message,
+      _ref6$completeMessage = _ref6.completeMessage,
+      completeMessage = _ref6$completeMessage === void 0 ? '' : _ref6$completeMessage;
 
   var _useTranslation = Object(react_i18next__WEBPACK_IMPORTED_MODULE_3__["useTranslation"])(),
       t = _useTranslation.t;
 
+  var loading = progress < 100;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalStyle, {
     "aria-labelledby": "transition-modal-title",
     "aria-describedby": "transition-modal-description",
     open: open,
-    closeAfterTransition: true,
+    disableBackdropClick: true,
+    disableEscapeKeyDown: true,
+    keepMounted: true,
     BackdropComponent: _material_ui_core_Backdrop__WEBPACK_IMPORTED_MODULE_8__["default"],
     BackdropProps: {
       timeout: 500
@@ -89653,16 +89683,23 @@ var ProgressModal = function ProgressModal(_ref5) {
     style: {
       position: 'relative'
     }
-  }, !complete && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProgressStyle, {
-    variant: progress < 100 ? 'indeterminate' : 'indeterminate',
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    "in": !complete
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProgressStyle, {
+    variant: "indeterminate",
     value: progress,
     size: 100,
     thickness: 1
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TitleStyle, {
-    color: "textPrimary"
-  }, message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonStyle, {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Fade__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    "in": complete || loading && !complete
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TitleStyle, {
+    color: "textPrimary",
+    progress: progress,
+    variant: "h6"
+  }, !complete ? message : completeMessage))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonStyle, {
     label: t('progress.button.done'),
-    onClick: onClose
+    onClick: complete ? onClose : undefined,
+    complete: complete
   }))));
 };
 ProgressModal.propTypes = {
@@ -89984,8 +90021,8 @@ var getVersionInfo = _util_cep__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].get
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHostEnvironment", function() { return getHostEnvironment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "evalJsxScript", function() { return evalJsxScript; });
-var getHostEnvironment = function getHostEnvironment() {
-  return JSON.parse(window.__adobe_cep__.getHostEnvironment());
+var getHostEnvironment = function getHostEnvironment(type) {
+  return JSON.parse(window.__adobe_cep__.getHostEnvironment(type));
 };
 
 var invoke = function invoke(method, params) {
@@ -90210,8 +90247,8 @@ var SettingsClass = function SettingsClass() {
             start = _ref3$.start, end = _ref3$.end, target = _ref3$.target, count = _ref3$.count, mode = _ref3$.mode;
             _this.io = false;
             return _context2.abrupt("return", {
-              start: new Date(start),
-              end: new Date(end),
+              start: start ? new Date(start) : new Date(),
+              end: end ? new Date(end) : new Date(),
               target: target,
               count: Number(count),
               mode: mode
@@ -90250,12 +90287,12 @@ __webpack_require__.r(__webpack_exports__);
 var color = __webpack_require__(/*! color */ "./node_modules/color/index.js");
 
 var isDark = function isDark(color) {
-  var average = color.blue + color.green + color.red / 3;
+  var average = (color.blue * color.alpha + color.green * color.alpha + color.red * color.alpha) / 3;
   return average < 255 / 2;
 };
 
 var getAppInfo = function getAppInfo() {
-  var host = Object(_extendscript_util_cep__WEBPACK_IMPORTED_MODULE_1__["getHostEnvironment"])();
+  var host = Object(_extendscript_util_cep__WEBPACK_IMPORTED_MODULE_1__["getHostEnvironment"])('dark');
   var _host$appSkinInfo = host.appSkinInfo,
       panel = _host$appSkinInfo.panelBackgroundColor,
       baseFontSize = _host$appSkinInfo.baseFontSize,
@@ -90280,7 +90317,7 @@ var light = {
       main: 'rgba(145, 71, 255, 1)'
     },
     secondary: {
-      main: 'rgba(0,0,0,1)'
+      main: 'rgba(255,255,255,1)'
     },
     error: {
       main: 'rgba(233, 25, 22, 1)'
@@ -90303,16 +90340,16 @@ var dark = {
       main: 'rgba(145, 71, 255, 1)'
     },
     secondary: {
-      main: 'rgba(255,255,255,1)'
+      main: 'rgba(0,0,0,1)'
     },
     error: {
       main: 'rgba(233, 25, 22, 1)'
     },
     text: {
-      primary: 'rgba(255, 255, 255, 0.7)',
-      secondary: 'rgba(255, 255, 255, 0.54)',
-      disabled: 'rgba(255, 255, 255, 0.38)',
-      hint: 'rgba(255, 255, 255, 0.38)'
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.54)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+      hint: 'rgba(0, 0, 0, 0.38)'
     }
   }
 };
@@ -90324,20 +90361,39 @@ var getTheme = function getTheme() {
       fontFamily = _getAppInfo.fontFamily;
 
   document.body.bgColor = colors.panel;
-  console.log(type);
+  var palette = type === 'dark' ? dark.palette : light.palette;
   return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["createMuiTheme"])({
     type: type,
     palette: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
       background: {
         "default": colors.panel
       }
-    }, type === 'dark' ? dark.palette : light.palette),
+    }, palette),
     typography: {
       fontSize: fontSize,
       fontFamily: "'Ubuntu', " + fontFamily + ", sans-serif;"
     },
-    secondary: {
-      main: 'rgba(0, 0, 0, 0.05)'
+    overrides: {
+      MuiBackdrop: {
+        root: {
+          backgroundColor: 'rgba(0, 0, 0, 0.65)'
+        }
+      },
+      MuiFilledInput: {
+        root: {
+          backgroundColor: type === 'dark' ? 'rgba(0,0,0,.2)' : 'rgba(0,0,0,.09)'
+        }
+      },
+      MuiFormLabel: {
+        root: {
+          fontSize: fontSize + 4 + "px"
+        }
+      },
+      MuiButton: {
+        root: {
+          textTransform: 'none'
+        }
+      }
     }
   });
 };
@@ -90348,10 +90404,10 @@ var getTheme = function getTheme() {
 /*!*********************************************!*\
   !*** ./static/locales/en/translations.json ***!
   \*********************************************/
-/*! exports provided: app.name, form.field.game.label, form.field.broadcaster.label, form.field.startDate.label, form.field.endDate.label, form.field.clipCount.label, form.button.submit, progress.button.done, progress.progress.clipsleft, rating.message, rating.ok, error.startDate.date.max, error.startDate.date.isoDate, error.startDate.any.required, error.endDate.date.less, error.endDate.date.isoDate, error.clipCount.number.min, error.clipCount.number.max, error.clipCount.number.base, error.clipCount.any.required, error.object.missing, error.broadcaster.notfound, error.game.notfound, error.clips.failed, error.clips.notfound, error.generic, error.system.space, error.system.permission, default */
+/*! exports provided: app.name, form.field.game.label, form.field.broadcaster.label, form.field.startDate.label, form.field.startDate.invalid, form.field.endDate.label, form.field.endDate.invalid, form.field.clipCount.label, form.button.submit, progress.button.done, progress.message.done, progress.progress.clipsleft, rating.message, rating.ok, error.startDate.date.max, error.startDate.date.isoDate, error.startDate.any.required, error.endDate.date.less, error.endDate.date.isoDate, error.clipCount.number.min, error.clipCount.number.max, error.clipCount.number.base, error.clipCount.any.required, error.object.missing, error.broadcaster.notfound, error.game.notfound, error.clips.failed, error.clips.notfound, error.generic, error.system.space, error.system.permission, error.network.toomany, error.network.forbidden, error.twitch.generic, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"app.name\":\"Clipboy\",\"form.field.game.label\":\"Game\",\"form.field.broadcaster.label\":\"Broadcaster\",\"form.field.startDate.label\":\"Start Date\",\"form.field.endDate.label\":\"End Date\",\"form.field.clipCount.label\":\"Clip Count\",\"form.button.submit\":\"Import\",\"progress.button.done\":\"Awesome!\",\"progress.progress.clipsleft\":\"{{current}} of {{total}}\",\"rating.message\":\"Enjoying {{name}}? Leave us a rating!\",\"rating.ok\":\"Alright\",\"error.startDate.date.max\":\"Start date must be before end date\",\"error.startDate.date.isoDate\":\"Invalid start date\",\"error.startDate.any.required\":\"Start date is required\",\"error.endDate.date.less\":\"End date must be before today\",\"error.endDate.date.isoDate\":\"Invalid end date\",\"error.clipCount.number.min\":\"Invalid clip count\",\"error.clipCount.number.max\":\"Invalid clip count\",\"error.clipCount.number.base\":\"Invalid clip count\",\"error.clipCount.any.required\":\"Clip count is required\",\"error.object.missing\":\"Game or broadcaster is required\",\"error.broadcaster.notfound\":\"The supplied broadcaster does not exist\",\"error.game.notfound\":\"The supplied game does not exist\",\"error.clips.failed\":\"Failed to get clips\",\"error.clips.notfound\":\"No clips found\",\"error.generic\":\"An error occurred\",\"error.system.space\":\"There wasn't enough hard drive space to continue\",\"error.system.permission\":\"Couldn't write to the target folder\"}");
+module.exports = JSON.parse("{\"app.name\":\"Clipboy\",\"form.field.game.label\":\"Game\",\"form.field.broadcaster.label\":\"Broadcaster\",\"form.field.startDate.label\":\"Start Date\",\"form.field.startDate.invalid\":\"Invalid date\",\"form.field.endDate.label\":\"End Date\",\"form.field.endDate.invalid\":\"Invalid date\",\"form.field.clipCount.label\":\"Clip Count\",\"form.button.submit\":\"Import\",\"progress.button.done\":\"Awesome!\",\"progress.message.done\":\"Done.\",\"progress.progress.clipsleft\":\"{{current}} of {{total}}\",\"rating.message\":\"Enjoying {{name}}? Leave us a rating!\",\"rating.ok\":\"Alright\",\"error.startDate.date.max\":\"Start date must be before end date\",\"error.startDate.date.isoDate\":\"Invalid start date\",\"error.startDate.any.required\":\"Start date is required\",\"error.endDate.date.less\":\"End date must be before today\",\"error.endDate.date.isoDate\":\"Invalid end date\",\"error.clipCount.number.min\":\"Invalid clip count\",\"error.clipCount.number.max\":\"Invalid clip count\",\"error.clipCount.number.base\":\"Invalid clip count\",\"error.clipCount.any.required\":\"Clip count is required\",\"error.object.missing\":\"Game or broadcaster is required\",\"error.broadcaster.notfound\":\"The supplied broadcaster does not exist\",\"error.game.notfound\":\"The supplied game does not exist\",\"error.clips.failed\":\"Failed to get clips\",\"error.clips.notfound\":\"No clips found\",\"error.generic\":\"An error occurred\",\"error.system.space\":\"There wasn't enough hard drive space to continue\",\"error.system.permission\":\"Couldn't write to the target folder\",\"error.network.toomany\":\"Too many requests, try again in a bit\",\"error.network.forbidden\":\"You don't have permission to do that\",\"error.twitch.generic\":\"Twitch is experiencing problems, try again in a bit\"}");
 
 /***/ })
 

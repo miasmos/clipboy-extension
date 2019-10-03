@@ -21,6 +21,8 @@ import {
 import { settings } from '../settings';
 import { getClipMetadata, getClips } from '../api';
 
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 const BodyStyle = styled.div`
     display: flex;
     justify-content: center;
@@ -54,7 +56,7 @@ const ImportButton = styled(Button)`
 
 class BodyComponent extends React.Component {
     state = {
-        working: true,
+        working: false,
         path: '',
         target: '',
         targetIsValid: false,
@@ -86,7 +88,12 @@ class BodyComponent extends React.Component {
 
         try {
             const { target, start, end, count, mode } = this.state;
-            await this.setStateAsync({ working: true });
+            await this.setStateAsync({
+                working: true,
+                complete: false,
+                error: '',
+                hasError: false
+            });
             const seperator = await getSep();
             const [path] = await getProjectPath();
             const fullPath = path.substring(0, path.lastIndexOf('\\'));
@@ -112,7 +119,8 @@ class BodyComponent extends React.Component {
                 error: message,
                 currentItem: 0,
                 totalItems: 1,
-                progress: 0
+                progress: 0,
+                complete: true
             });
         }
     };
@@ -120,7 +128,6 @@ class BodyComponent extends React.Component {
     async componentDidMount() {
         await this.load();
         await this.save();
-        clearLog();
         this.updateFormValidity();
     }
 
@@ -139,16 +146,20 @@ class BodyComponent extends React.Component {
         };
         await this.setStateAsync({
             ...init,
-            startIsValid: init.start,
-            endIsValid: init.end,
-            targetIsValid:
-                target && typeof target === 'string' && target.length > 0,
-            countIsValid: count && !isNaN(count) && count > 0
+            startIsValid: !!init.start,
+            endIsValid: !!init.end,
+            targetIsValid: !!(
+                target &&
+                typeof target === 'string' &&
+                target.length > 0
+            ),
+            countIsValid: !!(count && !isNaN(count) && count > 0)
         });
     };
 
     updateProgress = () => {
         const { currentItem, totalItems } = this.state;
+        console.log(((currentItem + 1) / totalItems) * 100);
         this.setState({
             currentItem: currentItem + 1,
             progress: ((currentItem + 1) / totalItems) * 100
@@ -159,6 +170,9 @@ class BodyComponent extends React.Component {
         await this.setStateAsync({
             working: false
         });
+
+        // wait for modal to close
+        await wait(500);
         this.setState({
             complete: false,
             currentItem: 0,
@@ -195,12 +209,13 @@ class BodyComponent extends React.Component {
             error,
             currentItem,
             totalItems,
-            progress
+            progress,
+            complete
         } = this.state;
         const { t } = this.props;
 
         return (
-            <BodyStyle>
+            <BodyStyle working={working}>
                 <Logo />
                 <FormGroup className="target-group">
                     <Input
@@ -252,6 +267,7 @@ class BodyComponent extends React.Component {
                     maxDate={end}
                     label={t('form.field.startDate.label')}
                     name="startDate"
+                    error={t('form.field.startDate.invalid')}
                 />
                 <DateDisplay
                     value={end}
@@ -267,6 +283,7 @@ class BodyComponent extends React.Component {
                     minDate={start}
                     label={t('form.field.endDate.label')}
                     name="endDate"
+                    error={t('form.field.endDate.invalid')}
                 />
                 <Slider
                     defaultValue={count}
@@ -301,7 +318,9 @@ class BodyComponent extends React.Component {
                         current: currentItem,
                         total: totalItems
                     })}
+                    completeMessage={t('progress.message.done')}
                     progress={progress}
+                    complete={complete}
                 />
             </BodyStyle>
         );

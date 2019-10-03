@@ -38,10 +38,23 @@ const TitleStyle = styled(Typography)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
 `;
 
 const ButtonStyle = styled(Button)`
-    /* visibility: ${({ complete }) => (complete ? 'visible' : 'hidden')}; */
+    && {
+        transition: opacity 0.2s;
+        cursor: default;
+        opacity: 0;
+
+        ${({ complete }) =>
+            complete
+                ? `
+        opacity: 1;
+        cursor: pointer;
+    `
+                : ''};
+    }
 `;
 
 export const ProgressModal = ({
@@ -49,16 +62,20 @@ export const ProgressModal = ({
     onClose,
     complete = false,
     progress = 0,
-    message = ''
+    message = '',
+    completeMessage = ''
 }) => {
     const { t } = useTranslation();
+    const loading = progress < 100;
 
     return (
         <ModalStyle
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
             open={open}
-            closeAfterTransition
+            disableBackdropClick
+            disableEscapeKeyDown
+            keepMounted
             BackdropComponent={Backdrop}
             BackdropProps={{
                 timeout: 500
@@ -67,23 +84,29 @@ export const ProgressModal = ({
             <Fade in={open}>
                 <PaperStyle>
                     <div style={{ position: 'relative' }}>
-                        {!complete && (
+                        <Fade in={!complete}>
                             <ProgressStyle
-                                variant={
-                                    progress < 100
-                                        ? 'indeterminate'
-                                        : 'indeterminate'
-                                }
+                                variant="indeterminate"
                                 value={progress}
                                 size={100}
                                 thickness={1}
                             />
-                        )}
-                        <TitleStyle color="textPrimary">{message}</TitleStyle>
+                        </Fade>
+
+                        <Fade in={complete || (loading && !complete)}>
+                            <TitleStyle
+                                color="textPrimary"
+                                progress={progress}
+                                variant="h6"
+                            >
+                                {!complete ? message : completeMessage}
+                            </TitleStyle>
+                        </Fade>
                     </div>
                     <ButtonStyle
                         label={t('progress.button.done')}
-                        onClick={onClose}
+                        onClick={complete ? onClose : undefined}
+                        complete={complete}
                     />
                 </PaperStyle>
             </Fade>
