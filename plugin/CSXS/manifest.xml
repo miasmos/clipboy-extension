@@ -15,7 +15,7 @@
 **************************************************************************/
 -->	
 <ExtensionManifest Version="5.0" ExtensionBundleId="premiere-twitch-import" ExtensionBundleVersion="11.1"
-ExtensionBundleName="Twitch Clip Import" 
+ExtensionBundleName="Clipboy for Twitch" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
 		<Extension Id="premiere-twitch-import" Version="10.3.0" />
@@ -41,6 +41,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 					<CEFCommandLine>
 						<Parameter>--allow-file-access</Parameter>
 						<Parameter>--allow-file-access-from-files</Parameter>
+						<Parameter>--enable-nodejs</Parameter>
 					</CEFCommandLine>
 				</Resources>
 				<Lifecycle>
@@ -48,11 +49,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Twitch Clip Import</Menu>
+					<Menu>Clipboy for Twitch</Menu>
 					<Geometry>
 						<Size>
-							<Height>300</Height>
-							<Width>300</Width>
+							<Height>435</Height>
+							<Width>340</Width>
 						</Size>
 					</Geometry>
 				</UI>

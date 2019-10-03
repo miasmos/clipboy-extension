@@ -3,10 +3,12 @@
 import { evalJsxScript } from './util/cep';
 export const {
     getVersionInfo,
-    updateEventPanel,
     getProjectPath,
     importTwitchClips,
     addTwitchMetaData,
     loadSettings,
-    saveSettings
+    saveSettings,
+    log,
+    clearLog,
+    getSep
 } = evalJsxScript;

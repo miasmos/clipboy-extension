@@ -6,9 +6,14 @@ function onLoaded() {
     csInterface.addEventListener('ApplicationBeforeQuit', function(event) {
         csInterface.evalScript('$._PPP_.closeLog()');
     });
-    csInterface.evalScript('$._PPP_.keepPanelLoaded()');
     csInterface.evalScript('$._PPP_.forceLogfilesOn()'); // turn on log files when launching
     csInterface.evalScript("$._PPP_.setLocale('" + locale + "')");
+
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key === 'r') {
+            history.go(0);
+        }
+    });
 }
 
 /**

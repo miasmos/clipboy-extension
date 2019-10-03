@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import TextField from '@material-ui/core/TextField';
 
-const InputStyle = styled.div`
+const InputStyle = styled(TextField)`
     width: 100%;
 
     label {
@@ -13,8 +14,12 @@ const InputStyle = styled.div`
     input {
         width: 100%;
         margin-bottom: 0.5rem;
-        opacity: ${({ enabled = true }) => (enabled ? 1 : 0.2)};
+        opacity: ${({ disabled = false }) => (disabled ? 0.2 : 1)};
         transition: opacity 0.4s;
+    }
+
+    .MuiFormControl-root {
+        width: 100%;
     }
 `;
 
@@ -51,29 +56,30 @@ export class Input extends React.Component {
     };
 
     render() {
-        const { title, name, value, enabled = true } = this.props;
+        const { className, label, name, value, enabled = true } = this.props;
         return (
-            <InputStyle enabled={enabled}>
-                <>
-                    <label htmlFor={name}>{title}</label>
-                    <input
-                        type="text"
-                        name={name}
-                        value={value}
-                        onChange={this.onChange}
-                        disabled={!enabled}
-                    />
-                </>
-            </InputStyle>
+            <InputStyle
+                className={className}
+                id={name}
+                name={name}
+                label={label}
+                value={value}
+                onChange={this.onChange}
+                disabled={!enabled}
+                margin="normal"
+                variant="filled"
+                spellCheck={false}
+            />
         );
     }
 }
 
 Input.propTypes = {
-    title: PropTypes.string,
+    label: PropTypes.string,
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onStill: PropTypes.func,
-    enabled: PropTypes.bool
+    enabled: PropTypes.bool,
+    className: PropTypes.string
 };

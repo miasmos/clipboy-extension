@@ -1,74 +1,134 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Reload } from './reload.jsx';
+import FormGroup from '@material-ui/core/FormGroup';
+import Typography from '@material-ui/core/Typography';
+import { withTranslation } from 'react-i18next';
+import { Logo } from './logo.jsx';
 import { Input } from './input.jsx';
 import { Button } from './button.jsx';
-import { StartDateDisplay } from './startDateDisplay.jsx';
-import { EndDateDisplay } from './endDateDisplay.jsx';
-import { Progress } from './progress.jsx';
+import { Slider } from './slider.jsx';
+import { Switch } from './switch.jsx';
+import { DateDisplay } from './DateDisplay.jsx';
+import { ProgressModal } from './progressModal.jsx';
 import {
     importTwitchClips,
     getProjectPath,
-    addTwitchMetaData
+    addTwitchMetaData,
+    log,
+    clearLog,
+    getSep
 } from '../extendscript/Premiere';
 import { settings } from '../settings';
-import { clips } from '../api';
+import { getClipMetadata, getClips } from '../api';
+
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const BodyStyle = styled.div`
-    background-color: ${({ theme }) => theme.colors.background};
-    padding: 0.3125rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3.75rem 1.25rem 1.25rem 1.25rem;
+    overflow-x: hidden;
+
+    .target-group {
+        position: relative;
+    }
+
+    .target-switch {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-top: 0.1875rem;
+    }
+
+    .target-input .MuiInputBase-input {
+        padding-right: 4.5rem;
+    }
 `;
 
-export class Body extends React.Component {
+const ImportButton = styled(Button)`
+    && {
+        padding-left: 0.3125rem;
+        padding-right: 0.3125rem;
+    }
+`;
+
+class BodyComponent extends React.Component {
     state = {
         working: false,
         path: '',
-        oauth: 'l0vmpckj22o9xdk003tytq9xw0swgk',
-        game: 'Overwatch',
-        start: '2019-09-09',
-        end: '2019-09-16',
-        count: '30',
+        target: '',
+        targetIsValid: false,
+        start: new Date(),
+        startIsValid: false,
+        end: new Date(),
+        endIsValid: false,
+        count: 30,
+        countIsValid: true,
         progress: 0,
-        captions: [
-            'get project path',
-            'fetch clips',
-            'import clips',
-            'add metadata'
-        ]
+        mode: false,
+        formIsValid: false,
+        hasError: false,
+        error: '',
+        currentItem: 0,
+        totalItems: 1,
+        progress: 0,
+        complete: false
     };
+
     setStateAsync = state =>
         new Promise(resolve => this.setState(state, resolve));
 
     importClips = async () => {
-        const { oauth, game, start, end, count } = this.state;
-        await this.setStateAsync({ working: true, progress: 0 });
-        const [path] = await getProjectPath();
-        const fullPath =
-            path.substring(0, path.lastIndexOf('\\')) + '\\media\\twitch';
-        await this.setStateAsync({ progress: 1 });
-        const data = await clips(
-            oauth,
-            game,
-            fullPath.replace('\\\\?\\', ''),
-            start,
-            end,
-            count
-        );
-        await this.setStateAsync({ progress: 2 });
-        await importTwitchClips(fullPath);
-        await this.setStateAsync({ progress: 3 });
-        await addTwitchMetaData(data, {
-            start,
-            end,
-            game
-        });
-        await this.setStateAsync({ progress: 4, working: false });
-        setTimeout(() => this.setState({ progress: 0 }), 500);
+        const { formIsValid } = this.state;
+        if (!formIsValid) {
+            return;
+        }
+
+        try {
+            const { target, start, end, count, mode } = this.state;
+            await this.setStateAsync({
+                working: true,
+                complete: false,
+                error: '',
+                hasError: false
+            });
+            const seperator = await getSep();
+            const [path] = await getProjectPath();
+            const fullPath = path.substring(0, path.lastIndexOf('\\'));
+            const data = await getClipMetadata(target, start, end, mode, count);
+            await this.setStateAsync({ totalItems: data.length || 1 });
+            const filePath = `${fullPath}${seperator}`;
+            try {
+                await getClips(data, filePath, this.updateProgress);
+            } catch (error) {
+                console.error(error);
+            }
+            await importTwitchClips(fullPath);
+            await addTwitchMetaData(data);
+            await this.setStateAsync({
+                complete: true
+            });
+        } catch (error) {
+            const { message } = error;
+            console.error(error);
+            this.setState({
+                working: false,
+                hasError: true,
+                error: message,
+                currentItem: 0,
+                totalItems: 1,
+                progress: 0,
+                complete: true
+            });
+        }
     };
 
     async componentDidMount() {
         await this.load();
         await this.save();
+        this.updateFormValidity();
     }
 
     save = async () => {
@@ -76,78 +136,195 @@ export class Body extends React.Component {
     };
 
     load = async () => {
-        const { start, end, oauth, game, count } = await settings.load();
-        await this.setStateAsync({
+        const { start, end, target, count, mode } = await settings.load();
+        const init = {
             start: start ? start : this.state.start,
             end: end ? end : this.state.end,
-            oauth: oauth ? oauth : this.state.oauth,
-            game: game ? game : this.state.game,
-            count: count ? count : this.state.count
+            target: target ? target : this.state.target,
+            count: count ? count : this.state.count,
+            mode: mode ? mode : this.state.mode
+        };
+        await this.setStateAsync({
+            ...init,
+            startIsValid: !!init.start,
+            endIsValid: !!init.end,
+            targetIsValid: !!(
+                target &&
+                typeof target === 'string' &&
+                target.length > 0
+            ),
+            countIsValid: !!(count && !isNaN(count) && count > 0)
+        });
+    };
+
+    updateProgress = () => {
+        const { currentItem, totalItems } = this.state;
+        console.log(((currentItem + 1) / totalItems) * 100);
+        this.setState({
+            currentItem: currentItem + 1,
+            progress: ((currentItem + 1) / totalItems) * 100
+        });
+    };
+
+    resetProgress = async () => {
+        await this.setStateAsync({
+            working: false
+        });
+
+        // wait for modal to close
+        await wait(500);
+        this.setState({
+            complete: false,
+            currentItem: 0,
+            totalItems: 1,
+            progress: 0
+        });
+    };
+
+    updateFormValidity = () => {
+        const {
+            targetIsValid,
+            startIsValid,
+            endIsValid,
+            countIsValid
+        } = this.state;
+        this.setState({
+            formIsValid:
+                targetIsValid && startIsValid && endIsValid && countIsValid,
+            error: '',
+            hasError: false
         });
     };
 
     render() {
         const {
-            oauth,
-            game,
+            target,
             start,
             end,
             count,
             working,
-            captions,
-            progress
+            mode,
+            formIsValid,
+            hasError,
+            error,
+            currentItem,
+            totalItems,
+            progress,
+            complete
         } = this.state;
+        const { t } = this.props;
+
         return (
-            <BodyStyle>
-                <Input
-                    value={oauth}
-                    name="oauth"
-                    title="oauth"
-                    onChange={value => this.setState({ oauth: value })}
-                    onStill={this.save}
-                    enabled={!working}
-                />
-                <Input
-                    value={game}
-                    name="game"
-                    title="game"
-                    onChange={value => this.setState({ game: value })}
-                    onStill={this.save}
-                    enabled={!working}
-                />
-                <StartDateDisplay
+            <BodyStyle working={working}>
+                <Logo />
+                <FormGroup className="target-group">
+                    <Input
+                        className="target-input"
+                        value={target}
+                        name="target"
+                        label={
+                            mode
+                                ? t('form.field.broadcaster.label')
+                                : t('form.field.game.label')
+                        }
+                        onChange={async value => {
+                            await this.setStateAsync({
+                                target: value,
+                                targetIsValid: value.length > 0
+                            });
+                            this.updateFormValidity();
+                        }}
+                        onStill={this.save}
+                        enabled={!working}
+                    />
+                    <Switch
+                        className="target-switch"
+                        onChange={async value => {
+                            await this.setStateAsync({
+                                mode: value,
+                                target: '',
+                                targetIsValid: false,
+                                formIsValid: false
+                            });
+                            this.save();
+                        }}
+                        enabled={!working}
+                        value={mode}
+                    />
+                </FormGroup>
+                <DateDisplay
                     value={start}
-                    onChange={value => this.setState({ start: value })}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            start: value,
+                            startIsValid: value instanceof Date
+                        });
+                        this.updateFormValidity();
+                        this.save();
+                    }}
                     onStill={this.save}
                     enabled={!working}
+                    maxDate={end}
+                    label={t('form.field.startDate.label')}
+                    name="startDate"
+                    error={t('form.field.startDate.invalid')}
                 />
-                <EndDateDisplay
+                <DateDisplay
                     value={end}
-                    onChange={value => this.setState({ end: value })}
-                    onStill={this.save}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            end: value,
+                            endIsValid: value instanceof Date
+                        });
+                        this.updateFormValidity();
+                        this.save();
+                    }}
                     enabled={!working}
-                    start={start}
+                    minDate={start}
+                    label={t('form.field.endDate.label')}
+                    name="endDate"
+                    error={t('form.field.endDate.invalid')}
                 />
-                <Input
-                    value={count.toString()}
-                    name="count"
-                    title="video count"
-                    onChange={value => this.setState({ count: value })}
-                    onStill={this.save}
+                <Slider
+                    defaultValue={count}
+                    step={10}
+                    min={10}
+                    max={100}
+                    marks={true}
+                    onChange={async value => {
+                        await this.setStateAsync({
+                            count: value,
+                            countIsValid: count >= 10 && count <= 100
+                        });
+                        this.updateFormValidity();
+                    }}
                     enabled={!working}
+                    label={t('form.field.clipCount.label')}
+                    name="clipCount"
                 />
-                <Button
-                    title="Import"
-                    enabled={!working}
+                <Typography color="error" component="div">
+                    {hasError ? t(error) : <div>&nbsp;</div>}
+                </Typography>
+
+                <ImportButton
+                    label={t('form.button.submit')}
+                    enabled={!working && formIsValid}
                     onClick={this.importClips}
                 />
-                <Progress
-                    captions={captions}
+                <ProgressModal
+                    open={working}
+                    onClose={this.resetProgress}
+                    message={t('progress.progress.clipsleft', {
+                        current: currentItem,
+                        total: totalItems
+                    })}
+                    completeMessage={t('progress.message.done')}
                     progress={progress}
-                    show={working}
+                    complete={complete}
                 />
-                <Reload />
             </BodyStyle>
         );
     }
 }
+
+export const Body = withTranslation()(BodyComponent);
