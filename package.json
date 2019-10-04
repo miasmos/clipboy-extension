@@ -4,8 +4,9 @@
     "main": "plugin/lib/ui.compiled.js",
     "license": "MIT",
     "scripts": {
-        "start": "gulp && webpack --watch --mode=development",
-        "build": "gulp && webpack --mode=development"
+        "start": "gulp && webpack --env.ENV=development --watch --mode=development",
+        "build": "gulp && webpack --env.ENV=production --mode=production",
+        "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production"
     },
     "extendscript": {
         "title": "Clipboy for Twitch",
@@ -21,6 +22,8 @@
         "babel-loader": "^8.0.6",
         "babel-plugin-styled-components": "^1.10.6",
         "copy-webpack-plugin": "^5.0.4",
+        "dotenv": "^8.1.0",
+        "dotenv-webpack": "^1.7.0",
         "file-loader": "^4.2.0",
         "gulp": "^4.0.2",
         "gulp-rename": "^1.4.0",

@@ -8,6 +8,7 @@ import { Input } from './input.jsx';
 import { Button } from './button.jsx';
 import { Slider } from './slider.jsx';
 import { Switch } from './switch.jsx';
+import { Environment } from './environment.jsx';
 import { DateDisplay } from './DateDisplay.jsx';
 import { ProgressModal } from './progressModal.jsx';
 import {
@@ -216,6 +217,7 @@ class BodyComponent extends React.Component {
 
         return (
             <BodyStyle working={working}>
+                <Environment />
                 <Logo />
                 <FormGroup className="target-group">
                     <Input

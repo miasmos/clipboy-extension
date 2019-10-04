@@ -1,11 +1,10 @@
 import { format } from 'date-fns';
+import { DOMAIN } from './config';
 
 const fs = cep_node.require('fs');
 const util = cep_node.require('util');
 const writeFileAsync = util.promisify(fs.writeFile);
 const existsAsync = util.promisify(fs.exists);
-
-const HOST = 'http://localhost:3000';
 
 Promise.series = function series(providers) {
     const ret = Promise.resolve(null);
@@ -25,9 +24,9 @@ Promise.series = function series(providers) {
 };
 
 const get = (path, body = {}, method = 'GET') =>
-    fetch(`${HOST}${path}`, {
+    fetch(`${DOMAIN}${path}`, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { Origin: 'null', 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
     })
         .then(response => response.json())
