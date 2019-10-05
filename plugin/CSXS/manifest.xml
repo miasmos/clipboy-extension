@@ -14,11 +14,11 @@
 * written permission of Adobe. 
 **************************************************************************/
 -->	
-<ExtensionManifest Version="5.0" ExtensionBundleId="premiere-twitch-import" ExtensionBundleVersion="11.1"
+<ExtensionManifest Version="5.0" ExtensionBundleId="clipboy-twitch" ExtensionBundleVersion="11.1"
 ExtensionBundleName="Clipboy for Twitch" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
-		<Extension Id="premiere-twitch-import" Version="10.3.0" />
+		<Extension Id="clipboy-twitch" Version="10.3.0" />
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
@@ -33,7 +33,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	</ExecutionEnvironment>
 
 	<DispatchInfoList>
-		<Extension Id="premiere-twitch-import">
+		<Extension Id="clipboy-twitch">
 			<DispatchInfo >
 				<Resources>
 					<MainPath>./index.html</MainPath>

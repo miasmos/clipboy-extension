@@ -20,7 +20,7 @@ export const Button = ({ className, css, label, onClick, enabled = true }) => (
 
 Button.propTypes = {
     label: PropTypes.string,
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     enabled: PropTypes.bool,
     style: PropTypes.object,
     className: PropTypes.string,

@@ -13,7 +13,7 @@ const isDark = color => {
 };
 
 const getAppInfo = () => {
-    const host = getHostEnvironment('dark');
+    const host = getHostEnvironment();
     const {
         panelBackgroundColor: panel,
         baseFontSize,

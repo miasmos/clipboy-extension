@@ -32,10 +32,29 @@ const get = (path, body = {}, method = 'GET') =>
         .then(response => response.json())
         .then(({ status, error, data }) => {
             if (status === 'error') {
-                throw new Error(error || 'error.generic');
-            } else {
-                return data;
+                throw new Error(error);
+            } else if (!data) {
+                throw new Error('error.generic');
             }
+
+            return data;
+        })
+        .catch(({ message } = {}) => {
+            // from client
+            let result;
+
+            switch (message) {
+                case 'Failed to fetch':
+                    result = 'error.network.failed';
+                    break;
+                default: {
+                    const isKeyedError =
+                        message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g).length > 0;
+                    result = isKeyedError ? message : 'error.generic';
+                    break;
+                }
+            }
+            throw new Error(result);
         });
 
 const post = (path, body = {}) => get(path, body, 'POST');
@@ -47,7 +66,7 @@ export const getClipMetadata = (
     mode,
     clipCount = 30
 ) =>
-    post('/clips', {
+    post('/twitch/clips', {
         ...(!mode && { game: target }),
         ...(mode && { broadcaster: target }),
         startDate: format(startDate, 'yyyy-MM-dd'),

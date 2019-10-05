@@ -1,0 +1,1 @@
+./ZXPSignCmd.exe -verify ./package.zxp -certinfo

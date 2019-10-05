@@ -1,0 +1,1 @@
+./ZXPSignCmd.exe -sign A:\http\htdocs\premiere-twitch-import\plugin package.zxp cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com

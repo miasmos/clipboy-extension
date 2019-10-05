@@ -4,13 +4,13 @@ import { ENVIRONMENT } from './constants';
 
 const en = require('../static/locales/en/translations.json');
 
-i18n.use(new CSInterface().hostEnvironment.appUILocale || 'en')
+i18n.use(new CSInterface().hostEnvironment.appUILocale || 'en_US')
     .use(initReactI18next)
     .init({
         resources: {
-            en: { translation: en }
+            en_US: { translation: en }
         },
-        fallbackLng: 'en',
+        fallbackLng: 'en_US',
         keySeparator: '|',
         debug: ENVIRONMENT === 'development',
         interpolation: {

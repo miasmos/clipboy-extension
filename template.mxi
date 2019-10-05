@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macromedia-extension
+    id="{id}"
+    icon="icon.png"
+    name="{title}"
+    name_resid="name_ID"
+    requires-restart="true"
+    version="{version}"
+    ismultilingual="true">
+    <author name="{author}"/>
+    <description>
+        <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        {description}]]>
+    </description>
+    <license-agreement>
+        <![CDATA[{license}]]>
+    </license-agreement>
+    <products>
+        <product familyname="Premiere"/>
+    </products>
+    <files>
+        <file source="Extension/package.zxp"
+            destination=""
+            file-type="CSXS"
+            products="Premiere" />
+        <file source="id.mxi_Resources" destination="$resourceroot" isresourcefile="true" />
+        <file source="icon.png" destination="$ExtensionSpecificEMStore" />
+    </files>
+</macromedia-extension>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="en_US" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy for Twitch</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Download Twitch clips directly into Adobe Premiere with the click of a button.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="form.field.game.label">
+            <val>Game</val>
+
+        </str>
+        <str name="form.field.broadcaster.label">
+            <val>Broadcaster</val>
+
+        </str>
+        <str name="form.field.startDate.label">
+            <val>Start Date</val>
+
+        </str>
+        <str name="form.field.startDate.invalid">
+            <val>Invalid date</val>
+
+        </str>
+        <str name="form.field.endDate.label">
+            <val>End Date</val>
+
+        </str>
+        <str name="form.field.endDate.invalid">
+            <val>Invalid date</val>
+
+        </str>
+        <str name="form.field.clipCount.label">
+            <val>Clip Count</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Import</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Awesome!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Done.</val>
+
+        </str>
+        <str name="progress.progress.clipsleft">
+            <val>{{current}} of {{total}}</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Enjoying {{name}}? Leave us a rating!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Alright</val>
+
+        </str>
+        <str name="error.startDate.date.max">
+            <val>Start date must be before end date</val>
+
+        </str>
+        <str name="error.startDate.date.isoDate">
+            <val>Invalid start date</val>
+
+        </str>
+        <str name="error.startDate.any.required">
+            <val>Start date is required</val>
+
+        </str>
+        <str name="error.endDate.date.less">
+            <val>End date must be before today</val>
+
+        </str>
+        <str name="error.endDate.date.isoDate">
+            <val>Invalid end date</val>
+
+        </str>
+        <str name="error.clipCount.number.min">
+            <val>Invalid clip count</val>
+
+        </str>
+        <str name="error.clipCount.number.max">
+            <val>Invalid clip count</val>
+
+        </str>
+        <str name="error.clipCount.number.base">
+            <val>Invalid clip count</val>
+
+        </str>
+        <str name="error.clipCount.any.required">
+            <val>Clip count is required</val>
+
+        </str>
+        <str name="error.object.missing">
+            <val>Game or broadcaster is required</val>
+
+        </str>
+        <str name="error.broadcaster.notfound">
+            <val>The supplied broadcaster does not exist</val>
+
+        </str>
+        <str name="error.broadcaster.any.empty">
+            <val>Broadcaster is required</val>
+
+        </str>
+        <str name="error.game.notfound">
+            <val>The supplied game does not exist</val>
+
+        </str>
+        <str name="error.game.any.empty">
+            <val>Game is required</val>
+
+        </str>
+        <str name="error.clips.failed">
+            <val>Failed to get clips</val>
+
+        </str>
+        <str name="error.clips.notfound">
+            <val>No clips found</val>
+
+        </str>
+        <str name="error.generic">
+            <val>An error occurred, that's all we know</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>There wasn't enough hard drive space to continue</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Couldn't write to the target folder</val>
+
+        </str>
+        <str name="error.network.toomany">
+            <val>Too many requests, try again later</val>
+
+        </str>
+        <str name="error.network.forbidden">
+            <val>You don't have permission to do that</val>
+
+        </str>
+        <str name="error.network.failed">
+            <val>The internet seems to be down, try again later</val>
+
+        </str>
+        <str name="error.twitch.generic">
+            <val>Twitch is having problems, try again later</val>
+
+        </str>
+
+    </set>
+
+</asf>

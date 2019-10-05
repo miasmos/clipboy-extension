@@ -160,7 +160,6 @@ class BodyComponent extends React.Component {
 
     updateProgress = () => {
         const { currentItem, totalItems } = this.state;
-        console.log(((currentItem + 1) / totalItems) * 100);
         this.setState({
             currentItem: currentItem + 1,
             progress: ((currentItem + 1) / totalItems) * 100

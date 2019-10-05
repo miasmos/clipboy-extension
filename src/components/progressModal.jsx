@@ -67,6 +67,7 @@ export const ProgressModal = ({
 }) => {
     const { t } = useTranslation();
     const loading = progress < 100;
+    const started = progress > 0;
 
     return (
         <ModalStyle
@@ -93,7 +94,9 @@ export const ProgressModal = ({
                             />
                         </Fade>
 
-                        <Fade in={complete || (loading && !complete)}>
+                        <Fade
+                            in={complete || (loading && started && !complete)}
+                        >
                             <TitleStyle
                                 color="textPrimary"
                                 progress={progress}
