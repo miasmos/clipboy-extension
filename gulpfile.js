@@ -2,13 +2,22 @@ const gulp = require('gulp');
 const config = require('./package.json');
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
+const path = require('path');
 const merge = require('merge-stream');
 const jsonxml = require('jsontoxml');
+const dotenv = require('dotenv');
 const fs = require('fs').promises;
+const argv = require('yargs').argv;
 
 const locales = config.locales;
 const sourcePath = './static/locales/';
 const destinationPath = './plugin/id.mxi_Resources';
+const environments = ['development', 'production', 'qa'];
+const { env } = argv;
+
+dotenv.config({
+    path: path.resolve(__dirname, `./.${argv.env}.env`)
+});
 
 const getTranslations = () =>
     Promise.all(
@@ -19,6 +28,11 @@ const getTranslations = () =>
     );
 
 gulp.task('default', async function() {
+    if (!environments.includes(env)) {
+        console.error(`env must be one of ${environments.join(', ')}`);
+        return;
+    }
+
     const translations = Object.fromEntries(await getTranslations());
     const defaultLocale = 'en_US';
     const defaultTranslations = translations[defaultLocale];
@@ -73,6 +87,18 @@ gulp.task('default', async function() {
             .pipe(replace(/\{title\}/g, defaultTranslations['app.store.name']))
             .pipe(replace(/\{author\}/g, config.author))
             .pipe(replace(/\{version\}/g, config.version))
+            .pipe(
+                replace(
+                    /\{update\}/g,
+                    `${process.env.DOMAIN}/${config.name}/latest`
+                )
+            )
+            .pipe(
+                replace(
+                    /\{uidescription\}/g,
+                    defaultTranslations['app.store.ui.description']
+                )
+            )
             .pipe(
                 replace(
                     /\{license\}/g,

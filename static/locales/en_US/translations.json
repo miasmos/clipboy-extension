@@ -3,6 +3,7 @@
     "app.store.name": "Clipboy for Twitch",
     "app.store.description": "Download Twitch clips directly into Adobe Premiere with the click of a button.",
     "app.store.license": "",
+    "app.store.ui.description": "Download Twitch clips directly into Adobe Premiere with the click of a button.",
     "form.field.game.label": "Game",
     "form.field.broadcaster.label": "Broadcaster",
     "form.field.startDate.label": "Start Date",

@@ -15,6 +15,8 @@
     <license-agreement>
         <![CDATA[]]>
     </license-agreement>
+    <update>https://api.clipboy.dev/clipboy-twitch/latest</update>
+    <ui-access>Download Twitch clips directly into Adobe Premiere with the click of a button.</ui-access>
     <products>
         <product familyname="Premiere"/>
     </products>

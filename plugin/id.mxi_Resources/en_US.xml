@@ -18,6 +18,10 @@
             <val/>
 
         </str>
+        <str name="app.store.ui.description">
+            <val>Download Twitch clips directly into Adobe Premiere with the click of a button.</val>
+
+        </str>
         <str name="form.field.game.label">
             <val>Game</val>
 

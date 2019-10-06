@@ -11,29 +11,18 @@ const request = require('request');
 const dotenv = require('dotenv');
 
 const zxpPath = '../plugin/Extension/package.zxp';
-const notesPath = '../notes.txt';
+const notesPath = '../release-notes.txt';
 const token = 'QFtiN3lkmX74cqcEnMtH6Oq4JFKDuYE8';
 const environments = ['development', 'production', 'qa'];
 
-yargs
-    .option('project', {
-        alias: 'p',
-        type: 'string',
-        description: 'The target project'
-    })
-    .option('env', {
-        alias: 'e',
-        type: 'string',
-        description: `The target environment ${environments.join('|')}`
-    });
+yargs.option('env', {
+    alias: 'e',
+    type: 'string',
+    description: `The target environment ${environments.join('|')}`
+});
 
 const getConfig = () => {
-    const { project, p, env, e } = argv;
-
-    if (!(project || p)) {
-        console.error('project is required');
-        process.exit(1);
-    }
+    const { env, e } = argv;
 
     if (!(environments.includes(env) || environments.includes(e))) {
         console.error(`env must be one of ${environments.join(', ')}`);
@@ -45,7 +34,7 @@ const getConfig = () => {
     });
 
     return {
-        project,
+        project: pkg.name,
         version: pkg.version,
         env
     };
@@ -157,12 +146,12 @@ const deployInfo = (project, version, name, notes) =>
                 });
 
                 if (confirm) {
+                    await deployInfo(project, version, name, notes);
                     await deployZxp(
                         project,
                         version,
                         path.resolve(__dirname, zxpPath)
                     );
-                    await deployInfo(project, version, name, notes);
                     console.log('Success');
                 } else {
                     console.error('Aborted');

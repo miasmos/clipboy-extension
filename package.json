@@ -11,9 +11,9 @@
         "start": "gulp && webpack --env.ENV=development --watch --mode=development",
         "build": "gulp && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
-        "package": "gulp && ./signing/ZXPSignCmd.exe -sign A:\\http\\htdocs\\premiere-twitch-import\\plugin package.zxp ./signing/cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp",
-        "deploy": "node ./deploy/index.js --project=twitch --env=production",
-        "deploy:dev": "node ./deploy/index.js --project=twitch --env=development"
+        "package": "gulp --env=production && cd ./signing && ./ZXPSignCmd.exe -sign A:\\http\\htdocs\\premiere-twitch-import\\plugin package.zxp ./cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp",
+        "deploy": "node ./deploy/index.js --env=production",
+        "deploy:dev": "node ./deploy/index.js --env=development"
     },
     "extendscript": {
         "width": 340,
