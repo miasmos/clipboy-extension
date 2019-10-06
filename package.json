@@ -11,7 +11,9 @@
         "start": "gulp && webpack --env.ENV=development --watch --mode=development",
         "build": "gulp && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
-        "package": "gulp && ./signing/ZXPSignCmd.exe -sign A:\\http\\htdocs\\premiere-twitch-import\\plugin package.zxp ./signing/cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp"
+        "package": "gulp && ./signing/ZXPSignCmd.exe -sign A:\\http\\htdocs\\premiere-twitch-import\\plugin package.zxp ./signing/cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp",
+        "deploy": "node ./deploy/index.js --project=twitch --env=production",
+        "deploy:dev": "node ./deploy/index.js --project=twitch --env=development"
     },
     "extendscript": {
         "width": 340,
@@ -32,10 +34,14 @@
         "gulp": "^4.0.2",
         "gulp-rename": "^1.4.0",
         "gulp-replace": "^1.0.0",
+        "inquirer": "^7.0.0",
         "jsontoxml": "^1.0.1",
         "merge-stream": "^2.0.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4",
         "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.8"
+        "webpack-cli": "^3.3.8",
+        "yargs": "^14.0.0"
     },
     "dependencies": {
         "@babel/runtime": "^7.6.0",
