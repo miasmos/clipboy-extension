@@ -10,8 +10,8 @@ const rp = require('request-promise');
 const request = require('request');
 const dotenv = require('dotenv');
 
-const zxpPath = '../plugin/Extension/package.zxp';
-const notesPath = '../release-notes.txt';
+const zxpPath = './package.zxp';
+const notesPath = './release-notes.txt';
 const token = 'QFtiN3lkmX74cqcEnMtH6Oq4JFKDuYE8';
 const environments = ['development', 'production', 'qa'];
 
@@ -46,10 +46,12 @@ const fetch = opts =>
         uri: `${process.env.DOMAIN}${opts.path}`,
         headers: {
             ...('headers' in opts && opts.headers),
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            Origin: null
         },
         simple: false,
-        resolveWithFullResponse: true
+        resolveWithFullResponse: true,
+        strictSSL: false
     }).then(async response => {
         let body = response.body;
         try {
@@ -75,8 +77,10 @@ const deployZxp = (project, version, path) => {
                         'X-VERSION': version,
                         'X-PROJECT': project,
                         Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/octet-stream'
-                    }
+                        'Content-Type': 'application/octet-stream',
+                        Origin: null
+                    },
+                    strictSSL: false
                 },
                 (error, response, body) => {
                     if (error) {

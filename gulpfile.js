@@ -8,6 +8,7 @@ const jsonxml = require('jsontoxml');
 const dotenv = require('dotenv');
 const fs = require('fs').promises;
 const argv = require('yargs').argv;
+const del = require('del');
 
 const locales = config.locales;
 const sourcePath = './static/locales/';
@@ -125,7 +126,6 @@ gulp.task('default', async function() {
 });
 
 gulp.task('zxp', function() {
-    return gulp
-        .src('./signing/package.zxp')
-        .pipe(gulp.dest('plugin/Extension'));
+    del.sync(['./deploy/package.zxp']);
+    return gulp.src('./signing/package.zxp').pipe(gulp.dest('./deploy'));
 });

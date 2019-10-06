@@ -3,7 +3,7 @@
     id="clipboy-twitch"
     icon="icon.png"
     name="Clipboy for Twitch"
-    name_resid="name_ID"
+    name_resid="app.store.name"
     requires-restart="true"
     version="1.0.0"
     ismultilingual="true">
