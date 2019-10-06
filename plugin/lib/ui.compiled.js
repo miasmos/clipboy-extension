@@ -88400,6 +88400,17 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./package.json":
+/*!**********************!*\
+  !*** ./package.json ***!
+  \**********************/
+/*! exports provided: name, version, main, author, license, scripts, extendscript, devDependencies, dependencies, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",\"main\":\"plugin/lib/ui.compiled.js\",\"author\":\"Stephen Poole\",\"license\":\"MIT\",\"scripts\":{\"start\":\"gulp --env=development && webpack --env.ENV=development --watch --mode=development\",\"build\":\"gulp --env=production && webpack --env.ENV=production --mode=production\",\"start:qa\":\"gulp && webpack --env.ENV=qa --watch --mode=production\",\"package\":\"gulp --env=production && cd ./signing && ./ZXPSignCmd.exe -sign A:\\\\http\\\\htdocs\\\\premiere-twitch-import\\\\plugin package.zxp ./cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp\",\"deploy\":\"node ./deploy/index.js --env=production\",\"deploy:qa\":\"node ./deploy/index.js --env=qa\",\"deploy:dev\":\"node ./deploy/index.js --env=development\"},\"extendscript\":{\"width\":340,\"height\":435},\"devDependencies\":{\"@babel/core\":\"^7.6.0\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-transform-runtime\":\"^7.6.0\",\"@babel/preset-env\":\"^7.6.0\",\"@babel/preset-react\":\"^7.0.0\",\"babel-loader\":\"^8.0.6\",\"babel-plugin-styled-components\":\"^1.10.6\",\"copy-webpack-plugin\":\"^5.0.4\",\"del\":\"^5.1.0\",\"dotenv\":\"^8.1.0\",\"dotenv-webpack\":\"^1.7.0\",\"file-loader\":\"^4.2.0\",\"gulp\":\"^4.0.2\",\"gulp-rename\":\"^1.4.0\",\"gulp-replace\":\"^1.0.0\",\"inquirer\":\"^7.0.0\",\"jsontoxml\":\"^1.0.1\",\"merge-stream\":\"^2.0.0\",\"request\":\"^2.88.0\",\"request-promise\":\"^4.2.4\",\"webpack\":\"^4.39.3\",\"webpack-cli\":\"^3.3.8\",\"yargs\":\"^14.0.0\"},\"dependencies\":{\"@babel/runtime\":\"^7.6.0\",\"@date-io/date-fns\":\"^1.3.11\",\"@material-ui/core\":\"^4.4.3\",\"@material-ui/pickers\":\"^3.2.6\",\"color\":\"^3.1.2\",\"date-fns\":\"^2.0.0-beta.5\",\"dayjs\":\"^1.8.16\",\"fetch\":\"^1.1.0\",\"i18next\":\"^17.0.17\",\"prop-types\":\"^15.7.2\",\"react\":\"^16.9.0\",\"react-dom\":\"^16.9.0\",\"react-i18next\":\"^10.13.1\",\"react-transition-group\":\"^4.3.0\",\"styled-components\":\"^4.3.2\",\"styled-reset\":\"^4.0.0\"}}");
+
+/***/ }),
+
 /***/ "./src/api.js":
 /*!********************!*\
   !*** ./src/api.js ***!
@@ -90024,29 +90035,21 @@ Switch.propTypes = {
 /*!***********************!*\
   !*** ./src/config.js ***!
   \***********************/
-/*! exports provided: DOMAIN, ENVIRONMENT */
+/*! exports provided: DOMAIN, ENVIRONMENT, LOCALES, PROJECT_NAME */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMAIN", function() { return DOMAIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ENVIRONMENT", function() { return ENVIRONMENT; });
-var DOMAIN = "http://localhost:3000";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOCALES", function() { return LOCALES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PROJECT_NAME", function() { return PROJECT_NAME; });
+var pkg = __webpack_require__(/*! ../package.json */ "./package.json");
+
+var DOMAIN = "http://localhost";
 var ENVIRONMENT = "development";
-
-/***/ }),
-
-/***/ "./src/constants.js":
-/*!**************************!*\
-  !*** ./src/constants.js ***!
-  \**************************/
-/*! exports provided: ENVIRONMENT */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ENVIRONMENT", function() { return ENVIRONMENT; });
-var ENVIRONMENT = "development";
+var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe Premiere with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe Premiere with the click of a button.","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startDate.date.max":"Start date must be before end date","error.startDate.date.isoDate":"Invalid start date","error.startDate.any.required":"Start date is required","error.endDate.date.less":"End date must be before today","error.endDate.date.isoDate":"Invalid end date","error.clipCount.number.min":"Invalid clip count","error.clipCount.number.max":"Invalid clip count","error.clipCount.number.base":"Invalid clip count","error.clipCount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
+var PROJECT_NAME = pkg.name;
 
 /***/ }),
 
@@ -90167,22 +90170,15 @@ var evalJsxScript = new Proxy({}, {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var i18next__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! i18next */ "./node_modules/i18next/dist/esm/i18next.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-i18next */ "./node_modules/react-i18next/dist/es/index.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config */ "./src/config.js");
 
 
-
-
-var en = __webpack_require__(/*! ../static/locales/en/translations.json */ "./static/locales/en/translations.json");
 
 i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(new CSInterface().hostEnvironment.appUILocale || 'en_US').use(react_i18next__WEBPACK_IMPORTED_MODULE_1__["initReactI18next"]).init({
-  resources: {
-    en_US: {
-      translation: en
-    }
-  },
+  resources: _config__WEBPACK_IMPORTED_MODULE_2__["LOCALES"],
   fallbackLng: 'en_US',
   keySeparator: '|',
-  debug: _constants__WEBPACK_IMPORTED_MODULE_2__["ENVIRONMENT"] === 'development',
+  debug: _config__WEBPACK_IMPORTED_MODULE_2__["ENVIRONMENT"] === 'development',
   interpolation: {
     escapeValue: false
   },
@@ -90471,17 +90467,6 @@ var getTheme = function getTheme() {
     }
   });
 };
-
-/***/ }),
-
-/***/ "./static/locales/en/translations.json":
-/*!*********************************************!*\
-  !*** ./static/locales/en/translations.json ***!
-  \*********************************************/
-/*! exports provided: app.name, app.store.name, app.store.description, app.store.license, form.field.game.label, form.field.broadcaster.label, form.field.startDate.label, form.field.startDate.invalid, form.field.endDate.label, form.field.endDate.invalid, form.field.clipCount.label, form.button.submit, progress.button.done, progress.message.done, progress.progress.clipsleft, rating.message, rating.ok, error.startDate.date.max, error.startDate.date.isoDate, error.startDate.any.required, error.endDate.date.less, error.endDate.date.isoDate, error.clipCount.number.min, error.clipCount.number.max, error.clipCount.number.base, error.clipCount.any.required, error.object.missing, error.broadcaster.notfound, error.broadcaster.any.empty, error.game.notfound, error.game.any.empty, error.clips.failed, error.clips.notfound, error.generic, error.system.space, error.system.permission, error.network.toomany, error.network.forbidden, error.network.failed, error.twitch.generic, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"app.name\":\"Clipboy\",\"app.store.name\":\"Clipboy for Twitch\",\"app.store.description\":\"Download Twitch clips directly into Adobe Premiere with the click of a button.\",\"app.store.license\":\"\",\"form.field.game.label\":\"Game\",\"form.field.broadcaster.label\":\"Broadcaster\",\"form.field.startDate.label\":\"Start Date\",\"form.field.startDate.invalid\":\"Invalid date\",\"form.field.endDate.label\":\"End Date\",\"form.field.endDate.invalid\":\"Invalid date\",\"form.field.clipCount.label\":\"Clip Count\",\"form.button.submit\":\"Import\",\"progress.button.done\":\"Awesome!\",\"progress.message.done\":\"Done.\",\"progress.progress.clipsleft\":\"{{current}} of {{total}}\",\"rating.message\":\"Enjoying {{name}}? Leave us a rating!\",\"rating.ok\":\"Alright\",\"error.startDate.date.max\":\"Start date must be before end date\",\"error.startDate.date.isoDate\":\"Invalid start date\",\"error.startDate.any.required\":\"Start date is required\",\"error.endDate.date.less\":\"End date must be before today\",\"error.endDate.date.isoDate\":\"Invalid end date\",\"error.clipCount.number.min\":\"Invalid clip count\",\"error.clipCount.number.max\":\"Invalid clip count\",\"error.clipCount.number.base\":\"Invalid clip count\",\"error.clipCount.any.required\":\"Clip count is required\",\"error.object.missing\":\"Game or broadcaster is required\",\"error.broadcaster.notfound\":\"The supplied broadcaster does not exist\",\"error.broadcaster.any.empty\":\"Broadcaster is required\",\"error.game.notfound\":\"The supplied game does not exist\",\"error.game.any.empty\":\"Game is required\",\"error.clips.failed\":\"Failed to get clips\",\"error.clips.notfound\":\"No clips found\",\"error.generic\":\"An error occurred, that's all we know\",\"error.system.space\":\"There wasn't enough hard drive space to continue\",\"error.system.permission\":\"Couldn't write to the target folder\",\"error.network.toomany\":\"Too many requests, try again later\",\"error.network.forbidden\":\"You don't have permission to do that\",\"error.network.failed\":\"The internet seems to be down, try again later\",\"error.twitch.generic\":\"Twitch is having problems, try again later\"}");
 
 /***/ })
 

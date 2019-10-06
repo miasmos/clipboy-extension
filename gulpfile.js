@@ -6,27 +6,38 @@ const path = require('path');
 const merge = require('merge-stream');
 const jsonxml = require('jsontoxml');
 const dotenv = require('dotenv');
-const fs = require('fs').promises;
+const fs = require('fs');
+const fsp = require('fs').promises;
 const argv = require('yargs').argv;
 const del = require('del');
 
-const locales = config.locales;
-const sourcePath = './static/locales/';
 const destinationPath = './plugin/id.mxi_Resources';
 const environments = ['development', 'production', 'qa'];
+const defaultLocale = 'en_US';
 const { env } = argv;
 
 dotenv.config({
     path: path.resolve(__dirname, `./.${argv.env}.env`)
 });
 
-const getTranslations = () =>
-    Promise.all(
-        locales.map(locale => [
-            locale,
-            require(`${sourcePath}${locale}/translations.json`)
-        ])
+const getResources = async () => {
+    const locales = await fsp.readdir('./static/locales');
+    const files = await Promise.all(
+        locales.map(async locale => {
+            const file = await fsp.readFile(
+                `./static/locales/${locale}/translations.json`
+            );
+            return file;
+        }, {})
     );
+
+    const resources = files.reduce((prev, file, index) => {
+        const locale = locales[index];
+        prev[locale] = JSON.parse(file.toString());
+        return prev;
+    }, {});
+    return resources;
+};
 
 gulp.task('default', async function() {
     if (!environments.includes(env)) {
@@ -34,10 +45,8 @@ gulp.task('default', async function() {
         return;
     }
 
-    const translations = Object.fromEntries(await getTranslations());
-    const defaultLocale = 'en_US';
+    const translations = await getResources();
     const defaultTranslations = translations[defaultLocale];
-
     const xmlEntries = Object.entries(translations).map(
         ([locale, resources]) => [
             locale,
@@ -77,7 +86,7 @@ gulp.task('default', async function() {
 
     await Promise.all(
         xmlEntries.map(([locale, xml]) =>
-            fs.writeFile(`${destinationPath}/${locale}.xml`, xml)
+            fsp.writeFile(`${destinationPath}/${locale}.xml`, xml)
         )
     );
 

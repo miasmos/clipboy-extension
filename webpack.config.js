@@ -1,26 +1,33 @@
 const path = require('path');
 const fs = require('fs');
+const fsp = require('fs').promises;
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
-const pkg = require('./package.json');
 const Dotenv = require('dotenv-webpack');
 
-let rootPath;
-const isSupported =
-    process.platform === 'win32' || process.platform === 'darwin';
-switch (process.platform) {
-    case 'win32':
-        rootPath =
-            'C:\\Program Files (x86)\\Common Files\\Adobe\\CEP\\extensions';
-        break;
-    case 'darwin':
-        rootPath = '/Library/Application Support/Adobe/CEP/extensions';
-        break;
-    default:
-        break;
-}
+module.exports = async env => {
+    const getResources = async () => {
+        const locales = await fsp.readdir('./static/locales');
+        const files = await Promise.all(
+            locales.map(async locale => {
+                const file = await fsp.readFile(
+                    `./static/locales/${locale}/translations.json`
+                );
+                return file;
+            }, {})
+        );
 
-module.exports = env => {
+        const resources = files.reduce((prev, file, index) => {
+            const locale = locales[index];
+            prev[locale] = {
+                translation: JSON.parse(file.toString())
+            };
+            return prev;
+        }, {});
+        return resources;
+    };
+
+    const resources = await getResources();
     const config = {
         output: {
             filename: 'ui.compiled.js',
@@ -63,31 +70,11 @@ module.exports = env => {
                 path: `./.${env.ENV}.env`
             }),
             new webpack.DefinePlugin({
-                'process.env.ENV': JSON.stringify(env.ENV)
+                'process.env.ENV': JSON.stringify(env.ENV),
+                'process.env.LOCALES': JSON.stringify(resources)
             })
         ]
     };
-
-    if (isSupported) {
-        const targetPath = path.resolve(`${rootPath}/${pkg.name}`);
-        fs.stat(targetPath, error => {
-            if (!error) {
-                config.plugins.push(
-                    new CopyPlugin([{ from: 'plugin', to: targetPath }])
-                );
-            } else {
-                console.warn(
-                    '\x1b[33m%s\x1b[0m',
-                    `Failed to copy contents of plugin folder to '${targetPath}'. Try running webpack again as an admin, or copy the files yourself.`
-                );
-            }
-        });
-    } else {
-        console.warn(
-            '\x1b[33m%s\x1b[0m',
-            'Unsupported OS, skipping copying of plugin folder.'
-        );
-    }
 
     return config;
 };
