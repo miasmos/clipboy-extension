@@ -88407,7 +88407,7 @@ module.exports = function(originalModule) {
 /*! exports provided: name, version, main, author, license, scripts, extendscript, devDependencies, dependencies, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",\"main\":\"plugin/lib/ui.compiled.js\",\"author\":\"Stephen Poole\",\"license\":\"MIT\",\"scripts\":{\"start\":\"gulp --env=development && webpack --env.ENV=development --watch --mode=development\",\"build\":\"gulp --env=production && webpack --env.ENV=production --mode=production\",\"start:qa\":\"gulp && webpack --env.ENV=qa --watch --mode=production\",\"package\":\"gulp --env=production && cd ./signing && ./ZXPSignCmd.exe -sign A:\\\\http\\\\htdocs\\\\premiere-twitch-import\\\\plugin package.zxp ./cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp\",\"deploy\":\"node ./deploy/index.js --env=production\",\"deploy:qa\":\"node ./deploy/index.js --env=qa\",\"deploy:dev\":\"node ./deploy/index.js --env=development\"},\"extendscript\":{\"width\":340,\"height\":435},\"devDependencies\":{\"@babel/core\":\"^7.6.0\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-transform-runtime\":\"^7.6.0\",\"@babel/preset-env\":\"^7.6.0\",\"@babel/preset-react\":\"^7.0.0\",\"babel-loader\":\"^8.0.6\",\"babel-plugin-styled-components\":\"^1.10.6\",\"copy-webpack-plugin\":\"^5.0.4\",\"del\":\"^5.1.0\",\"dotenv\":\"^8.1.0\",\"dotenv-webpack\":\"^1.7.0\",\"file-loader\":\"^4.2.0\",\"gulp\":\"^4.0.2\",\"gulp-rename\":\"^1.4.0\",\"gulp-replace\":\"^1.0.0\",\"inquirer\":\"^7.0.0\",\"jsontoxml\":\"^1.0.1\",\"merge-stream\":\"^2.0.0\",\"request\":\"^2.88.0\",\"request-promise\":\"^4.2.4\",\"webpack\":\"^4.39.3\",\"webpack-cli\":\"^3.3.8\",\"yargs\":\"^14.0.0\"},\"dependencies\":{\"@babel/runtime\":\"^7.6.0\",\"@date-io/date-fns\":\"^1.3.11\",\"@material-ui/core\":\"^4.4.3\",\"@material-ui/pickers\":\"^3.2.6\",\"color\":\"^3.1.2\",\"date-fns\":\"^2.0.0-beta.5\",\"dayjs\":\"^1.8.16\",\"fetch\":\"^1.1.0\",\"i18next\":\"^17.0.17\",\"prop-types\":\"^15.7.2\",\"react\":\"^16.9.0\",\"react-dom\":\"^16.9.0\",\"react-i18next\":\"^10.13.1\",\"react-transition-group\":\"^4.3.0\",\"styled-components\":\"^4.3.2\",\"styled-reset\":\"^4.0.0\"}}");
+module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",\"main\":\"plugin/lib/ui.compiled.js\",\"author\":\"Stephen Poole\",\"license\":\"MIT\",\"scripts\":{\"start\":\"gulp --env=development && webpack --env.ENV=development --watch --mode=development\",\"build\":\"gulp --env=production && webpack --env.ENV=production --mode=production\",\"start:qa\":\"gulp && webpack --env.ENV=qa --watch --mode=production\",\"package\":\"gulp --env=production && cd ./signing && ./ZXPSignCmd.exe -sign A:\\\\http\\\\htdocs\\\\premiere-twitch-import\\\\plugin package.zxp ./cert.p12 fesomg90smg43 -tsa http://timestamp.digicert.com && gulp zxp\",\"deploy\":\"node ./deploy/index.js --env=production\",\"deploy:qa\":\"node ./deploy/index.js --env=qa\",\"deploy:dev\":\"node ./deploy/index.js --env=development\"},\"extendscript\":{\"width\":340,\"height\":435},\"devDependencies\":{\"@babel/core\":\"^7.6.0\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-proposal-nullish-coalescing-operator\":\"^7.4.4\",\"@babel/plugin-proposal-optional-chaining\":\"^7.6.0\",\"@babel/plugin-transform-runtime\":\"^7.6.0\",\"@babel/preset-env\":\"^7.6.0\",\"@babel/preset-react\":\"^7.0.0\",\"babel-loader\":\"^8.0.6\",\"babel-plugin-styled-components\":\"^1.10.6\",\"copy-webpack-plugin\":\"^5.0.4\",\"del\":\"^5.1.0\",\"dotenv\":\"^8.1.0\",\"dotenv-webpack\":\"^1.7.0\",\"file-loader\":\"^4.2.0\",\"gulp\":\"^4.0.2\",\"gulp-rename\":\"^1.4.0\",\"gulp-replace\":\"^1.0.0\",\"inquirer\":\"^7.0.0\",\"jsontoxml\":\"^1.0.1\",\"merge-stream\":\"^2.0.0\",\"request\":\"^2.88.0\",\"request-promise\":\"^4.2.4\",\"webpack\":\"^4.39.3\",\"webpack-cli\":\"^3.3.8\",\"yargs\":\"^14.0.0\"},\"dependencies\":{\"@babel/runtime\":\"^7.6.0\",\"@date-io/date-fns\":\"^1.3.11\",\"@material-ui/core\":\"^4.4.3\",\"@material-ui/icons\":\"^4.4.3\",\"@material-ui/pickers\":\"^3.2.6\",\"color\":\"^3.1.2\",\"date-fns\":\"^2.0.0-beta.5\",\"dayjs\":\"^1.8.16\",\"fetch\":\"^1.1.0\",\"i18next\":\"^17.0.17\",\"prop-types\":\"^15.7.2\",\"react\":\"^16.9.0\",\"react-dom\":\"^16.9.0\",\"react-i18next\":\"^10.13.1\",\"react-transition-group\":\"^4.3.0\",\"styled-components\":\"^4.3.2\",\"styled-reset\":\"^4.0.0\"}}");
 
 /***/ }),
 
@@ -88415,13 +88415,14 @@ module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",
 /*!********************!*\
   !*** ./src/api.js ***!
   \********************/
-/*! exports provided: getClipMetadata, getClips */
+/*! exports provided: getClipMetadata, getClips, getVersion */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClipMetadata", function() { return getClipMetadata; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getClips", function() { return getClips; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVersion", function() { return getVersion; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
@@ -88458,22 +88459,19 @@ Promise.series = function series(providers) {
 };
 
 var get = function get(path, body, method) {
-  if (body === void 0) {
-    body = {};
-  }
-
   if (method === void 0) {
     method = 'GET';
   }
 
-  return fetch("" + _config__WEBPACK_IMPORTED_MODULE_4__["DOMAIN"] + path, {
+  return fetch("" + _config__WEBPACK_IMPORTED_MODULE_4__["DOMAIN"] + path, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({
     method: method,
     headers: {
       Origin: 'null',
       'Content-Type': 'application/json'
-    },
+    }
+  }, body && {
     body: JSON.stringify(body)
-  }).then(function (response) {
+  })).then(function (response) {
     return response.json();
   }).then(function (_ref) {
     var status = _ref.status,
@@ -88489,7 +88487,8 @@ var get = function get(path, body, method) {
     return data;
   })["catch"](function (_temp) {
     var _ref2 = _temp === void 0 ? {} : _temp,
-        message = _ref2.message;
+        message = _ref2.message,
+        error = _ref2.error;
 
     // from client
     var result;
@@ -88501,21 +88500,19 @@ var get = function get(path, body, method) {
 
       default:
         {
-          var isKeyedError = message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g).length > 0;
+          var match = message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g);
+          var isKeyedError = match !== null ? match.length > 0 : false;
           result = isKeyedError ? message : 'error.generic';
           break;
         }
     }
 
+    console.error(error, message);
     throw new Error(result);
   });
 };
 
 var post = function post(path, body) {
-  if (body === void 0) {
-    body = {};
-  }
-
   return get(path, body, 'POST');
 };
 
@@ -88649,6 +88646,20 @@ var fetchClip = function fetchClip(url) {
     return new Response(stream);
   }).then(function (response) {
     return response.arrayBuffer();
+  });
+};
+
+var getVersion = function getVersion() {
+  return fetch(_config__WEBPACK_IMPORTED_MODULE_4__["DOMAIN"] + "/project/" + _config__WEBPACK_IMPORTED_MODULE_4__["PROJECT_NAME"] + "/version", {
+    headers: {
+      Origin: 'null'
+    }
+  }).then(function (response) {
+    if (response.ok) {
+      return response.text();
+    } else {
+      throw new Error(response);
+    }
   });
 };
 
@@ -90035,7 +90046,7 @@ Switch.propTypes = {
 /*!***********************!*\
   !*** ./src/config.js ***!
   \***********************/
-/*! exports provided: DOMAIN, ENVIRONMENT, LOCALES, PROJECT_NAME */
+/*! exports provided: DOMAIN, ENVIRONMENT, LOCALES, PROJECT_NAME, VERSION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90044,12 +90055,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ENVIRONMENT", function() { return ENVIRONMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOCALES", function() { return LOCALES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PROJECT_NAME", function() { return PROJECT_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
 var pkg = __webpack_require__(/*! ../package.json */ "./package.json");
 
 var DOMAIN = "http://localhost";
 var ENVIRONMENT = "development";
-var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe Premiere with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe Premiere with the click of a button.","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startDate.date.max":"Start date must be before end date","error.startDate.date.isoDate":"Invalid start date","error.startDate.any.required":"Start date is required","error.endDate.date.less":"End date must be before today","error.endDate.date.isoDate":"Invalid end date","error.clipCount.number.min":"Invalid clip count","error.clipCount.number.max":"Invalid clip count","error.clipCount.number.base":"Invalid clip count","error.clipCount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
+var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startDate.date.max":"Start date must be before end date","error.startDate.date.isoDate":"Invalid start date","error.startDate.any.required":"Start date is required","error.endDate.date.less":"End date must be before today","error.endDate.date.isoDate":"Invalid end date","error.clipCount.number.min":"Invalid clip count","error.clipCount.number.max":"Invalid clip count","error.clipCount.number.base":"Invalid clip count","error.clipCount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
 var PROJECT_NAME = pkg.name;
+var VERSION = pkg.version;
 
 /***/ }),
 
@@ -90416,10 +90429,10 @@ var dark = {
       main: 'rgba(233, 25, 22, 1)'
     },
     text: {
-      primary: 'rgba(0, 0, 0, 0.87)',
-      secondary: 'rgba(0, 0, 0, 0.54)',
-      disabled: 'rgba(0, 0, 0, 0.38)',
-      hint: 'rgba(0, 0, 0, 0.38)'
+      primary: 'rgba(255,255,255, 0.87)',
+      secondary: 'rgba(255,255,255, 0.54)',
+      disabled: 'rgba(255,255,255, 0.38)',
+      hint: 'rgba(255,255,255, 0.38)'
     }
   }
 };

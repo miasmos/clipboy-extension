@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { DOMAIN } from './config';
+import { DOMAIN, PROJECT_NAME } from './config';
 
 const fs = cep_node.require('fs');
 const util = cep_node.require('util');
@@ -23,11 +23,11 @@ Promise.series = function series(providers) {
         });
 };
 
-const get = (path, body = {}, method = 'GET') =>
+const get = (path, body, method = 'GET') =>
     fetch(`${DOMAIN}${path}`, {
         method,
         headers: { Origin: 'null', 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        ...(body && { body: JSON.stringify(body) })
     })
         .then(response => response.json())
         .then(({ status, error, data }) => {
@@ -39,7 +39,7 @@ const get = (path, body = {}, method = 'GET') =>
 
             return data;
         })
-        .catch(({ message } = {}) => {
+        .catch(({ message, error } = {}) => {
             // from client
             let result;
 
@@ -48,16 +48,18 @@ const get = (path, body = {}, method = 'GET') =>
                     result = 'error.network.failed';
                     break;
                 default: {
+                    const match = message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g);
                     const isKeyedError =
-                        message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g).length > 0;
+                        match !== null ? match.length > 0 : false;
                     result = isKeyedError ? message : 'error.generic';
                     break;
                 }
             }
+            console.error(error, message);
             throw new Error(result);
         });
 
-const post = (path, body = {}) => get(path, body, 'POST');
+const post = (path, body) => get(path, body, 'POST');
 
 export const getClipMetadata = (
     target,
@@ -120,3 +122,14 @@ const fetchClip = url =>
         })
         .then(stream => new Response(stream))
         .then(response => response.arrayBuffer());
+
+export const getVersion = () =>
+    fetch(`${DOMAIN}/project/${PROJECT_NAME}/version`, {
+        headers: { Origin: 'null' }
+    }).then(response => {
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error(response);
+        }
+    });
