@@ -90429,10 +90429,10 @@ var dark = {
       main: 'rgba(233, 25, 22, 1)'
     },
     text: {
-      primary: 'rgba(255,255,255, 0.87)',
-      secondary: 'rgba(255,255,255, 0.54)',
-      disabled: 'rgba(255,255,255, 0.38)',
-      hint: 'rgba(255,255,255, 0.38)'
+      primary: 'rgba(0, 0, 0, 0.96)',
+      secondary: 'rgba(0, 0, 0, 0.54)',
+      disabled: 'rgba(0, 0, 0, 0.38)',
+      hint: 'rgba(0, 0, 0, 0.38)'
     }
   }
 };
