@@ -1,7 +1,9 @@
-import { loadSettings, saveSettings } from './extendscript/Premiere';
+import { loadSettings, saveSettings } from '@common/extendscript';
 
 export class SettingsClass {
-    io;
+    constructor() {
+        this.io = undefined;
+    }
 
     save = async settings => {
         if (this.io) {

@@ -1,4 +1,4 @@
-import { getHostEnvironment } from './extendscript/util/cep';
+import { getHostEnvironment } from '@common/util';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 var color = require('color');

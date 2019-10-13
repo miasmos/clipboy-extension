@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { Reset } from 'styled-reset';
 import { Body } from './body.jsx';
-import { getTheme } from '../theme';
-import { GlobalStyle } from './styles/global';
+import { getTheme } from '@common/theme';
+import { GlobalStyle } from '@common/styles';
 
 const theme = getTheme();
 

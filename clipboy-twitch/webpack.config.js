@@ -40,7 +40,12 @@ module.exports = async env => {
                     test: /\.(js|jsx)$/,
                     exclude: [/node_modules/],
                     use: {
-                        loader: 'babel-loader'
+                        loader: 'babel-loader',
+                        options: JSON.parse(
+                            fs.readFileSync(
+                                path.resolve(__dirname, './.babelrc')
+                            )
+                        )
                     }
                 },
                 {
@@ -56,12 +61,17 @@ module.exports = async env => {
         node: {
             fs: 'empty'
         },
+        resolve: {
+            alias: {
+                '@common': path.resolve(__dirname, '../clipboy-common/src')
+            }
+        },
         plugins: [
             new CopyPlugin([
                 {
                     from: path.resolve(
                         __dirname,
-                        './src/extendscript/Premiere.jsx'
+                        '../clipboy-common/src/extendscript/Premiere.jsx'
                     ),
                     to: path.resolve(__dirname, './plugin/jsx/PPRO')
                 }

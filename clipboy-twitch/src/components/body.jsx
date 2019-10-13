@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import FormGroup from '@material-ui/core/FormGroup';
 import Typography from '@material-ui/core/Typography';
 import { withTranslation } from 'react-i18next';
-import { Logo } from './logo.jsx';
-import { Input } from './input.jsx';
-import { Button } from './button.jsx';
-import { Slider } from './slider.jsx';
-import { Switch } from './switch.jsx';
+import {
+    Logo,
+    Input,
+    Button,
+    Slider,
+    Switch,
+    DateDisplay,
+    ProgressModal
+} from '@common/components';
 import { Environment } from './environment.jsx';
-import { DateDisplay } from './DateDisplay.jsx';
-import { ProgressModal } from './progressModal.jsx';
 import {
     importTwitchClips,
     getProjectPath,
     addTwitchMetaData,
-    log,
-    clearLog,
     getSep
-} from '../extendscript/Premiere';
-import { settings } from '../settings';
+} from '@common/extendscript';
+import { settings } from '@common/settings';
 import { getClipMetadata, getClips } from '../api';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));

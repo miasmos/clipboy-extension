@@ -7,7 +7,7 @@
     requires-restart="true"
     version="1.0.0"
     ismultilingual="true">
-    <author name="Stephen Poole"/>
+    <author name="Clipboy Software Inc."/>
     <description>
         <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         Download Twitch clips directly into Adobe with the click of a button.]]>
