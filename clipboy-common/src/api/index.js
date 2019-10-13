@@ -1,5 +1,5 @@
-export const get = (path, body, method = 'GET') =>
-    fetch(`${DOMAIN}${path}`, {
+export const get = (uri, body, method = 'GET') =>
+    fetch(uri, {
         method,
         headers: { Origin: 'null', 'Content-Type': 'application/json' },
         ...(body && { body: JSON.stringify(body) })
@@ -34,4 +34,4 @@ export const get = (path, body, method = 'GET') =>
             throw new Error(result);
         });
 
-export const post = (path, body) => get(path, body, 'POST');
+export const post = (uri, body) => get(uri, body, 'POST');

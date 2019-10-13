@@ -31,7 +31,7 @@ export const getClipMetadata = (
     mode,
     clipCount = 30
 ) =>
-    post('/twitch/clips', {
+    post(`${DOMAIN}/twitch/clips`, {
         ...(!mode && { game: target }),
         ...(mode && { broadcaster: target }),
         startDate: format(startDate, 'yyyy-MM-dd'),
