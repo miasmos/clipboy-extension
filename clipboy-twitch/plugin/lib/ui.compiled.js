@@ -86,6 +86,79 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../clipboy-common/src/api/index.js":
+/*!******************************************!*\
+  !*** ../clipboy-common/src/api/index.js ***!
+  \******************************************/
+/*! exports provided: get, post */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "post", function() { return post; });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "../node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+
+var get = function get(path, body, method) {
+  if (method === void 0) {
+    method = 'GET';
+  }
+
+  return fetch("" + DOMAIN + path, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: method,
+    headers: {
+      Origin: 'null',
+      'Content-Type': 'application/json'
+    }
+  }, body && {
+    body: JSON.stringify(body)
+  })).then(function (response) {
+    return response.json();
+  }).then(function (_ref) {
+    var status = _ref.status,
+        error = _ref.error,
+        data = _ref.data;
+
+    if (status === 'error') {
+      throw new Error(error);
+    } else if (!data) {
+      throw new Error('error.generic');
+    }
+
+    return data;
+  })["catch"](function (_temp) {
+    var _ref2 = _temp === void 0 ? {} : _temp,
+        message = _ref2.message,
+        error = _ref2.error;
+
+    // from client
+    var result;
+
+    switch (message) {
+      case 'Failed to fetch':
+        result = 'error.network.failed';
+        break;
+
+      default:
+        {
+          var match = message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g);
+          var isKeyedError = match !== null ? match.length > 0 : false;
+          result = isKeyedError ? message : 'error.generic';
+          break;
+        }
+    }
+
+    console.error(error, message);
+    throw new Error(result);
+  });
+};
+var post = function post(path, body) {
+  return get(path, body, 'POST');
+};
+
+/***/ }),
+
 /***/ "../clipboy-common/src/components/button.jsx":
 /*!***************************************************!*\
   !*** ../clipboy-common/src/components/button.jsx ***!
@@ -91562,7 +91635,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "../node_modules/@babel/runtime/helpers/extends.js");
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ "../node_modules/date-fns/esm/index.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config */ "./src/config.js");
+/* harmony import */ var _common_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @common/api */ "../clipboy-common/src/api/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./src/config.js");
+
 
 
 
@@ -91590,70 +91665,12 @@ Promise.series = function series(providers) {
   });
 };
 
-var get = function get(path, body, method) {
-  if (method === void 0) {
-    method = 'GET';
-  }
-
-  return fetch("" + _config__WEBPACK_IMPORTED_MODULE_4__["DOMAIN"] + path, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({
-    method: method,
-    headers: {
-      Origin: 'null',
-      'Content-Type': 'application/json'
-    }
-  }, body && {
-    body: JSON.stringify(body)
-  })).then(function (response) {
-    return response.json();
-  }).then(function (_ref) {
-    var status = _ref.status,
-        error = _ref.error,
-        data = _ref.data;
-
-    if (status === 'error') {
-      throw new Error(error);
-    } else if (!data) {
-      throw new Error('error.generic');
-    }
-
-    return data;
-  })["catch"](function (_temp) {
-    var _ref2 = _temp === void 0 ? {} : _temp,
-        message = _ref2.message,
-        error = _ref2.error;
-
-    // from client
-    var result;
-
-    switch (message) {
-      case 'Failed to fetch':
-        result = 'error.network.failed';
-        break;
-
-      default:
-        {
-          var match = message.match(/^([a-zA-Z]+\.)+[a-zA-Z]+$/g);
-          var isKeyedError = match !== null ? match.length > 0 : false;
-          result = isKeyedError ? message : 'error.generic';
-          break;
-        }
-    }
-
-    console.error(error, message);
-    throw new Error(result);
-  });
-};
-
-var post = function post(path, body) {
-  return get(path, body, 'POST');
-};
-
 var getClipMetadata = function getClipMetadata(target, startDate, endDate, mode, clipCount) {
   if (clipCount === void 0) {
     clipCount = 30;
   }
 
-  return post('/twitch/clips', _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({}, !mode && {
+  return Object(_common_api__WEBPACK_IMPORTED_MODULE_4__["post"])('/twitch/clips', _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_2___default()({}, !mode && {
     game: target
   }, {}, mode && {
     broadcaster: target
@@ -91664,9 +91681,9 @@ var getClipMetadata = function getClipMetadata(target, startDate, endDate, mode,
   }));
 };
 var getClips = function getClips(data, path, onItemCompleted) {
-  return Promise.series(data.map(function (_ref3) {
-    var clip_url = _ref3.clip_url,
-        id = _ref3.id;
+  return Promise.series(data.map(function (_ref) {
+    var clip_url = _ref.clip_url,
+        id = _ref.id;
     return (
       /*#__PURE__*/
       _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
@@ -91696,7 +91713,7 @@ var getClips = function getClips(data, path, onItemCompleted) {
 var writeClip =
 /*#__PURE__*/
 function () {
-  var _ref5 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+  var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(url, path, id) {
     var filePath, exists, buffer, payload;
@@ -91747,7 +91764,7 @@ function () {
   }));
 
   return function writeClip(_x, _x2, _x3) {
-    return _ref5.apply(this, arguments);
+    return _ref3.apply(this, arguments);
   };
 }();
 
@@ -91757,9 +91774,9 @@ var fetchClip = function fetchClip(url) {
     return new ReadableStream({
       start: function start(controller) {
         function pump() {
-          return reader.read().then(function (_ref6) {
-            var done = _ref6.done,
-                value = _ref6.value;
+          return reader.read().then(function (_ref4) {
+            var done = _ref4.done,
+                value = _ref4.value;
 
             if (done) {
               controller.close();
@@ -91782,7 +91799,7 @@ var fetchClip = function fetchClip(url) {
 };
 
 var getVersion = function getVersion() {
-  return fetch(_config__WEBPACK_IMPORTED_MODULE_4__["DOMAIN"] + "/project/" + _config__WEBPACK_IMPORTED_MODULE_4__["PROJECT_NAME"] + "/version", {
+  return fetch(_config__WEBPACK_IMPORTED_MODULE_5__["DOMAIN"] + "/project/" + _config__WEBPACK_IMPORTED_MODULE_5__["PROJECT_NAME"] + "/version", {
     headers: {
       Origin: 'null'
     }
