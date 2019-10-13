@@ -139,16 +139,16 @@ class BodyComponent extends React.Component {
     load = async () => {
         const { start, end, target, count, mode } = await settings.load();
         const init = {
-            start: start ? start : this.state.start,
-            end: end ? end : this.state.end,
+            start: start ? new Date(start) : this.state.start,
+            end: end ? new Date(end) : this.state.end,
             target: target ? target : this.state.target,
-            count: count ? count : this.state.count,
+            count: count ? Number(count) : this.state.count,
             mode: mode ? mode : this.state.mode
         };
         await this.setStateAsync({
             ...init,
-            startIsValid: !!init.start,
-            endIsValid: !!init.end,
+            startIsValid: init.end instanceof Date,
+            endIsValid: init.end instanceof Date,
             targetIsValid: !!(
                 target &&
                 typeof target === 'string' &&

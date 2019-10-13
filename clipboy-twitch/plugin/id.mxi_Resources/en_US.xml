@@ -82,39 +82,39 @@
             <val>Alright</val>
 
         </str>
-        <str name="error.startDate.date.max">
+        <str name="error.startdate.date.max">
             <val>Start date must be before end date</val>
 
         </str>
-        <str name="error.startDate.date.isoDate">
+        <str name="error.startdate.date.isoDate">
             <val>Invalid start date</val>
 
         </str>
-        <str name="error.startDate.any.required">
+        <str name="error.startdate.any.required">
             <val>Start date is required</val>
 
         </str>
-        <str name="error.endDate.date.less">
+        <str name="error.enddate.date.less">
             <val>End date must be before today</val>
 
         </str>
-        <str name="error.endDate.date.isoDate">
+        <str name="error.enddate.date.isoDate">
             <val>Invalid end date</val>
 
         </str>
-        <str name="error.clipCount.number.min">
+        <str name="error.clipcount.number.min">
             <val>Invalid clip count</val>
 
         </str>
-        <str name="error.clipCount.number.max">
+        <str name="error.clipcount.number.max">
             <val>Invalid clip count</val>
 
         </str>
-        <str name="error.clipCount.number.base">
+        <str name="error.clipcount.number.base">
             <val>Invalid clip count</val>
 
         </str>
-        <str name="error.clipCount.any.required">
+        <str name="error.clipcount.any.required">
             <val>Clip count is required</val>
 
         </str>

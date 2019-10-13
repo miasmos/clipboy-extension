@@ -944,7 +944,7 @@ var SettingsClass = function SettingsClass() {
     var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(settings) {
-      var start, end, target, count, mode, result;
+      var result;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -957,23 +957,16 @@ var SettingsClass = function SettingsClass() {
               return _context.abrupt("return");
 
             case 2:
-              start = settings.start, end = settings.end, target = settings.target, count = settings.count, mode = settings.mode;
               _this.io = true;
-              _context.next = 6;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_2__["saveSettings"])({
-                start: start,
-                end: end,
-                target: target,
-                count: count,
-                mode: mode
-              });
+              _context.next = 5;
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_2__["saveSettings"])(settings);
 
-            case 6:
+            case 5:
               result = _context.sent;
               _this.io = false;
               return _context.abrupt("return", result);
 
-            case 9:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -991,7 +984,7 @@ var SettingsClass = function SettingsClass() {
   _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-    var _ref3, _ref3$, start, end, target, count, mode;
+    var _ref3, settings;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
@@ -1011,19 +1004,11 @@ var SettingsClass = function SettingsClass() {
 
           case 5:
             _ref3 = _context2.sent;
-            _ref3$ = _ref3[0];
-            _ref3$ = _ref3$ === void 0 ? {} : _ref3$;
-            start = _ref3$.start, end = _ref3$.end, target = _ref3$.target, count = _ref3$.count, mode = _ref3$.mode;
+            settings = _ref3[0];
             _this.io = false;
-            return _context2.abrupt("return", {
-              start: start ? new Date(start) : new Date(),
-              end: end ? new Date(end) : new Date(),
-              target: target,
-              count: Number(count),
-              mode: mode
-            });
+            return _context2.abrupt("return", settings);
 
-          case 11:
+          case 9:
           case "end":
             return _context2.stop();
         }
@@ -19177,7 +19162,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!*************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/index.js ***!
   \*************************************************************/
-/*! exports provided: createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
+/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92095,16 +92080,16 @@ function (_React$Component) {
               count = _ref5.count;
               mode = _ref5.mode;
               init = {
-                start: start ? start : _this.state.start,
-                end: end ? end : _this.state.end,
+                start: start ? new Date(start) : _this.state.start,
+                end: end ? new Date(end) : _this.state.end,
                 target: target ? target : _this.state.target,
-                count: count ? count : _this.state.count,
+                count: count ? Number(count) : _this.state.count,
                 mode: mode ? mode : _this.state.mode
               };
               _context3.next = 11;
               return _this.setStateAsync(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, init, {
-                startIsValid: !!init.start,
-                endIsValid: !!init.end,
+                startIsValid: init.end instanceof Date,
+                endIsValid: init.end instanceof Date,
                 targetIsValid: !!(target && typeof target === 'string' && target.length > 0),
                 countIsValid: !!(count && !isNaN(count) && count > 0)
               }));
@@ -92510,7 +92495,7 @@ var pkg = __webpack_require__(/*! ../package.json */ "./package.json");
 
 var DOMAIN = "http://localhost";
 var ENVIRONMENT = "development";
-var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startDate.date.max":"Start date must be before end date","error.startDate.date.isoDate":"Invalid start date","error.startDate.any.required":"Start date is required","error.endDate.date.less":"End date must be before today","error.endDate.date.isoDate":"Invalid end date","error.clipCount.number.min":"Invalid clip count","error.clipCount.number.max":"Invalid clip count","error.clipCount.number.base":"Invalid clip count","error.clipCount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
+var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startdate.date.max":"Start date must be before end date","error.startdate.date.isoDate":"Invalid start date","error.startdate.any.required":"Start date is required","error.enddate.date.less":"End date must be before today","error.enddate.date.isoDate":"Invalid end date","error.clipcount.number.min":"Invalid clip count","error.clipcount.number.max":"Invalid clip count","error.clipcount.number.base":"Invalid clip count","error.clipcount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
 var PROJECT_NAME = pkg.name;
 var VERSION = pkg.version;
 
@@ -92531,16 +92516,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(new CSInterface().hostEnvironment.appUILocale || 'en_US').use(react_i18next__WEBPACK_IMPORTED_MODULE_1__["initReactI18next"]).init({
+i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(react_i18next__WEBPACK_IMPORTED_MODULE_1__["initReactI18next"]).init({
+  preload: ['en_US'],
+  lang: new CSInterface().hostEnvironment.appUILocale || 'en_US',
   resources: _config__WEBPACK_IMPORTED_MODULE_2__["LOCALES"],
   fallbackLng: 'en_US',
-  keySeparator: '|',
+  keySeparator: false,
   debug: _config__WEBPACK_IMPORTED_MODULE_2__["ENVIRONMENT"] === 'development',
   interpolation: {
     escapeValue: false
-  },
-  react: {
-    wait: true
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (i18next__WEBPACK_IMPORTED_MODULE_0__["default"]);

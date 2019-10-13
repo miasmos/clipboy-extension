@@ -10,9 +10,8 @@ export class SettingsClass {
             return;
         }
 
-        const { start, end, target, count, mode } = settings;
         this.io = true;
-        const result = await saveSettings({ start, end, target, count, mode });
+        const result = await saveSettings(settings);
         this.io = false;
         return result;
     };
@@ -23,15 +22,9 @@ export class SettingsClass {
         }
 
         this.io = true;
-        const [{ start, end, target, count, mode } = {}] = await loadSettings();
+        const [settings] = await loadSettings();
         this.io = false;
-        return {
-            start: start ? new Date(start) : new Date(),
-            end: end ? new Date(end) : new Date(),
-            target,
-            count: Number(count),
-            mode
-        };
+        return settings;
     };
 }
 
