@@ -8,5 +8,6 @@ export const {
     saveSettings,
     log,
     clearLog,
-    getSep
+    getSep,
+    getLocale
 } = evalJsxScript;

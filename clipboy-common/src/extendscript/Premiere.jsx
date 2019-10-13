@@ -231,5 +231,9 @@ $._PPP_ = {
 
     setLocale: function(localeFromCEP) {
         $.locale = localeFromCEP;
+    },
+
+    getLocale: function() {
+        return $.locale;
     }
 };

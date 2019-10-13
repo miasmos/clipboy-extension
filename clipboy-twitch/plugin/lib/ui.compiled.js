@@ -871,7 +871,7 @@ Switch.propTypes = {
 /*!***************************************************!*\
   !*** ../clipboy-common/src/extendscript/index.js ***!
   \***************************************************/
-/*! exports provided: getVersionInfo, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep */
+/*! exports provided: getVersionInfo, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep, getLocale */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -885,6 +885,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log", function() { return log; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearLog", function() { return clearLog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSep", function() { return getSep; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLocale", function() { return getLocale; });
 /* harmony import */ var _common_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @common/util */ "../clipboy-common/src/util/index.js");
 
 var getVersionInfo = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getVersionInfo,
@@ -895,7 +896,8 @@ var getVersionInfo = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].
     saveSettings = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings,
     log = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].log,
     clearLog = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].clearLog,
-    getSep = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getSep;
+    getSep = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getSep,
+    getLocale = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getLocale;
 
 
 /***/ }),
@@ -92495,7 +92497,7 @@ var pkg = __webpack_require__(/*! ../package.json */ "./package.json");
 
 var DOMAIN = "http://localhost";
 var ENVIRONMENT = "development";
-var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startdate.date.max":"Start date must be before end date","error.startdate.date.isoDate":"Invalid start date","error.startdate.any.required":"Start date is required","error.enddate.date.less":"End date must be before today","error.enddate.date.isoDate":"Invalid end date","error.clipcount.number.min":"Invalid clip count","error.clipcount.number.max":"Invalid clip count","error.clipcount.number.base":"Invalid clip count","error.clipcount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
+var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startdate.date.max":"Start date must be before end date","error.startdate.date.isoDate":"Invalid start date","error.startdate.any.required":"Start date is required","error.enddate.date.less":"End date must be before today","error.enddate.date.isoDate":"Invalid end date","error.clipcount.number.min":"Invalid clip count","error.clipcount.number.max":"Invalid clip count","error.clipcount.number.base":"Invalid clip count","error.clipcount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}},"fr_FR":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch fr","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game fr","form.field.broadcaster.label":"Broadcaster fr","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startdate.date.max":"Start date must be before end date","error.startdate.date.isoDate":"Invalid start date","error.startdate.any.required":"Start date is required","error.enddate.date.less":"End date must be before today","error.enddate.date.isoDate":"Invalid end date","error.clipcount.number.min":"Invalid clip count","error.clipcount.number.max":"Invalid clip count","error.clipcount.number.base":"Invalid clip count","error.clipcount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
 var PROJECT_NAME = pkg.name;
 var VERSION = pkg.version;
 
@@ -92510,24 +92512,57 @@ var VERSION = pkg.version;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var i18next__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! i18next */ "../node_modules/i18next/dist/esm/i18next.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config */ "./src/config.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var i18next__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! i18next */ "../node_modules/i18next/dist/esm/i18next.js");
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config */ "./src/config.js");
+/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
 
 
 
-i18next__WEBPACK_IMPORTED_MODULE_0__["default"].use(react_i18next__WEBPACK_IMPORTED_MODULE_1__["initReactI18next"]).init({
-  preload: ['en_US'],
-  lang: new CSInterface().hostEnvironment.appUILocale || 'en_US',
-  resources: _config__WEBPACK_IMPORTED_MODULE_2__["LOCALES"],
-  fallbackLng: 'en_US',
-  keySeparator: false,
-  debug: _config__WEBPACK_IMPORTED_MODULE_2__["ENVIRONMENT"] === 'development',
-  interpolation: {
-    escapeValue: false
-  }
-});
-/* harmony default export */ __webpack_exports__["default"] = (i18next__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+
+
+_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
+/*#__PURE__*/
+_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+  var _ref2, locale;
+
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_5__["getLocale"])();
+
+        case 2:
+          _ref2 = _context.sent;
+          locale = _ref2[0];
+          i18next__WEBPACK_IMPORTED_MODULE_2__["default"].use(react_i18next__WEBPACK_IMPORTED_MODULE_3__["initReactI18next"]).init({
+            preload: [locale, 'en_US'],
+            lng: locale || 'en_US',
+            resources: _config__WEBPACK_IMPORTED_MODULE_4__["LOCALES"],
+            fallbackLng: 'en_US',
+            keySeparator: false,
+            debug: _config__WEBPACK_IMPORTED_MODULE_4__["ENVIRONMENT"] === 'development',
+            interpolation: {
+              escapeValue: false
+            }
+          });
+
+        case 5:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee);
+}))();
+
+/* harmony default export */ __webpack_exports__["default"] = (i18next__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 /***/ }),
 
