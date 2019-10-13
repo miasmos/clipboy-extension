@@ -12,14 +12,14 @@ import {
     DateDisplay,
     ProgressModal
 } from '@common/components';
-import { Environment } from './environment.jsx';
 import {
     importTwitchClips,
     getProjectPath,
     addTwitchMetaData,
     getSep
 } from '@common/extendscript';
-import { settings } from '@common/settings';
+import { save, load } from '@common/settings';
+import { Environment } from './environment.jsx';
 import { getClipMetadata, getClips } from '../api';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -133,11 +133,11 @@ class BodyComponent extends React.Component {
     }
 
     save = async () => {
-        await settings.save(this.state);
+        await save(this.state);
     };
 
     load = async () => {
-        const { start, end, target, count, mode } = await settings.load();
+        const { start, end, target, count, mode } = await load();
         const init = {
             start: start ? new Date(start) : this.state.start,
             end: end ? new Date(end) : this.state.end,

@@ -80,9 +80,12 @@
                 });
             };
             window.__adobe_cep__.evalScript = function(script, callback) {
-                setTimeout(function() {
-                    callback('1', '2');
-                }, 500);
+                switch (script) {
+                    case '$._PPP_.getLocale()':
+                        callback('en_US');
+                    default:
+                        callback('1', '2');
+                }
             };
         </script>
         <script src="./plugin/lib/CSInterface.js"></script>

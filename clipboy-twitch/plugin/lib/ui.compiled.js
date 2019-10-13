@@ -906,14 +906,17 @@ var getVersionInfo = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].
 /*!***********************************************!*\
   !*** ../clipboy-common/src/settings/index.js ***!
   \***********************************************/
-/*! exports provided: settings */
+/*! exports provided: save, load */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "save", function() { return save; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
 /* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./settings */ "../clipboy-common/src/settings/settings.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return _settings__WEBPACK_IMPORTED_MODULE_0__["settings"]; });
 
+var save = _settings__WEBPACK_IMPORTED_MODULE_0__["settings"].save,
+    load = _settings__WEBPACK_IMPORTED_MODULE_0__["settings"].load;
 
 
 /***/ }),
@@ -91856,9 +91859,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Typography */ "../node_modules/@material-ui/core/esm/Typography/index.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
 /* harmony import */ var _common_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @common/components */ "../clipboy-common/src/components/index.js");
-/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
-/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
-/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
+/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
+/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
+/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../api */ "./src/api.js");
 
 
@@ -91964,12 +91967,12 @@ function (_React$Component) {
 
             case 7:
               _context.next = 9;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getSep"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_10__["getSep"])();
 
             case 9:
               seperator = _context.sent;
               _context.next = 12;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getProjectPath"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_10__["getProjectPath"])();
 
             case 12:
               _ref2 = _context.sent;
@@ -92002,11 +92005,11 @@ function (_React$Component) {
 
             case 29:
               _context.next = 31;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["importTwitchClips"])(fullPath);
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_10__["importTwitchClips"])(fullPath);
 
             case 31:
               _context.next = 33;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["addTwitchMetaData"])(data);
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_10__["addTwitchMetaData"])(data);
 
             case 33:
               _context.next = 35;
@@ -92051,7 +92054,7 @@ function (_React$Component) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return _common_settings__WEBPACK_IMPORTED_MODULE_12__["settings"].save(_this.state);
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_11__["save"])(_this.state);
 
             case 2:
             case "end":
@@ -92072,7 +92075,7 @@ function (_React$Component) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return _common_settings__WEBPACK_IMPORTED_MODULE_12__["settings"].load();
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_11__["load"])();
 
             case 2:
               _ref5 = _context3.sent;
@@ -92223,7 +92226,7 @@ function (_React$Component) {
     var t = this.props.t;
     return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(BodyStyle, {
       working: working
-    }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_10__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_12__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
       className: "target-group"
     }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Input"], {
       className: "target-input",

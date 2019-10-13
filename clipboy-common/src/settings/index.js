@@ -1,1 +1,3 @@
-export { settings } from './settings';
+import { settings } from './settings';
+const { save, load } = settings;
+export { save, load };
