@@ -152,6 +152,10 @@ gulp.task('zxp-zip', function() {
         .pipe(gulp.dest('./deploy'));
 });
 
+gulp.task('zxp-pre-clean', function() {
+    return del(['./signing/package.zxp']);
+});
+
 gulp.task('zxp-clean', function() {
     return del(['./package']);
 });

@@ -98,7 +98,7 @@ class BodyComponent extends React.Component {
             });
             const seperator = await getSep();
             const [path] = await getProjectPath();
-            const fullPath = path.substring(0, path.lastIndexOf('\\'));
+            const fullPath = path.substring(0, path.lastIndexOf(seperator));
             const data = await getClipMetadata(target, start, end, mode, count);
             await this.setStateAsync({ totalItems: data.length || 1 });
             const filePath = `${fullPath}${seperator}`;

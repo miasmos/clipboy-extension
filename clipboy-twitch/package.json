@@ -9,7 +9,7 @@
         "start": "gulp --env=development && webpack --env.ENV=development --watch --mode=development",
         "build": "gulp --env=production && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
-        "package": "gulp --env=production && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean",
+        "package": "gulp --env=production && gulp zxp-pre-clean && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean",
         "deploy": "node ./deploy/index.js --env=production",
         "deploy:qa": "node ./deploy/index.js --env=qa",
         "deploy:dev": "node ./deploy/index.js --env=development"
