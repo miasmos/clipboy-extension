@@ -10,8 +10,10 @@ const fs = require('fs');
 const fsp = require('fs').promises;
 const argv = require('yargs').argv;
 const del = require('del');
+const zip = require('gulp-zip');
+const pkg = require('./package.json');
 
-const destinationPath = './plugin/id.mxi_Resources';
+const destinationPath = './package/id.mxi_Resources';
 const environments = ['development', 'production', 'qa'];
 const defaultLocale = 'en_US';
 const { env } = argv;
@@ -84,6 +86,7 @@ gulp.task('default', async function() {
         ]
     );
 
+    await fsp.mkdir(destinationPath, { recursive: true });
     await Promise.all(
         xmlEntries.map(([locale, xml]) =>
             fsp.writeFile(`${destinationPath}/${locale}.xml`, xml)
@@ -122,19 +125,33 @@ gulp.task('default', async function() {
                 )
             )
             .pipe(rename({ basename: 'id' }))
-            .pipe(gulp.dest('plugin')),
+            .pipe(gulp.dest('package')),
+        gulp.src('./icon.png').pipe(gulp.dest('./package')),
         gulp
             .src('./template.xml')
             .pipe(replace(/\{id\}/g, config.name))
             .pipe(replace(/\{title\}/g, defaultTranslations['app.store.name']))
             .pipe(replace(/\{width\}/g, config.extendscript.width))
             .pipe(replace(/\{height\}/g, config.extendscript.height))
+            .pipe(replace(/\{version\}/g, pkg.version))
             .pipe(rename({ basename: 'manifest' }))
             .pipe(gulp.dest('plugin/CSXS'))
     );
 });
 
 gulp.task('zxp', function() {
-    del.sync(['./deploy/package.zxp']);
-    return gulp.src('./signing/package.zxp').pipe(gulp.dest('./deploy'));
+    return gulp
+        .src('./signing/package.zxp')
+        .pipe(gulp.dest('./package/Extension'));
+});
+
+gulp.task('zxp-zip', function() {
+    return gulp
+        .src('./package/**/*')
+        .pipe(zip('package.zip'))
+        .pipe(gulp.dest('./deploy'));
+});
+
+gulp.task('zxp-clean', function() {
+    return del(['./package']);
 });

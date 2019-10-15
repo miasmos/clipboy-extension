@@ -10,7 +10,7 @@ const rp = require('request-promise');
 const request = require('request');
 const dotenv = require('dotenv');
 
-const zxpPath = './package.zxp';
+const zxpPath = './package.zip';
 const notesPath = './release-notes.txt';
 const token = 'QFtiN3lkmX74cqcEnMtH6Oq4JFKDuYE8';
 const environments = ['development', 'production', 'qa'];

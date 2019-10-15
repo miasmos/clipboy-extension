@@ -22,6 +22,7 @@ import { save, load } from '@common/settings';
 import { Environment } from './environment.jsx';
 import { getClipMetadata, getClips } from '../api';
 
+const pkg = require('../../package.json');
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const BodyStyle = styled.div`
@@ -133,28 +134,20 @@ class BodyComponent extends React.Component {
     }
 
     save = async () => {
-        await save(this.state);
+        await save(this.state, pkg.name);
     };
 
     load = async () => {
-        const { start, end, target, count, mode } = await load();
+        const { start, end, ...rest } = await load(pkg.name);
         const init = {
             start: start ? new Date(start) : this.state.start,
-            end: end ? new Date(end) : this.state.end,
-            target: target ? target : this.state.target,
-            count: count ? Number(count) : this.state.count,
-            mode: mode ? mode : this.state.mode
+            end: end ? new Date(end) : this.state.end
         };
         await this.setStateAsync({
             ...init,
-            startIsValid: init.end instanceof Date,
-            endIsValid: init.end instanceof Date,
-            targetIsValid: !!(
-                target &&
-                typeof target === 'string' &&
-                target.length > 0
-            ),
-            countIsValid: !!(count && !isNaN(count) && count > 0)
+            ...rest,
+            startIsValid: init.start instanceof Date,
+            endIsValid: init.end instanceof Date
         });
     };
 
@@ -298,6 +291,7 @@ class BodyComponent extends React.Component {
                             countIsValid: count >= 10 && count <= 100
                         });
                         this.updateFormValidity();
+                        this.save();
                     }}
                     enabled={!working}
                     label={t('form.field.clipCount.label')}

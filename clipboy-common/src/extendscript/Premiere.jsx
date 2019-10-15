@@ -31,8 +31,8 @@ $._PPP_ = {
         app.project.save();
     },
 
-    loadSettings: function() {
-        var filename = 'premiere-twitch-import.settings.json';
+    loadSettings: function(project) {
+        var filename = project + '.settings.json';
         var projectPath = new File(app.project.path);
         var outPath = projectPath.parent + $._PPP_.getSep() + filename;
         var outFile = new File(outPath);
@@ -54,8 +54,8 @@ $._PPP_ = {
         return json;
     },
 
-    saveSettings: function(json) {
-        var filename = 'premiere-twitch-import.settings.json';
+    saveSettings: function(json, project) {
+        var filename = project + '.settings.json';
         var projectPath = new File(app.project.path);
         var outPath = projectPath.parent + $._PPP_.getSep() + filename;
         var outFile = new File(outPath);

@@ -18,13 +18,14 @@
     <update>{update}</update>
     <ui-access>{uidescription}</ui-access>
     <products>
-        <product familyname="Premiere"/>
+        <product familyname="Premiere" version="12"/>
     </products>
     <files>
         <file source="Extension/package.zxp"
             destination=""
             file-type="CSXS"
-            products="Premiere" />
+            products="Premiere"
+            minVersion="12.0" />
         <file source="id.mxi_Resources" destination="$resourceroot" isresourcefile="true" />
         <file source="icon.png" destination="$ExtensionSpecificEMStore" />
     </files>

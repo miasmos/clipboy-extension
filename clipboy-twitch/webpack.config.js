@@ -83,7 +83,10 @@ module.exports = async env => {
                 'process.env.ENV': JSON.stringify(env.ENV),
                 'process.env.LOCALES': JSON.stringify(resources)
             })
-        ]
+        ],
+        optimization: {
+            minimize: false
+        }
     };
 
     return config;

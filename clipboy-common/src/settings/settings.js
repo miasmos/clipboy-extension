@@ -5,26 +5,35 @@ export class SettingsClass {
         this.io = undefined;
     }
 
-    save = async settings => {
+    save = async (settings, name) => {
         if (this.io) {
             return;
         }
 
         this.io = true;
-        const result = await saveSettings(settings);
+        const result = await saveSettings(settings, name);
         this.io = false;
         return result;
     };
 
-    load = async () => {
+    load = async name => {
         if (this.io) {
             return;
         }
 
         this.io = true;
-        const [settings] = await loadSettings();
+        const [settings = {}] = await loadSettings(name);
         this.io = false;
-        return settings;
+
+        // cast integers to type number
+        return Object.entries(settings).reduce((prev, [key, value]) => {
+            const numberValue = parseInt(value);
+            const isNumber =
+                !isNaN(numberValue) &&
+                String(numberValue).length === value.length;
+            prev[key] = isNumber ? numberValue : value;
+            return prev;
+        }, {});
     };
 }
 

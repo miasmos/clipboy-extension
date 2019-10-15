@@ -15,16 +15,17 @@
     <license-agreement>
         <![CDATA[]]>
     </license-agreement>
-    <update>https://api.clipboy.dev/clipboy-twitch/latest</update>
+    <update>http://localhost/clipboy-twitch/latest</update>
     <ui-access>Download Twitch clips directly into Adobe with the click of a button.</ui-access>
     <products>
-        <product familyname="Premiere"/>
+        <product familyname="Premiere" version="12"/>
     </products>
     <files>
         <file source="Extension/package.zxp"
             destination=""
             file-type="CSXS"
-            products="Premiere" />
+            products="Premiere"
+            minVersion="12.0" />
         <file source="id.mxi_Resources" destination="$resourceroot" isresourcefile="true" />
         <file source="icon.png" destination="$ExtensionSpecificEMStore" />
     </files>
