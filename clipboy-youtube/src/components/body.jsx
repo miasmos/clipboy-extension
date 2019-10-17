@@ -140,8 +140,8 @@ class BodyComponent extends React.Component {
                 working: false,
                 hasError: true,
                 error: message,
-                currentItem: 0,
-                totalItems: 1,
+                bytesCurrent: 0,
+                bytesTotal: 0,
                 progress: 0,
                 complete: true
             });

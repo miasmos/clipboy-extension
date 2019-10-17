@@ -22,14 +22,6 @@
             <val>Download Youtube videos directly into Adobe with the click of a button.</val>
 
         </str>
-        <str name="update.message">
-            <val>A new version is available.</val>
-
-        </str>
-        <str name="update.link">
-            <val>Update now</val>
-
-        </str>
         <str name="form.field.id.label">
             <val>Video ID</val>
 
@@ -40,10 +32,6 @@
         </str>
         <str name="form.button.submit">
             <val>Import</val>
-
-        </str>
-        <str name="progress.message.medialeft">
-            <val>{{current}} of {{total}}</val>
 
         </str>
         <str name="progress.progress.percent">
@@ -66,10 +54,6 @@
             <val>Alright</val>
 
         </str>
-        <str name="error.video.failed">
-            <val>Failed to fetch video</val>
-
-        </str>
         <str name="error.generic">
             <val>An error occurred, that's all we know</val>
 
@@ -80,18 +64,6 @@
         </str>
         <str name="error.system.permission">
             <val>Couldn't write to the target folder</val>
-
-        </str>
-        <str name="error.network.toomany">
-            <val>Too many requests, try again later</val>
-
-        </str>
-        <str name="error.network.forbidden">
-            <val>You don't have permission to do that</val>
-
-        </str>
-        <str name="error.network.failed">
-            <val>The internet seems to be down, try again later</val>
 
         </str>
         <str name="error.youtube.payment">

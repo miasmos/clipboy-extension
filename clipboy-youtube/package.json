@@ -15,8 +15,8 @@
         "deploy:dev": "node ./deploy/index.js --env=development"
     },
     "extendscript": {
-        "width": 340,
-        "height": 480
+        "width": 335,
+        "height": 420
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",

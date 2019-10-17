@@ -52,8 +52,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 					<Menu>Clipboy for Youtube</Menu>
 					<Geometry>
 						<Size>
-							<Height>480</Height>
-							<Width>340</Width>
+							<Height>420</Height>
+							<Width>335</Width>
 						</Size>
 					</Geometry>
 				</UI>

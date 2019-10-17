@@ -13,6 +13,14 @@ const VideoInfoStyle = styled(Grid)`
     }
 `;
 
+const TitleStyle = styled(Typography)`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.5rem;
+`;
+
 export class VideoInfo extends React.Component {
     render() {
         const {
@@ -30,7 +38,7 @@ export class VideoInfo extends React.Component {
                 className={className}
                 css={css}
                 container
-                spacing={1}
+                spacing={2}
             >
                 <Grid item xs={6}>
                     {loading ? (
@@ -40,7 +48,7 @@ export class VideoInfo extends React.Component {
                     )}
                 </Grid>
                 <Grid item xs={6}>
-                    <Typography component="p">{title}</Typography>
+                    <TitleStyle component="p">{title}</TitleStyle>
                     <Typography component="p" color="textSecondary">
                         {author}
                     </Typography>
