@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "clipboy-twitch",
+    "clipboy-youtube",
     "clipboy-common"
   ]
 }

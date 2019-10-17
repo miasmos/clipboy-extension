@@ -6,3 +6,4 @@ export { Logo } from './logo.jsx';
 export { ProgressModal } from './progressModal.jsx';
 export { Slider } from './slider.jsx';
 export { Switch } from './switch.jsx';
+export { Dropdown } from './dropdown.jsx';

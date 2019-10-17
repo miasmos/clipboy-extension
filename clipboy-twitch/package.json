@@ -16,7 +16,7 @@
     },
     "extendscript": {
         "width": 340,
-        "height": 435
+        "height": 475
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",

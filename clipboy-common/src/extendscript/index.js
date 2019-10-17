@@ -2,7 +2,7 @@ import { evalJsxScript } from '@common/util';
 export const {
     getVersionInfo,
     getProjectPath,
-    importTwitchClips,
+    importMedia,
     addTwitchMetaData,
     loadSettings,
     saveSettings,

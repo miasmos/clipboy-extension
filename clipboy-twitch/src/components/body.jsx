@@ -12,8 +12,9 @@ import {
     DateDisplay,
     ProgressModal
 } from '@common/components';
+import { ErrorMessage } from '@common/components/message';
 import {
-    importTwitchClips,
+    importMedia,
     getProjectPath,
     addTwitchMetaData,
     getSep
@@ -107,7 +108,7 @@ class BodyComponent extends React.Component {
             } catch (error) {
                 console.error(error);
             }
-            await importTwitchClips(fullPath);
+            await importMedia(fullPath, 'mp4');
             await addTwitchMetaData(data);
             await this.setStateAsync({
                 complete: true
@@ -297,9 +298,7 @@ class BodyComponent extends React.Component {
                     label={t('form.field.clipCount.label')}
                     name="clipCount"
                 />
-                <Typography color="error" component="div">
-                    {hasError ? t(error) : <div>&nbsp;</div>}
-                </Typography>
+                <ErrorMessage show={hasError}>{t(error)}</ErrorMessage>
 
                 <ImportButton
                     label={t('form.button.submit')}

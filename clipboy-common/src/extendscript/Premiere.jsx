@@ -126,11 +126,17 @@ $._PPP_ = {
         }
     },
 
-    importTwitchClips: function(fullPath) {
+    importMedia: function(fullPath, filter) {
         if (app.project) {
             var files = [];
             var folder = Folder(fullPath);
-            var temp = folder.getFiles('*.mp4');
+
+            if (typeof filter === 'string') {
+                filter = new RegExp('/.+.(?:' + filter + ')$', 'i');
+            } else {
+                filter = '*';
+            }
+            var temp = folder.getFiles(filter);
             var index = 0;
 
             for (var i = 0; i < temp.length; i++) {

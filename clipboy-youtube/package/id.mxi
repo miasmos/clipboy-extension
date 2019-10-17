@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macromedia-extension
+    id="clipboy-youtube"
+    icon="icon.png"
+    name="Clipboy for Youtube"
+    name_resid="app.store.name"
+    requires-restart="true"
+    version="1.0.0"
+    ismultilingual="true">
+    <author name="Clipboy Software Inc."/>
+    <description>
+        <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        Download Youtube videos directly into Adobe with the click of a button.]]>
+    </description>
+    <license-agreement>
+        <![CDATA[]]>
+    </license-agreement>
+    <update>http://localhost/clipboy-youtube/latest</update>
+    <ui-access>Download Youtube videos directly into Adobe with the click of a button.</ui-access>
+    <products>
+        <product familyname="Premiere" version="12"/>
+    </products>
+    <files>
+        <file source="Extension/package.zxp"
+            destination=""
+            file-type="CSXS"
+            products="Premiere"
+            minVersion="12.0" />
+        <file source="id.mxi_Resources" destination="$resourceroot" isresourcefile="true" />
+        <file source="icon.png" destination="$ExtensionSpecificEMStore" />
+    </files>
+</macromedia-extension>

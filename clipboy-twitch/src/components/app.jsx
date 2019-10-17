@@ -6,7 +6,8 @@ import { Body } from './body.jsx';
 import { getTheme } from '@common/theme';
 import { GlobalStyle } from '@common/styles';
 
-const theme = getTheme();
+const pkg = require('../../package.json');
+const theme = getTheme(pkg.name);
 
 export const App = () => {
     return (

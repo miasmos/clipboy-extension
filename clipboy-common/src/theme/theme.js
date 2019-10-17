@@ -32,17 +32,25 @@ const getAppInfo = () => {
     };
 };
 
-const light = {
+const appColors = {
+    'clipboy-youtube': 'rgba(204, 0, 0, 1)',
+    'clipboy-twitch': 'rgba(145, 71, 255, 1)'
+};
+
+const light = app => ({
     palette: {
         common: { black: '#000', white: '#fff' },
         primary: {
-            main: 'rgba(145, 71, 255, 1)'
+            main: appColors[app]
         },
         secondary: {
             main: 'rgba(255,255,255,1)'
         },
         error: {
             main: 'rgba(233, 25, 22, 1)'
+        },
+        warning: {
+            main: 'rgba(233, 181, 22,1)'
         },
         text: {
             primary: 'rgba(0, 0, 0, 0.87)',
@@ -51,19 +59,22 @@ const light = {
             hint: 'rgba(0, 0, 0, 0.38)'
         }
     }
-};
+});
 
-const dark = {
+const dark = app => ({
     palette: {
         common: { black: '#000', white: '#fff' },
         primary: {
-            main: 'rgba(145, 71, 255, 1)'
+            main: appColors[app]
         },
         secondary: {
             main: 'rgba(0,0,0,1)'
         },
         error: {
             main: 'rgba(233, 25, 22, 1)'
+        },
+        warning: {
+            main: 'rgba(233, 181, 22,1)'
         },
         text: {
             primary: 'rgba(0, 0, 0, 0.96)',
@@ -72,12 +83,12 @@ const dark = {
             hint: 'rgba(0, 0, 0, 0.38)'
         }
     }
-};
+});
 
-export const getTheme = () => {
+export const getTheme = app => {
     const { colors, type, fontSize, fontFamily } = getAppInfo();
     document.body.bgColor = colors.panel;
-    const palette = type === 'dark' ? dark.palette : light.palette;
+    const palette = type === 'dark' ? dark(app).palette : light(app).palette;
 
     return createMuiTheme({
         type,

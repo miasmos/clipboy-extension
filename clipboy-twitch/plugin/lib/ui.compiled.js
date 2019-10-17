@@ -182,12 +182,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
   displayName: "button__ButtonStyle",
-  componentId: "sc-1hltca6-0"
+  componentId: "sc-1nb1z6h-0"
 })([""]);
 
 var _StyledButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(ButtonStyle).withConfig({
   displayName: "button___StyledButtonStyle",
-  componentId: "sc-1hltca6-1"
+  componentId: "sc-1nb1z6h-1"
 })(["", ""], function (p) {
   return p._css;
 });
@@ -246,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var CheckboxStyle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div.withConfig({
   displayName: "checkbox__CheckboxStyle",
-  componentId: "g39twl-0"
+  componentId: "xizld8-0"
 })([""]);
 var Checkbox =
 /*#__PURE__*/
@@ -331,7 +331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var DateDisplayStyle = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
   displayName: "dateDisplay__DateDisplayStyle",
-  componentId: "sc-152p3rv-0"
+  componentId: "g5bwaq-0"
 })(["display:flex;.input-wrapper{flex-grow:1;}.button-wrapper{display:flex;> *{margin-left:0.125rem;}}.MuiFormControl-root{width:100%;}"]);
 var DateDisplay = function DateDisplay(_ref) {
   var _React$createElement;
@@ -369,11 +369,127 @@ DateDisplay.propTypes = {
 
 /***/ }),
 
+/***/ "../clipboy-common/src/components/dropdown.jsx":
+/*!*****************************************************!*\
+  !*** ../clipboy-common/src/components/dropdown.jsx ***!
+  \*****************************************************/
+/*! exports provided: Dropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return Dropdown; });
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/inheritsLoose */ "../node_modules/@babel/runtime/helpers/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "../node_modules/@material-ui/core/esm/MenuItem/index.js");
+/* harmony import */ var _material_ui_core_InputLabel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/InputLabel */ "../node_modules/@material-ui/core/esm/InputLabel/index.js");
+/* harmony import */ var _material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/FormControl */ "../node_modules/@material-ui/core/esm/FormControl/index.js");
+/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Select */ "../node_modules/@material-ui/core/esm/Select/index.js");
+
+
+
+
+
+
+
+
+
+var DropdownStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_FormControl__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
+  displayName: "dropdown__DropdownStyle",
+  componentId: "ky4xe1-0"
+})(["width:100%;"]);
+
+var _StyledDropdownStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(DropdownStyle).withConfig({
+  displayName: "dropdown___StyledDropdownStyle",
+  componentId: "ky4xe1-1"
+})(["", ""], function (p) {
+  return p._css;
+});
+
+var Dropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(Dropdown, _React$Component);
+
+  function Dropdown() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+
+    _this.onChange = function (event) {
+      var onChange = _this.props.onChange;
+
+      if (onChange) {
+        onChange(event.target.value);
+      }
+    };
+
+    return _this;
+  }
+
+  var _proto = Dropdown.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        css = _this$props.css,
+        label = _this$props.label,
+        values = _this$props.values,
+        value = _this$props.value,
+        _this$props$enabled = _this$props.enabled,
+        enabled = _this$props$enabled === void 0 ? true : _this$props$enabled;
+    return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_StyledDropdownStyle, {
+      variant: "filled",
+      className: className,
+      disabled: !enabled,
+      _css: css
+    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core_InputLabel__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      htmlFor: label
+    }, label), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      value: value || '',
+      onChange: this.onChange,
+      inputProps: {
+        name: label,
+        id: label
+      }
+    }, values.map(function (_ref) {
+      var label = _ref.label,
+          value = _ref.value;
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        key: value,
+        value: value
+      }, label);
+    })));
+  };
+
+  return Dropdown;
+}(react__WEBPACK_IMPORTED_MODULE_2___default.a.Component);
+Dropdown.propTypes = {
+  className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+  css: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.object,
+  label: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+  value: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.any,
+  values: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.array,
+  onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func.isRequired,
+  enabled: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
+};
+
+/***/ }),
+
 /***/ "../clipboy-common/src/components/index.js":
 /*!*************************************************!*\
   !*** ../clipboy-common/src/components/index.js ***!
   \*************************************************/
-/*! exports provided: Button, Checkbox, DateDisplay, Input, Logo, ProgressModal, Slider, Switch */
+/*! exports provided: Button, Checkbox, DateDisplay, Input, Logo, ProgressModal, Slider, Switch, Dropdown */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -401,6 +517,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _switch_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./switch.jsx */ "../clipboy-common/src/components/switch.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return _switch_jsx__WEBPACK_IMPORTED_MODULE_7__["Switch"]; });
+
+/* harmony import */ var _dropdown_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dropdown.jsx */ "../clipboy-common/src/components/dropdown.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Dropdown", function() { return _dropdown_jsx__WEBPACK_IMPORTED_MODULE_8__["Dropdown"]; });
+
 
 
 
@@ -444,7 +564,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var InputStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_5__["default"])(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
   displayName: "input__InputStyle",
-  componentId: "sc-77ybjj-0"
+  componentId: "sc-13mfxns-0"
 })(["width:100%;label{display:block;margin-bottom:0.1875rem;}input{width:100%;margin-bottom:0.5rem;opacity:", ";transition:opacity 0.4s;}.MuiFormControl-root{width:100%;}"], function (_ref) {
   var _ref$disabled = _ref.disabled,
       disabled = _ref$disabled === void 0 ? false : _ref$disabled;
@@ -575,17 +695,247 @@ Input.propTypes = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Logo", function() { return Logo; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./svg */ "../clipboy-common/src/components/svg/index.js");
+
+
+
+
+
+var LogoStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "logo__LogoStyle",
+  componentId: "kgo9ll-0"
+})(["position:absolute;overflow:hidden;top:0;left:0;.background{transition:fill 0.3s;}", ""], function (_ref) {
+  var size = _ref.size;
+  return "\n        width: " + size + "rem;\n        height: " + size + "rem;\n    ";
+});
+
+var _StyledLogoStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(LogoStyle).withConfig({
+  displayName: "logo___StyledLogoStyle",
+  componentId: "kgo9ll-1"
+})(["", ""], function (p) {
+  return p._css;
+});
+
+var LogoSvgStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_svg__WEBPACK_IMPORTED_MODULE_3__["Logo"]).withConfig({
+  displayName: "logo__LogoSvgStyle",
+  componentId: "kgo9ll-2"
+})(["position:absolute;transition:transform 0.3s;", " &:hover{transform:translate(0,0);}"], function (_ref2) {
+  var size = _ref2.size;
+  return "\n        transform: translate(-" + size * 0.1 + "rem,-" + size * 0.1 + "rem);\n    ";
+});
+var Logo = function Logo(_ref3) {
+  var className = _ref3.className,
+      css = _ref3.css,
+      _ref3$size = _ref3.size,
+      size = _ref3$size === void 0 ? 5 : _ref3$size;
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledLogoStyle, {
+    className: className,
+    size: size,
+    _css: css
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(LogoSvgStyle, {
+    size: size
+  }));
+};
+Logo.propTypes = {
+  className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  css: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object,
+  size: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number
+};
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/message/errorMessage.jsx":
+/*!*****************************************************************!*\
+  !*** ../clipboy-common/src/components/message/errorMessage.jsx ***!
+  \*****************************************************************/
+/*! exports provided: ErrorMessage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorMessage", function() { return ErrorMessage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _material_ui_icons_Error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/Error */ "../node_modules/@material-ui/icons/Error.js");
+/* harmony import */ var _material_ui_icons_Error__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Error__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _messageWithIcon_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messageWithIcon.jsx */ "../clipboy-common/src/components/message/messageWithIcon.jsx");
 
 
-var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
-  displayName: "logo__LogoStyled",
-  componentId: "sc-1h8y28-0"
-})(["height:4.375rem;width:5.9375rem;background-size:contain;background-repeat:no-repeat;position:absolute;left:-1.8125rem;top:-1.5rem;z-index:2;transition:transform 0.2s ease-out,filter 0.4s;filter:grayscale(0);cursor:pointer;backface-visibility:hidden;transform:translateZ(0);-webkit-font-smoothing:subpixel-antialiased;&:hover{transform:translate(0.125rem,0.125rem);filter:grayscale(0.2);}background:url('data:image/png;base64,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');background-size:contain;background-repeat:no-repeat;"]);
-var Logo = function Logo() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LogoStyled, null);
+
+
+
+var ErrorMessageStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_messageWithIcon_jsx__WEBPACK_IMPORTED_MODULE_4__["MessageWithIcon"]).withConfig({
+  displayName: "errorMessage__ErrorMessageStyle",
+  componentId: "x00444-0"
+})(["color:", ";"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.palette.error.main;
+});
+var ErrorIconStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_icons_Error__WEBPACK_IMPORTED_MODULE_3___default.a).withConfig({
+  displayName: "errorMessage__ErrorIconStyle",
+  componentId: "x00444-1"
+})(["color:", ";"], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.palette.error.main;
+});
+var ErrorMessage = function ErrorMessage(_ref3) {
+  var className = _ref3.className,
+      children = _ref3.children,
+      _ref3$show = _ref3.show,
+      show = _ref3$show === void 0 ? false : _ref3$show;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ErrorMessageStyle, {
+    className: className,
+    show: show,
+    icon: ErrorIconStyle
+  }, children);
+};
+ErrorMessage.propTypes = {
+  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  show: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
+};
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/message/index.js":
+/*!*********************************************************!*\
+  !*** ../clipboy-common/src/components/message/index.js ***!
+  \*********************************************************/
+/*! exports provided: ErrorMessage, WarningMessage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _errorMessage_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./errorMessage.jsx */ "../clipboy-common/src/components/message/errorMessage.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ErrorMessage", function() { return _errorMessage_jsx__WEBPACK_IMPORTED_MODULE_0__["ErrorMessage"]; });
+
+/* harmony import */ var _warningMessage_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./warningMessage.jsx */ "../clipboy-common/src/components/message/warningMessage.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WarningMessage", function() { return _warningMessage_jsx__WEBPACK_IMPORTED_MODULE_1__["WarningMessage"]; });
+
+
+
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/message/messageWithIcon.jsx":
+/*!********************************************************************!*\
+  !*** ../clipboy-common/src/components/message/messageWithIcon.jsx ***!
+  \********************************************************************/
+/*! exports provided: MessageWithIcon */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageWithIcon", function() { return MessageWithIcon; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Grid */ "../node_modules/@material-ui/core/esm/Grid/index.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "../node_modules/@material-ui/core/esm/Typography/index.js");
+
+
+
+
+
+var MessageWithIconStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
+  displayName: "messageWithIcon__MessageWithIconStyle",
+  componentId: "sc-1gvs9pz-0"
+})(["padding:0.5rem 0;"]);
+var MessageWithIcon = function MessageWithIcon(_ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      Icon = _ref.icon,
+      _ref$show = _ref.show,
+      show = _ref$show === void 0 ? false : _ref$show;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MessageWithIconStyle, {
+    container: true,
+    alignItems: "center",
+    spacing: 2
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    item: true,
+    xs: 1
+  }, show && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    item: true,
+    xs: 11
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    className: className,
+    component: "div"
+  }, show ? children : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\xA0"))));
+};
+MessageWithIcon.propTypes = {
+  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  show: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool,
+  icon: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node
+};
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/message/warningMessage.jsx":
+/*!*******************************************************************!*\
+  !*** ../clipboy-common/src/components/message/warningMessage.jsx ***!
+  \*******************************************************************/
+/*! exports provided: WarningMessage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WarningMessage", function() { return WarningMessage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _material_ui_icons_Warning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/Warning */ "../node_modules/@material-ui/icons/Warning.js");
+/* harmony import */ var _material_ui_icons_Warning__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Warning__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _messageWithIcon_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messageWithIcon.jsx */ "../clipboy-common/src/components/message/messageWithIcon.jsx");
+
+
+
+
+
+var WarningMessageStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_messageWithIcon_jsx__WEBPACK_IMPORTED_MODULE_4__["MessageWithIcon"]).withConfig({
+  displayName: "warningMessage__WarningMessageStyle",
+  componentId: "e9ibfj-0"
+})(["color:", ";"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.palette.warning.main;
+});
+var WarningIconStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["default"])(_material_ui_icons_Warning__WEBPACK_IMPORTED_MODULE_3___default.a).withConfig({
+  displayName: "warningMessage__WarningIconStyle",
+  componentId: "e9ibfj-1"
+})(["color:", ";"], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.palette.warning.main;
+});
+var WarningMessage = function WarningMessage(_ref3) {
+  var className = _ref3.className,
+      children = _ref3.children,
+      _ref3$show = _ref3.show,
+      show = _ref3$show === void 0 ? false : _ref3$show;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WarningMessageStyle, {
+    className: className,
+    show: show,
+    icon: WarningIconStyle
+  }, children);
+};
+WarningMessage.propTypes = {
+  label: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  show: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool
 };
 
 /***/ }),
@@ -624,11 +974,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_7__["default"]).withConfig({
   displayName: "progressModal__ModalStyle",
-  componentId: "sc-1o0xcz7-0"
+  componentId: "sc-1mz2hny-0"
 })(["display:flex;align-items:center;justify-content:center;"]);
 var PaperStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "progressModal__PaperStyle",
-  componentId: "sc-1o0xcz7-1"
+  componentId: "sc-1mz2hny-1"
 })(["display:flex;align-items:center;justify-content:center;flex-direction:column;background-color:", ";border:0.125rem solid #000;box-shadow:", ";padding:", ";outline:0;border-radius:10px;border:0;"], function (_ref) {
   var theme = _ref.theme;
   return theme.palette.background["default"];
@@ -641,18 +991,18 @@ var PaperStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.w
 });
 var ProgressStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_CircularProgress__WEBPACK_IMPORTED_MODULE_5__["default"]).withConfig({
   displayName: "progressModal__ProgressStyle",
-  componentId: "sc-1o0xcz7-2"
+  componentId: "sc-1mz2hny-2"
 })(["margin:", "px;"], function (_ref4) {
   var theme = _ref4.theme;
   return theme.spacing(2);
 });
 var TitleStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_6__["default"]).withConfig({
   displayName: "progressModal__TitleStyle",
-  componentId: "sc-1o0xcz7-3"
+  componentId: "sc-1mz2hny-3"
 })(["position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:opacity 0.2s;"]);
 var ButtonStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_common_components__WEBPACK_IMPORTED_MODULE_4__["Button"]).withConfig({
   displayName: "progressModal__ButtonStyle",
-  componentId: "sc-1o0xcz7-4"
+  componentId: "sc-1mz2hny-4"
 })(["&&{transition:opacity 0.2s;cursor:default;opacity:0;", ";}"], function (_ref5) {
   var complete = _ref5.complete;
   return complete ? "\n        opacity: 1;\n        cursor: pointer;\n    " : '';
@@ -753,7 +1103,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var SliderStyle = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div.withConfig({
   displayName: "slider__SliderStyle",
-  componentId: "sc-19hkl8s-0"
+  componentId: "u8hhw0-0"
 })(["width:100%;margin-top:0.625rem;padding:0 0.5rem;box-sizing:border-box;"]);
 var Slider =
 /*#__PURE__*/
@@ -884,6 +1234,212 @@ Slider.propTypes = {
 
 /***/ }),
 
+/***/ "../clipboy-common/src/components/svg/Logo.js":
+/*!****************************************************!*\
+  !*** ../clipboy-common/src/components/svg/Logo.js ***!
+  \****************************************************/
+/*! exports provided: Logo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Logo", function() { return Logo; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ */ "../clipboy-common/src/components/svg/index.js");
+
+
+
+
+
+var SvgStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(___WEBPACK_IMPORTED_MODULE_3__["Svg"]).withConfig({
+  displayName: "Logo__SvgStyle",
+  componentId: "sc-26cs9b-0"
+})([".text{fill:", ";}.background{fill:", ";}"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.palette.common.white;
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.palette.primary.main;
+});
+
+var _StyledSvgStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(SvgStyle).withConfig({
+  displayName: "Logo___StyledSvgStyle",
+  componentId: "sc-26cs9b-1"
+})(["", ""], function (p) {
+  return p._css;
+});
+
+var Logo = function Logo(_ref3) {
+  var className = _ref3.className,
+      css = _ref3.css,
+      size = _ref3.size,
+      color = _ref3.color;
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledSvgStyle, {
+    className: className,
+    size: size,
+    color: color,
+    _css: css
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 115.65 96.67"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "transparent",
+    points: "47.48 85.94 51.45 85.76 51.75 42.59 47.77 42.76 47.48 85.94"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "transparent",
+    d: "M51.79,36.45a3,3,0,0,0,0-.44l0-.12a2,2,0,0,0-.07-.26l-.06-.12a1.14,1.14,0,0,0-.1-.19l-.09-.11-.14-.14a1.34,1.34,0,0,0-.23-.16h0l-.32-.13h0a2.84,2.84,0,0,0-.31-.06,3,3,0,0,0-.53,0h0c-1.33.07-2,.71-2,1.93a2.9,2.9,0,0,0,0,.43l0,.13a2.33,2.33,0,0,0,.07.25.41.41,0,0,0,.05.09s0,0,0,0a1.14,1.14,0,0,0,.1.19.6.6,0,0,0,.08.08l0,0a.86.86,0,0,0,.13.14l.05,0,.11.07h0l.12.08.08,0,.11,0h0l.14,0h0l.22,0h0a3,3,0,0,0,.61,0h0a2.58,2.58,0,0,0,1-.23A1.7,1.7,0,0,0,51.79,36.45Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M65.33,0H0V17.77H0V66.84L24.61,86.28h0l.06,0,.13.09.08.06h0a1,1,0,0,1-.18-.13l-.16-.1h0a3.08,3.08,0,0,1-.45-.44,2.73,2.73,0,0,1-.9-1.68l.26-37.4a2.78,2.78,0,0,1,1.09-2,3.33,3.33,0,0,1,2-1l5-.23a2,2,0,0,1,.48,0h0a3.1,3.1,0,0,1,.47.14h0a3.06,3.06,0,0,1,.5.27h0c.17.11.34.24.52.38a2.51,2.51,0,0,1,1.06,1.89l-.05,8.82-3.84.18.06-7.83-3.56.16,0,4.87L27.16,69l0,3.19L27.09,80l0,3,3.55-.16L30.68,75l3.83-.17,0,8.17,4.23,3.35.37-55,3.84-.16,0,2.48v1.88l0,3.3-.28,43.19,0,4.09L55.85,96.59l.36-54.2,8.1-.36a1.89,1.89,0,0,1,.47,0h0a2.21,2.21,0,0,1,.48.15h0a3.43,3.43,0,0,1,.5.26l0,0a5.24,5.24,0,0,1,.52.38,2.48,2.48,0,0,1,1.06,1.89L67.2,78v1.49l6.16,4.87h.05l-.07,0a1.42,1.42,0,0,1-.13-.12l-.1-.09,0,0L73,84l-.07-.09-.1-.11-.07-.08a3.55,3.55,0,0,1-.85-2l.35-51.78,3.83-.18,0,4.54v2.91h0v.42h0v.09l0,3.76,4.53-.2a.54.54,0,0,1,.21.05h0a.65.65,0,0,1,.2.15,1,1,0,0,1,.39,0h0a1.22,1.22,0,0,1,.24.1l.14.06h0a2.22,2.22,0,0,1,.32.24,3.12,3.12,0,0,1,.46.44,2.84,2.84,0,0,1,.86,1.69l-.22,33.39v1.06l6.18,4.88h0l.06,0,.14.09.07,0h0a1,1,0,0,1-.18-.13.76.76,0,0,1-.16-.11h0a3.7,3.7,0,0,1-.46-.44A2.66,2.66,0,0,1,88,81.24l.25-37.39a2.84,2.84,0,0,1,1.1-2,3.46,3.46,0,0,1,2.07-1l4.94-.21a1.94,1.94,0,0,1,.48,0h0a2.21,2.21,0,0,1,.48.15h0a3.54,3.54,0,0,1,.5.27h0a5.41,5.41,0,0,1,.52.39,2.49,2.49,0,0,1,1.07,1.88l-.23,33v4.38a2.21,2.21,0,0,1-.09.49,4,4,0,0,1-.94,1.44,5.67,5.67,0,0,1-.46.42,2.42,2.42,0,0,1-1.4.68l-2.54.11L107.88,95l0-3.88,3.56-.16,0-7.9-4.53.2-.06,0h-.09l0,0a.58.58,0,0,1-.15-.13h0a1,1,0,0,1-.29.06.74.74,0,0,1-.35-.06l-.08,0,0,0a.89.89,0,0,1-.25-.14l-.06-.05-.14-.12a.47.47,0,0,1-.1-.1s0,0,0,0l-.06-.07-.07-.08-.1-.12-.06-.08a3.48,3.48,0,0,1-.86-2l.26-40,3.84-.17L108,76.41l0,3,3.56-.16.27-39.29,3.84-.18ZM51.45,85.76l-4,.18.29-43.18,4-.17Zm-1.6-47.39h0a3,3,0,0,1-.61,0h0l-.22,0h0l-.14,0h0l-.11,0-.08,0-.12-.08h0L48.38,38l-.05,0a.86.86,0,0,1-.13-.14l0,0a.6.6,0,0,1-.08-.08,1.14,1.14,0,0,1-.1-.19s0,0,0,0a.41.41,0,0,1-.05-.09,2.33,2.33,0,0,1-.07-.25l0-.13a2.9,2.9,0,0,1,0-.43c0-1.22.68-1.86,2-1.93h0a3,3,0,0,1,.53,0,2.84,2.84,0,0,1,.31.06h0l.32.13h0a1.34,1.34,0,0,1,.23.16l.14.14.09.11a1.14,1.14,0,0,1,.1.19l.06.12a2,2,0,0,1,.07.26l0,.12a3,3,0,0,1,0,.44,1.7,1.7,0,0,1-.95,1.69A2.58,2.58,0,0,1,49.85,38.37Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M90.71,84h0s0,0,0,0h0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M90.18,83.79h.26l.11.08h0l0,0-.16-.12A1.24,1.24,0,0,1,90.18,83.79Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M89.84,83.69l-.09,0h0l0,0,.11,0,0,0h0l0,0H90l-.06,0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "background",
+    points: "95.6 44.52 92.04 44.67 91.83 77.14 91.81 80.09 95.37 79.93 95.6 44.52"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M74.67,84.7h-.06l0,0h.11l-.06,0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M74.4,84.53l.1.08h0s0,0,0,0l-.16-.12Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M73.64,84.48l0,0,0,0h0l-.08,0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "background",
+    points: "75.78 77.85 75.76 80.8 79.32 80.65 79.56 45.23 76 45.38 75.78 77.85"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "background",
+    points: "59.8 78.56 59.78 81.51 63.34 81.35 63.58 45.94 60.02 46.1 59.8 78.56"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M25.44,86.67h-.07l.06,0h.29A1.27,1.27,0,0,1,25.44,86.67Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "background",
+    d: "M25.09,86.56l-.09,0h0l.1,0,.05,0h.11s-.05,0-.08,0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M111.54,79.21l-3.56.16,0-3,.24-36.34-3.84.17-.26,40a3.48,3.48,0,0,0,.86,2l.06.08.1.12.07.08.06.07s0,0,0,0a.47.47,0,0,0,.1.1l.14.12.06.05a.89.89,0,0,0,.25.14l0,0,.08,0a.74.74,0,0,0,.35.06,1,1,0,0,0,.29-.06h0a.58.58,0,0,0,.15.13l0,0h.09l.06,0,4.53-.2,0,7.9-3.56.16,0,3.88,4.55-.21a2.94,2.94,0,0,0,1.84-1.1,3,3,0,0,0,1-1.91l.35-52.07-3.84.18Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M97.71,83.09a5.67,5.67,0,0,0,.46-.42,4,4,0,0,0,.94-1.44,2.21,2.21,0,0,0,.09-.49V76.36l.23-33a2.49,2.49,0,0,0-1.07-1.88,5.41,5.41,0,0,0-.52-.39h0a3.54,3.54,0,0,0-.5-.27h0a2.21,2.21,0,0,0-.48-.15h0a1.94,1.94,0,0,0-.48,0l-4.94.21a3.46,3.46,0,0,0-2.07,1,2.84,2.84,0,0,0-1.1,2L88,81.24a2.66,2.66,0,0,0,.89,1.69,3.7,3.7,0,0,0,.46.44h0a.76.76,0,0,0,.16.11,1,1,0,0,0,.18.13l.06,0h0l.09,0,.11,0,.06,0,.1,0h.07a1.24,1.24,0,0,0,.27,0l.16.12,0,0h.14l3-.13,2.54-.11A2.42,2.42,0,0,0,97.71,83.09Zm-5.88-6L92,44.67l3.56-.16-.23,35.42-3.56.16Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M83.18,77.46l.22-33.39a2.84,2.84,0,0,0-.86-1.69,3.12,3.12,0,0,0-.46-.44,2.22,2.22,0,0,0-.32-.24h0l-.14-.06a1.22,1.22,0,0,0-.24-.1h0a1,1,0,0,0-.39,0,.65.65,0,0,0-.2-.15h0a.54.54,0,0,0-.21-.05L76,41.5l0-3.76v-.09h0v-.42h0V34.26l0-4.54-3.83.18-.35,51.78a3.55,3.55,0,0,0,.85,2l.07.08.1.11L73,84l.06.07,0,0,.1.09a1.42,1.42,0,0,0,.13.12l.07,0a1.58,1.58,0,0,0,.24.15l0,0,.08,0a1.12,1.12,0,0,0,.35.06,1,1,0,0,0,.29-.07h0l.16.12,0,0h.08l.06,0,5.54-.24a3,3,0,0,0,1.83-1.11,3,3,0,0,0,1-1.91l0-2.94Zm-3.86,3.19-3.56.15,0-3L76,45.38l3.56-.15Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M67.2,78l.22-33.17a2.48,2.48,0,0,0-1.06-1.89,5.24,5.24,0,0,0-.52-.38l0,0a3.43,3.43,0,0,0-.5-.26h0a2.21,2.21,0,0,0-.48-.15h0a1.89,1.89,0,0,0-.47,0l-8.1.36L55.9,96.67l3.84-.16V85.39l4.54-.2a4,4,0,0,0,2.88-3l0-2.73Zm-3.86,3.4-3.55.16v-3L60,46.1l3.56-.16Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "text",
+    points: "47.77 42.76 47.48 85.94 51.45 85.76 51.75 42.59 47.77 42.76"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M48.49,38.1h0l.12.08.08,0,.11,0h0l.14,0h0l.22,0h0a3,3,0,0,0,.61,0h0a2.58,2.58,0,0,0,1-.23,1.7,1.7,0,0,0,.95-1.69,3,3,0,0,0,0-.44l0-.12a2,2,0,0,0-.07-.26l-.06-.12a1.14,1.14,0,0,0-.1-.19l-.09-.11-.14-.14a1.34,1.34,0,0,0-.23-.16h0l-.32-.13h0a2.84,2.84,0,0,0-.31-.06,3,3,0,0,0-.53,0h0c-1.33.07-2,.71-2,1.93a2.9,2.9,0,0,0,0,.43l0,.13a2.33,2.33,0,0,0,.07.25.41.41,0,0,0,.05.09s0,0,0,0a1.14,1.14,0,0,0,.1.19.6.6,0,0,0,.08.08l0,0a.86.86,0,0,0,.13.14l.05,0Z"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("polygon", {
+    className: "text",
+    points: "42.56 82.06 42.84 38.87 42.87 35.57 42.88 33.69 42.9 31.21 39.06 31.37 38.69 86.33 41.73 86.19 42.53 86.16 42.56 82.06"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("path", {
+    className: "text",
+    d: "M34.51,74.81,30.68,75l-.06,7.83L27.07,83l0-3,.05-7.83,0-3.19.12-16.57,0-4.87,3.56-.16-.06,7.83,3.84-.18.05-8.82a2.51,2.51,0,0,0-1.06-1.89c-.18-.14-.35-.27-.52-.38h0a3.06,3.06,0,0,0-.5-.27h0a3.1,3.1,0,0,0-.47-.14h0a2,2,0,0,0-.48,0l-5,.23a3.33,3.33,0,0,0-2,1,2.78,2.78,0,0,0-1.09,2l-.26,37.4a2.73,2.73,0,0,0,.9,1.68,3.08,3.08,0,0,0,.45.44h0l.16.1a1,1,0,0,0,.18.13l.07,0h0l.09,0,.1,0s0,0,.08,0l.1,0h.07a1.27,1.27,0,0,0,.28,0,.53.53,0,0,0,.12.1l0,0,0,0H26s0,0,.06,0l5.51-.24a3,3,0,0,0,1.85-1.11,3,3,0,0,0,1-1.92V83Z"
+  })));
+};
+Logo.propTypes = {
+  className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  css: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  size: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+  color: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
+};
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/svg/Svg.js":
+/*!***************************************************!*\
+  !*** ../clipboy-common/src/components/svg/Svg.js ***!
+  \***************************************************/
+/*! exports provided: Svg */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Svg", function() { return Svg; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var SvgStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "Svg__SvgStyle",
+  componentId: "ubthpf-0"
+})(["", " .transparent{fill:none;}"], function (_ref) {
+  var size = _ref.size;
+  return "\n        width: " + size + "rem;\n        height: " + size + "rem;\n    ";
+});
+
+var _StyledSvgStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(SvgStyle).withConfig({
+  displayName: "Svg___StyledSvgStyle",
+  componentId: "ubthpf-1"
+})(["", ""], function (p) {
+  return p._css;
+});
+
+var Svg = function Svg(_ref2) {
+  var className = _ref2.className,
+      css = _ref2.css,
+      size = _ref2.size,
+      color = _ref2.color,
+      children = _ref2.children;
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_StyledSvgStyle, {
+    className: className,
+    size: size,
+    color: color,
+    _css: css
+  }, children);
+};
+Svg.propTypes = {
+  className: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  css: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  size: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number,
+  color: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.node
+};
+
+/***/ }),
+
+/***/ "../clipboy-common/src/components/svg/index.js":
+/*!*****************************************************!*\
+  !*** ../clipboy-common/src/components/svg/index.js ***!
+  \*****************************************************/
+/*! exports provided: Svg, Logo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Svg */ "../clipboy-common/src/components/svg/Svg.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Svg", function() { return _Svg__WEBPACK_IMPORTED_MODULE_0__["Svg"]; });
+
+/* harmony import */ var _Logo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Logo */ "../clipboy-common/src/components/svg/Logo.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Logo", function() { return _Logo__WEBPACK_IMPORTED_MODULE_1__["Logo"]; });
+
+
+
+
+/***/ }),
+
 /***/ "../clipboy-common/src/components/switch.jsx":
 /*!***************************************************!*\
   !*** ../clipboy-common/src/components/switch.jsx ***!
@@ -944,14 +1500,14 @@ Switch.propTypes = {
 /*!***************************************************!*\
   !*** ../clipboy-common/src/extendscript/index.js ***!
   \***************************************************/
-/*! exports provided: getVersionInfo, getProjectPath, importTwitchClips, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep, getLocale */
+/*! exports provided: getVersionInfo, getProjectPath, importMedia, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep, getLocale */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVersionInfo", function() { return getVersionInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjectPath", function() { return getProjectPath; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "importTwitchClips", function() { return importTwitchClips; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "importMedia", function() { return importMedia; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTwitchMetaData", function() { return addTwitchMetaData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadSettings", function() { return loadSettings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveSettings", function() { return saveSettings; });
@@ -963,7 +1519,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var getVersionInfo = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getVersionInfo,
     getProjectPath = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getProjectPath,
-    importTwitchClips = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].importTwitchClips,
+    importMedia = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].importMedia,
     addTwitchMetaData = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].addTwitchMetaData,
     loadSettings = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].loadSettings,
     saveSettings = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings,
@@ -1218,53 +1774,70 @@ var getAppInfo = function getAppInfo() {
   };
 };
 
-var light = {
-  palette: {
-    common: {
-      black: '#000',
-      white: '#fff'
-    },
-    primary: {
-      main: 'rgba(145, 71, 255, 1)'
-    },
-    secondary: {
-      main: 'rgba(255,255,255,1)'
-    },
-    error: {
-      main: 'rgba(233, 25, 22, 1)'
-    },
-    text: {
-      primary: 'rgba(0, 0, 0, 0.87)',
-      secondary: 'rgba(0, 0, 0, 0.54)',
-      disabled: 'rgba(0, 0, 0, 0.38)',
-      hint: 'rgba(0, 0, 0, 0.38)'
-    }
-  }
+var appColors = {
+  'clipboy-youtube': 'rgba(204, 0, 0, 1)',
+  'clipboy-twitch': 'rgba(145, 71, 255, 1)'
 };
-var dark = {
-  palette: {
-    common: {
-      black: '#000',
-      white: '#fff'
-    },
-    primary: {
-      main: 'rgba(145, 71, 255, 1)'
-    },
-    secondary: {
-      main: 'rgba(0,0,0,1)'
-    },
-    error: {
-      main: 'rgba(233, 25, 22, 1)'
-    },
-    text: {
-      primary: 'rgba(0, 0, 0, 0.96)',
-      secondary: 'rgba(0, 0, 0, 0.54)',
-      disabled: 'rgba(0, 0, 0, 0.38)',
-      hint: 'rgba(0, 0, 0, 0.38)'
+
+var light = function light(app) {
+  return {
+    palette: {
+      common: {
+        black: '#000',
+        white: '#fff'
+      },
+      primary: {
+        main: appColors[app]
+      },
+      secondary: {
+        main: 'rgba(255,255,255,1)'
+      },
+      error: {
+        main: 'rgba(233, 25, 22, 1)'
+      },
+      warning: {
+        main: 'rgba(233, 181, 22,1)'
+      },
+      text: {
+        primary: 'rgba(0, 0, 0, 0.87)',
+        secondary: 'rgba(0, 0, 0, 0.54)',
+        disabled: 'rgba(0, 0, 0, 0.38)',
+        hint: 'rgba(0, 0, 0, 0.38)'
+      }
     }
-  }
+  };
 };
-var getTheme = function getTheme() {
+
+var dark = function dark(app) {
+  return {
+    palette: {
+      common: {
+        black: '#000',
+        white: '#fff'
+      },
+      primary: {
+        main: appColors[app]
+      },
+      secondary: {
+        main: 'rgba(0,0,0,1)'
+      },
+      error: {
+        main: 'rgba(233, 25, 22, 1)'
+      },
+      warning: {
+        main: 'rgba(233, 181, 22,1)'
+      },
+      text: {
+        primary: 'rgba(0, 0, 0, 0.96)',
+        secondary: 'rgba(0, 0, 0, 0.54)',
+        disabled: 'rgba(0, 0, 0, 0.38)',
+        hint: 'rgba(0, 0, 0, 0.38)'
+      }
+    }
+  };
+};
+
+var getTheme = function getTheme(app) {
   var _getAppInfo = getAppInfo(),
       colors = _getAppInfo.colors,
       type = _getAppInfo.type,
@@ -1272,7 +1845,7 @@ var getTheme = function getTheme() {
       fontFamily = _getAppInfo.fontFamily;
 
   document.body.bgColor = colors.panel;
-  var palette = type === 'dark' ? dark.palette : light.palette;
+  var palette = type === 'dark' ? dark(app).palette : light(app).palette;
   return Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["createMuiTheme"])({
     type: type,
     palette: _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
@@ -2103,6 +2676,23 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 module.exports = _inheritsLoose;
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js":
+/*!***********************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
 
 /***/ }),
 
@@ -9437,6 +10027,349 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "../node_modules/@material-ui/core/esm/ListItem/ListItem.js":
+/*!******************************************************************!*\
+  !*** ../node_modules/@material-ui/core/esm/ListItem/ListItem.js ***!
+  \******************************************************************/
+/*! exports provided: styles, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "../node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "../node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _material_ui_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/utils */ "../node_modules/@material-ui/utils/esm/index.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "../node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _ButtonBase__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../ButtonBase */ "../node_modules/@material-ui/core/esm/ButtonBase/index.js");
+/* harmony import */ var _utils_isMuiElement__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/isMuiElement */ "../node_modules/@material-ui/core/esm/utils/isMuiElement.js");
+/* harmony import */ var _utils_useForkRef__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/useForkRef */ "../node_modules/@material-ui/core/esm/utils/useForkRef.js");
+/* harmony import */ var _List_ListContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../List/ListContext */ "../node_modules/@material-ui/core/esm/List/ListContext.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-dom */ "../node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_11__);
+
+
+
+
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the (normally root) `component` element. May be wrapped by a `container`. */
+    root: {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      position: 'relative',
+      textDecoration: 'none',
+      width: '100%',
+      boxSizing: 'border-box',
+      textAlign: 'left',
+      paddingTop: 8,
+      paddingBottom: 8,
+      '&$focusVisible': {
+        backgroundColor: theme.palette.action.selected
+      },
+      '&$selected, &$selected:hover': {
+        backgroundColor: theme.palette.action.selected
+      },
+      '&$disabled': {
+        opacity: 0.5
+      }
+    },
+
+    /* Styles applied to the `container` element if `children` includes `ListItemSecondaryAction`. */
+    container: {
+      position: 'relative'
+    },
+
+    /* Pseudo-class applied to the `component`'s `focusVisibleClassName` prop if `button={true}`. */
+    focusVisible: {},
+
+    /* Styles applied to the `component` element if dense. */
+    dense: {
+      paddingTop: 4,
+      paddingBottom: 4
+    },
+
+    /* Styles applied to the `component` element if `alignItems="flex-start"`. */
+    alignItemsFlexStart: {
+      alignItems: 'flex-start'
+    },
+
+    /* Pseudo-class applied to the inner `component` element if `disabled={true}`. */
+    disabled: {},
+
+    /* Styles applied to the inner `component` element if `divider={true}`. */
+    divider: {
+      borderBottom: "1px solid ".concat(theme.palette.divider),
+      backgroundClip: 'padding-box'
+    },
+
+    /* Styles applied to the inner `component` element if `disableGutters={false}`. */
+    gutters: {
+      paddingLeft: 16,
+      paddingRight: 16
+    },
+
+    /* Styles applied to the inner `component` element if `button={true}`. */
+    button: {
+      transition: theme.transitions.create('background-color', {
+        duration: theme.transitions.duration.shortest
+      }),
+      '&:hover': {
+        textDecoration: 'none',
+        backgroundColor: theme.palette.action.hover,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+
+    /* Styles applied to the `component` element if `children` includes `ListItemSecondaryAction`. */
+    secondaryAction: {
+      // Add some space to avoid collision as `ListItemSecondaryAction`
+      // is absolutely positioned.
+      paddingRight: 48
+    },
+
+    /* Pseudo-class applied to the root element if `selected={true}`. */
+    selected: {}
+  };
+};
+var useEnhancedEffect = typeof window === 'undefined' ? react__WEBPACK_IMPORTED_MODULE_2___default.a.useEffect : react__WEBPACK_IMPORTED_MODULE_2___default.a.useLayoutEffect;
+/**
+ * Uses an additional container component if `ListItemSecondaryAction` is the last child.
+ */
+
+var ListItem = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function ListItem(props, ref) {
+  var _props$alignItems = props.alignItems,
+      alignItems = _props$alignItems === void 0 ? 'center' : _props$alignItems,
+      _props$autoFocus = props.autoFocus,
+      autoFocus = _props$autoFocus === void 0 ? false : _props$autoFocus,
+      _props$button = props.button,
+      button = _props$button === void 0 ? false : _props$button,
+      childrenProp = props.children,
+      classes = props.classes,
+      className = props.className,
+      componentProp = props.component,
+      _props$ContainerCompo = props.ContainerComponent,
+      ContainerComponent = _props$ContainerCompo === void 0 ? 'li' : _props$ContainerCompo,
+      _props$ContainerProps = props.ContainerProps;
+  _props$ContainerProps = _props$ContainerProps === void 0 ? {} : _props$ContainerProps;
+
+  var ContainerClassName = _props$ContainerProps.className,
+      ContainerProps = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_props$ContainerProps, ["className"]),
+      dense = props.dense,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
+      _props$disableGutters = props.disableGutters,
+      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
+      _props$divider = props.divider,
+      divider = _props$divider === void 0 ? false : _props$divider,
+      focusVisibleClassName = props.focusVisibleClassName,
+      _props$selected = props.selected,
+      selected = _props$selected === void 0 ? false : _props$selected,
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["alignItems", "autoFocus", "button", "children", "classes", "className", "component", "ContainerComponent", "ContainerProps", "dense", "disabled", "disableGutters", "divider", "focusVisibleClassName", "selected"]);
+
+  var context = react__WEBPACK_IMPORTED_MODULE_2___default.a.useContext(_List_ListContext__WEBPACK_IMPORTED_MODULE_10__["default"]);
+  var childContext = {
+    dense: dense || context.dense || false,
+    alignItems: alignItems
+  };
+  var listItemRef = react__WEBPACK_IMPORTED_MODULE_2___default.a.useRef(null);
+  useEnhancedEffect(function () {
+    if (autoFocus) {
+      if (listItemRef.current) {
+        listItemRef.current.focus();
+      } else if (true) {
+        console.error('Material-UI: unable to set focus to a ListItem whose component has not been rendered.');
+      }
+    }
+  }, [autoFocus]);
+  var children = react__WEBPACK_IMPORTED_MODULE_2___default.a.Children.toArray(childrenProp);
+  var hasSecondaryAction = children.length && Object(_utils_isMuiElement__WEBPACK_IMPORTED_MODULE_8__["default"])(children[children.length - 1], ['ListItemSecondaryAction']);
+  var handleOwnRef = react__WEBPACK_IMPORTED_MODULE_2___default.a.useCallback(function (instance) {
+    // #StrictMode ready
+    listItemRef.current = react_dom__WEBPACK_IMPORTED_MODULE_11___default.a.findDOMNode(instance);
+  }, []);
+  var handleRef = Object(_utils_useForkRef__WEBPACK_IMPORTED_MODULE_9__["default"])(handleOwnRef, ref);
+
+  var componentProps = Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: Object(clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.root, className, childContext.dense && classes.dense, !disableGutters && classes.gutters, divider && classes.divider, disabled && classes.disabled, button && classes.button, alignItems !== "center" && classes.alignItemsFlexStart, hasSecondaryAction && classes.secondaryAction, selected && classes.selected),
+    disabled: disabled
+  }, other);
+
+  var Component = componentProp || 'li';
+
+  if (button) {
+    componentProps.component = componentProp || 'div';
+    componentProps.focusVisibleClassName = Object(clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.focusVisible, focusVisibleClassName);
+    Component = _ButtonBase__WEBPACK_IMPORTED_MODULE_7__["default"];
+  }
+
+  if (hasSecondaryAction) {
+    // Use div by default.
+    Component = !componentProps.component && !componentProp ? 'div' : Component; // Avoid nesting of li > li.
+
+    if (ContainerComponent === 'li') {
+      if (Component === 'li') {
+        Component = 'div';
+      } else if (componentProps.component === 'li') {
+        componentProps.component = 'div';
+      }
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_List_ListContext__WEBPACK_IMPORTED_MODULE_10__["default"].Provider, {
+      value: childContext
+    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(ContainerComponent, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      className: Object(clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.container, ContainerClassName),
+      ref: handleRef
+    }, ContainerProps), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, componentProps, children), children.pop()));
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_List_ListContext__WEBPACK_IMPORTED_MODULE_10__["default"].Provider, {
+    value: childContext
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: handleRef
+  }, componentProps), children));
+});
+ true ? ListItem.propTypes = {
+  /**
+   * Defines the `align-items` style property.
+   */
+  alignItems: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['flex-start', 'center']),
+
+  /**
+   * If `true`, the list item will be focused during the first mount.
+   * Focus will also be triggered if the value changes from false to true.
+   */
+  autoFocus: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * If `true`, the list item will be a button (using `ButtonBase`). Props intended
+   * for `ButtonBase` can then be applied to `ListItem`.
+   */
+  button: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * The content of the component. If a `ListItemSecondaryAction` is used it must
+   * be the last child.
+   */
+  children: Object(_material_ui_utils__WEBPACK_IMPORTED_MODULE_5__["chainPropTypes"])(prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.node, function (props) {
+    var children = react__WEBPACK_IMPORTED_MODULE_2___default.a.Children.toArray(props.children); // React.Children.toArray(props.children).findLastIndex(isListItemSecondaryAction)
+
+    var secondaryActionIndex = -1;
+
+    for (var i = children.length - 1; i >= 0; i -= 1) {
+      var child = children[i];
+
+      if (Object(_utils_isMuiElement__WEBPACK_IMPORTED_MODULE_8__["default"])(child, ['ListItemSecondaryAction'])) {
+        secondaryActionIndex = i;
+        break;
+      }
+    } //  is ListItemSecondaryAction the last child of ListItem
+
+
+    if (secondaryActionIndex !== -1 && secondaryActionIndex !== children.length - 1) {
+      return new Error('Material-UI: you used an element after ListItemSecondaryAction. ' + 'For ListItem to detect that it has a secondary action ' + 'you must pass it as the last child to ListItem.');
+    }
+
+    return null;
+  }),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+   */
+  component: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.elementType,
+
+  /**
+   * The container component used when a `ListItemSecondaryAction` is the last child.
+   */
+  ContainerComponent: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.elementType,
+
+  /**
+   * Props applied to the container component if used.
+   */
+  ContainerProps: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.object,
+
+  /**
+   * If `true`, compact vertical padding designed for keyboard and mouse input will be used.
+   */
+  dense: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * If `true`, the list item will be disabled.
+   */
+  disabled: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * If `true`, the left and right padding is removed.
+   */
+  disableGutters: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * If `true`, a 1px light border is added to the bottom of the list item.
+   */
+  divider: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * @ignore
+   */
+  focusVisibleClassName: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+
+  /**
+   * Use to apply selected styling.
+   */
+  selected: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
+} : undefined;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__["default"])(styles, {
+  name: 'MuiListItem'
+})(ListItem));
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/core/esm/ListItem/index.js":
+/*!***************************************************************!*\
+  !*** ../node_modules/@material-ui/core/esm/ListItem/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListItem */ "../node_modules/@material-ui/core/esm/ListItem/ListItem.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _ListItem__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+/***/ }),
+
 /***/ "../node_modules/@material-ui/core/esm/Menu/Menu.js":
 /*!**********************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/Menu/Menu.js ***!
@@ -9722,6 +10655,170 @@ var Menu = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Menu
 /* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_5__["default"])(styles, {
   name: 'MuiMenu'
 })(Menu));
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/core/esm/MenuItem/MenuItem.js":
+/*!******************************************************************!*\
+  !*** ../node_modules/@material-ui/core/esm/MenuItem/MenuItem.js ***!
+  \******************************************************************/
+/*! exports provided: styles, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "../node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "../node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! clsx */ "../node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "../node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../ListItem */ "../node_modules/@material-ui/core/esm/ListItem/index.js");
+
+
+
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, theme.typography.body1, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      minHeight: 48,
+      paddingTop: 6,
+      paddingBottom: 6,
+      boxSizing: 'border-box',
+      width: 'auto',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap'
+    }, theme.breakpoints.up('sm'), {
+      minHeight: 'auto'
+    })),
+    // TODO To remove in v5?
+
+    /* Styles applied to the root element if `disableGutters={false}`. */
+    gutters: {},
+
+    /* Styles applied to the root element if `selected={true}`. */
+    selected: {},
+
+    /* Styles applied to the root element if dense. */
+    dense: Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, theme.typography.body2, {
+      minHeight: 'auto'
+    })
+  };
+};
+var MenuItem = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function MenuItem(props, ref) {
+  var classes = props.classes,
+      className = props.className,
+      _props$component = props.component,
+      component = _props$component === void 0 ? 'li' : _props$component,
+      _props$disableGutters = props.disableGutters,
+      disableGutters = _props$disableGutters === void 0 ? false : _props$disableGutters,
+      _props$role = props.role,
+      role = _props$role === void 0 ? 'menuitem' : _props$role,
+      selected = props.selected,
+      tabIndexProp = props.tabIndex,
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(props, ["classes", "className", "component", "disableGutters", "role", "selected", "tabIndex"]);
+
+  var tabIndex;
+
+  if (!props.disabled) {
+    tabIndex = tabIndexProp !== undefined ? tabIndexProp : -1;
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_ListItem__WEBPACK_IMPORTED_MODULE_7__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    button: true,
+    role: role,
+    tabIndex: tabIndex,
+    component: component,
+    selected: selected,
+    disableGutters: disableGutters,
+    classes: {
+      dense: classes.dense
+    },
+    className: Object(clsx__WEBPACK_IMPORTED_MODULE_5__["default"])(classes.root, className, selected && classes.selected, !disableGutters && classes.gutters),
+    ref: ref
+  }, other));
+});
+ true ? MenuItem.propTypes = {
+  /**
+   * Menu item contents.
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.node,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.object.isRequired,
+
+  /**
+   * @ignore
+   */
+  className: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   */
+  component: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.elementType,
+
+  /**
+   * If `true`, compact vertical padding designed for keyboard and mouse input will be used.
+   */
+  dense: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
+
+  /**
+   * @ignore
+   */
+  disabled: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
+
+  /**
+   * If `true`, the left and right padding is removed.
+   */
+  disableGutters: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
+
+  /**
+   * @ignore
+   */
+  role: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.string,
+
+  /**
+   * @ignore
+   */
+  selected: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
+
+  /**
+   * @ignore
+   */
+  tabIndex: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.number
+} : undefined;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__["default"])(styles, {
+  name: 'MuiMenuItem'
+})(MenuItem));
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/core/esm/MenuItem/index.js":
+/*!***************************************************************!*\
+  !*** ../node_modules/@material-ui/core/esm/MenuItem/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MenuItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MenuItem */ "../node_modules/@material-ui/core/esm/MenuItem/MenuItem.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _MenuItem__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
 
 /***/ }),
 
@@ -20340,6 +21437,104 @@ function isObject(val) {
   return val != null && typeof val === 'object' && Array.isArray(val) === false;
 };
 
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/icons/Error.js":
+/*!***************************************************!*\
+  !*** ../node_modules/@material-ui/icons/Error.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "../node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+}), 'Error');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/icons/Warning.js":
+/*!*****************************************************!*\
+  !*** ../node_modules/@material-ui/icons/Warning.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "../node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+}), 'Warning');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "../node_modules/@material-ui/icons/utils/createSvgIcon.js":
+/*!*****************************************************************!*\
+  !*** ../node_modules/@material-ui/icons/utils/createSvgIcon.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createSvgIcon;
+
+var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "../node_modules/@babel/runtime/helpers/extends.js"));
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "../node_modules/react/index.js"));
+
+var _SvgIcon = _interopRequireDefault(__webpack_require__(/*! @material-ui/core/SvgIcon */ "../node_modules/@material-ui/core/esm/SvgIcon/index.js"));
+
+function createSvgIcon(path, displayName) {
+  var Component = _react.default.memo(_react.default.forwardRef(function (props, ref) {
+    return _react.default.createElement(_SvgIcon.default, (0, _extends2.default)({
+      ref: ref
+    }, props), path);
+  }));
+
+  if (true) {
+    Component.displayName = "".concat(displayName, "Icon");
+  }
+
+  Component.muiName = _SvgIcon.default.muiName;
+  return Component;
+}
 
 /***/ }),
 
@@ -91628,7 +92823,7 @@ module.exports = {
 /*! exports provided: name, version, main, author, repository, license, scripts, extendscript, devDependencies, dependencies, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",\"main\":\"plugin/lib/ui.compiled.js\",\"author\":\"Clipboy Software Inc.\",\"repository\":\"git@github.com:stephenpoole/clipboy-extension.git\",\"license\":\"NONE\",\"scripts\":{\"start\":\"gulp --env=development && webpack --env.ENV=development --watch --mode=development\",\"build\":\"gulp --env=production && webpack --env.ENV=production --mode=production\",\"start:qa\":\"gulp && webpack --env.ENV=qa --watch --mode=production\",\"package\":\"gulp --env=production && gulp zxp-pre-clean && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean\",\"deploy\":\"node ./deploy/index.js --env=production\",\"deploy:qa\":\"node ./deploy/index.js --env=qa\",\"deploy:dev\":\"node ./deploy/index.js --env=development\"},\"extendscript\":{\"width\":340,\"height\":435},\"devDependencies\":{\"@babel/core\":\"^7.6.0\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-proposal-nullish-coalescing-operator\":\"^7.4.4\",\"@babel/plugin-proposal-optional-chaining\":\"^7.6.0\",\"@babel/plugin-transform-runtime\":\"^7.6.0\",\"@babel/preset-env\":\"^7.6.0\",\"@babel/preset-react\":\"^7.0.0\",\"babel-loader\":\"^8.0.6\",\"babel-plugin-styled-components\":\"^1.10.6\",\"copy-webpack-plugin\":\"^5.0.4\",\"del\":\"^5.1.0\",\"dotenv\":\"^8.1.0\",\"dotenv-webpack\":\"^1.7.0\",\"file-loader\":\"^4.2.0\",\"gulp\":\"^4.0.2\",\"gulp-rename\":\"^1.4.0\",\"gulp-replace\":\"^1.0.0\",\"gulp-zip\":\"^5.0.1\",\"inquirer\":\"^7.0.0\",\"jsontoxml\":\"^1.0.1\",\"merge-stream\":\"^2.0.0\",\"request\":\"^2.88.0\",\"request-promise\":\"^4.2.4\",\"webpack\":\"^4.39.3\",\"webpack-cli\":\"^3.3.8\",\"yargs\":\"^14.0.0\"},\"dependencies\":{\"@babel/runtime\":\"^7.6.0\",\"@date-io/date-fns\":\"^1.3.11\",\"@material-ui/core\":\"^4.4.3\",\"@material-ui/icons\":\"^4.4.3\",\"@material-ui/pickers\":\"^3.2.6\",\"color\":\"^3.1.2\",\"date-fns\":\"^2.0.0-beta.5\",\"dayjs\":\"^1.8.16\",\"fetch\":\"^1.1.0\",\"i18next\":\"^17.0.17\",\"prop-types\":\"^15.7.2\",\"react\":\"^16.9.0\",\"react-dom\":\"^16.9.0\",\"react-i18next\":\"^10.13.1\",\"react-transition-group\":\"^4.3.0\",\"styled-components\":\"^4.3.2\",\"styled-reset\":\"^4.0.0\"}}");
+module.exports = JSON.parse("{\"name\":\"clipboy-twitch\",\"version\":\"1.0.0\",\"main\":\"plugin/lib/ui.compiled.js\",\"author\":\"Clipboy Software Inc.\",\"repository\":\"git@github.com:stephenpoole/clipboy-extension.git\",\"license\":\"NONE\",\"scripts\":{\"start\":\"gulp --env=development && webpack --env.ENV=development --watch --mode=development\",\"build\":\"gulp --env=production && webpack --env.ENV=production --mode=production\",\"start:qa\":\"gulp && webpack --env.ENV=qa --watch --mode=production\",\"package\":\"gulp --env=production && gulp zxp-pre-clean && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean\",\"deploy\":\"node ./deploy/index.js --env=production\",\"deploy:qa\":\"node ./deploy/index.js --env=qa\",\"deploy:dev\":\"node ./deploy/index.js --env=development\"},\"extendscript\":{\"width\":340,\"height\":475},\"devDependencies\":{\"@babel/core\":\"^7.6.0\",\"@babel/plugin-proposal-class-properties\":\"^7.5.5\",\"@babel/plugin-proposal-nullish-coalescing-operator\":\"^7.4.4\",\"@babel/plugin-proposal-optional-chaining\":\"^7.6.0\",\"@babel/plugin-transform-runtime\":\"^7.6.0\",\"@babel/preset-env\":\"^7.6.0\",\"@babel/preset-react\":\"^7.0.0\",\"babel-loader\":\"^8.0.6\",\"babel-plugin-styled-components\":\"^1.10.6\",\"copy-webpack-plugin\":\"^5.0.4\",\"del\":\"^5.1.0\",\"dotenv\":\"^8.1.0\",\"dotenv-webpack\":\"^1.7.0\",\"file-loader\":\"^4.2.0\",\"gulp\":\"^4.0.2\",\"gulp-rename\":\"^1.4.0\",\"gulp-replace\":\"^1.0.0\",\"gulp-zip\":\"^5.0.1\",\"inquirer\":\"^7.0.0\",\"jsontoxml\":\"^1.0.1\",\"merge-stream\":\"^2.0.0\",\"request\":\"^2.88.0\",\"request-promise\":\"^4.2.4\",\"webpack\":\"^4.39.3\",\"webpack-cli\":\"^3.3.8\",\"yargs\":\"^14.0.0\"},\"dependencies\":{\"@babel/runtime\":\"^7.6.0\",\"@date-io/date-fns\":\"^1.3.11\",\"@material-ui/core\":\"^4.4.3\",\"@material-ui/icons\":\"^4.4.3\",\"@material-ui/pickers\":\"^3.2.6\",\"color\":\"^3.1.2\",\"date-fns\":\"^2.0.0-beta.5\",\"dayjs\":\"^1.8.16\",\"fetch\":\"^1.1.0\",\"i18next\":\"^17.0.17\",\"prop-types\":\"^15.7.2\",\"react\":\"^16.9.0\",\"react-dom\":\"^16.9.0\",\"react-i18next\":\"^10.13.1\",\"react-transition-group\":\"^4.3.0\",\"styled-components\":\"^4.3.2\",\"styled-reset\":\"^4.0.0\"}}");
 
 /***/ }),
 
@@ -91856,7 +93051,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var theme = Object(_common_theme__WEBPACK_IMPORTED_MODULE_5__["getTheme"])();
+
+var pkg = __webpack_require__(/*! ../../package.json */ "./package.json");
+
+var theme = Object(_common_theme__WEBPACK_IMPORTED_MODULE_5__["getTheme"])(pkg.name);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ThemeProvider"], {
     theme: theme
@@ -91894,10 +93092,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "../node_modules/@material-ui/core/esm/Typography/index.js");
 /* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
 /* harmony import */ var _common_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @common/components */ "../clipboy-common/src/components/index.js");
-/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
-/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
-/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../api */ "./src/api.js");
+/* harmony import */ var _common_components_message__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/components/message */ "../clipboy-common/src/components/message/index.js");
+/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
+/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
+/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../api */ "./src/api.js");
+
 
 
 
@@ -92005,19 +93205,19 @@ function (_React$Component) {
 
             case 7:
               _context.next = 9;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getSep"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["getSep"])();
 
             case 9:
               seperator = _context.sent;
               _context.next = 12;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getProjectPath"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["getProjectPath"])();
 
             case 12:
               _ref2 = _context.sent;
               path = _ref2[0];
               fullPath = path.substring(0, path.lastIndexOf(seperator));
               _context.next = 17;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_14__["getClipMetadata"])(target, start, end, mode, count);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_15__["getClipMetadata"])(target, start, end, mode, count);
 
             case 17:
               data = _context.sent;
@@ -92030,7 +93230,7 @@ function (_React$Component) {
               filePath = "" + fullPath + seperator;
               _context.prev = 21;
               _context.next = 24;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_14__["getClips"])(data, filePath, _this.updateProgress);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_15__["getClips"])(data, filePath, _this.updateProgress);
 
             case 24:
               _context.next = 29;
@@ -92043,11 +93243,11 @@ function (_React$Component) {
 
             case 29:
               _context.next = 31;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["importTwitchClips"])(fullPath);
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["importMedia"])(fullPath, 'mp4');
 
             case 31:
               _context.next = 33;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["addTwitchMetaData"])(data);
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["addTwitchMetaData"])(data);
 
             case 33:
               _context.next = 35;
@@ -92092,7 +93292,7 @@ function (_React$Component) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_12__["save"])(_this.state, pkg.name);
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_13__["save"])(_this.state, pkg.name);
 
             case 2:
             case "end":
@@ -92113,7 +93313,7 @@ function (_React$Component) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_12__["load"])(pkg.name);
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_13__["load"])(pkg.name);
 
             case 2:
               _ref5 = _context3.sent;
@@ -92257,7 +93457,7 @@ function (_React$Component) {
     var t = this.props.t;
     return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BodyStyle, {
       working: working
-    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_13__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_14__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: "target-group"
     }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Input"], {
       className: "target-input",
@@ -92457,10 +93657,9 @@ function (_React$Component) {
       enabled: !working,
       label: t('form.field.clipCount.label'),
       name: "clipCount"
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      color: "error",
-      component: "div"
-    }, hasError ? t(error) : react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, "\xA0")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(ImportButton, {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components_message__WEBPACK_IMPORTED_MODULE_11__["ErrorMessage"], {
+      show: hasError
+    }, t(error)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(ImportButton, {
       label: t('form.button.submit'),
       enabled: !working && formIsValid,
       onClick: this.importClips
@@ -92531,7 +93730,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
 var pkg = __webpack_require__(/*! ../package.json */ "./package.json");
 
-var DOMAIN = "http://192.168.0.134";
+var DOMAIN = "http://localhost";
 var ENVIRONMENT = "development";
 var LOCALES = {"en_US":{"translation":{"app.name":"Clipboy","app.store.name":"Clipboy for Twitch","app.store.description":"Download Twitch clips directly into Adobe with the click of a button.","app.store.license":"","app.store.ui.description":"Download Twitch clips directly into Adobe with the click of a button.","update.message":"A new version is available.","update.link":"Update now","form.field.game.label":"Game","form.field.broadcaster.label":"Broadcaster","form.field.startDate.label":"Start Date","form.field.startDate.invalid":"Invalid date","form.field.endDate.label":"End Date","form.field.endDate.invalid":"Invalid date","form.field.clipCount.label":"Clip Count","form.button.submit":"Import","progress.button.done":"Awesome!","progress.message.done":"Done.","progress.progress.clipsleft":"{{current}} of {{total}}","rating.message":"Enjoying {{name}}? Leave us a rating!","rating.ok":"Alright","error.startdate.date.max":"Start date must be before end date","error.startdate.date.isoDate":"Invalid start date","error.startdate.any.required":"Start date is required","error.enddate.date.less":"End date must be before today","error.enddate.date.isoDate":"Invalid end date","error.clipcount.number.min":"Invalid clip count","error.clipcount.number.max":"Invalid clip count","error.clipcount.number.base":"Invalid clip count","error.clipcount.any.required":"Clip count is required","error.object.missing":"Game or broadcaster is required","error.broadcaster.notfound":"The supplied broadcaster does not exist","error.broadcaster.any.empty":"Broadcaster is required","error.game.notfound":"The supplied game does not exist","error.game.any.empty":"Game is required","error.clips.failed":"Failed to get clips","error.clips.notfound":"No clips found","error.generic":"An error occurred, that's all we know","error.system.space":"There wasn't enough hard drive space to continue","error.system.permission":"Couldn't write to the target folder","error.network.toomany":"Too many requests, try again later","error.network.forbidden":"You don't have permission to do that","error.network.failed":"The internet seems to be down, try again later","error.twitch.generic":"Twitch is having problems, try again later"}}};
 var PROJECT_NAME = pkg.name;
