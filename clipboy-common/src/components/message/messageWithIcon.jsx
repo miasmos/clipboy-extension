@@ -39,5 +39,5 @@ MessageWithIcon.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     show: PropTypes.bool,
-    icon: PropTypes.node
+    icon: PropTypes.object
 };

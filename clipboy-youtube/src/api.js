@@ -12,7 +12,7 @@ export const formatTypes = {
 const unsupportedMedia = ['webm'];
 
 export const getMedia = async (id, format, path, callback) => {
-    const { container = 'unknown' } = format;
+    const { container = 'mp4' } = format;
     const filePath = `${path}${id}.${container}`;
     const exists = await existsAsync(filePath);
     if (exists) {
@@ -94,7 +94,7 @@ export const getVideoInfo = async id => {
             encoding,
             audioBitrate,
             audioEncoding,
-            container,
+            container: container || 'mp4',
             resolution,
             bitrate: parsedBitrate,
             quality_label

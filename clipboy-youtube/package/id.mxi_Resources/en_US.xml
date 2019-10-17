@@ -35,7 +35,7 @@
 
         </str>
         <str name="form.warning.speed">
-            <val>Download speed for this selection is much slower.</val>
+            <val>Download speed for this selection is much slower</val>
 
         </str>
         <str name="form.button.submit">
@@ -94,8 +94,12 @@
             <val>The internet seems to be down, try again later</val>
 
         </str>
-        <str name="error.twitch.generic">
-            <val>Twitch is having problems, try again later</val>
+        <str name="error.youtube.payment">
+            <val>This video requires payment</val>
+
+        </str>
+        <str name="error.youtube.unavailable">
+            <val>This video is unavailable</val>
 
         </str>
 

@@ -235,13 +235,36 @@ class BodyComponent extends React.Component {
     };
 
     updateVideoInfo = async id => {
-        const videoInfo = await getVideoInfo(id);
-        console.log(videoInfo);
-        await this.setStateAsync({
-            videoInfo,
-            loading: false
-        });
-        this.save();
+        try {
+            const videoInfo = await getVideoInfo(id);
+            console.log(videoInfo);
+            await this.setStateAsync({
+                videoInfo,
+                loading: false
+            });
+            this.save();
+        } catch (error) {
+            let { message } = error;
+            const { t } = this.props;
+
+            switch (message) {
+                case 'This video requires payment to watch.':
+                    message = 'error.youtube.payment';
+                    break;
+                case 'This video is unavailable':
+                    message = 'error.youtube.unavailable';
+                    break;
+                default:
+                    message = 'error.generic';
+                    break;
+            }
+            console.error(error);
+            this.setState({
+                hasError: true,
+                error: t(message),
+                loading: false
+            });
+        }
     };
 
     onVideoFormatChange = async videoId => {
