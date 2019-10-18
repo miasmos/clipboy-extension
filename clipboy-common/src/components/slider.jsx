@@ -71,7 +71,7 @@ export class Slider extends Component {
                     valueLabelDisplay="auto"
                     min={min}
                     max={max}
-                    defaultValue={defaultValue}
+                    value={defaultValue}
                     marks={marks}
                     onChange={this.onChange}
                     disabled={!enabled}

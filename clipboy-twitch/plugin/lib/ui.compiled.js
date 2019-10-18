@@ -1210,7 +1210,7 @@ function (_Component) {
       valueLabelDisplay: "auto",
       min: min,
       max: max,
-      defaultValue: defaultValue,
+      value: defaultValue,
       marks: marks,
       onChange: this.onChange
     }, _React$createElement["disabled"] = !enabled, _React$createElement.name = name, _React$createElement)));
@@ -93319,7 +93319,7 @@ function (_React$Component) {
     _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3() {
-      var _ref6, start, end, rest, init;
+      var _ref6, start, end, count, rest, init;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
         while (1) {
@@ -93332,18 +93332,20 @@ function (_React$Component) {
               _ref6 = _context3.sent;
               start = _ref6.start;
               end = _ref6.end;
-              rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_ref6, ["start", "end"]);
+              count = _ref6.count;
+              rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_ref6, ["start", "end", "count"]);
               init = {
                 start: start ? new Date(start) : _this.state.start,
-                end: end ? new Date(end) : _this.state.end
+                end: end ? new Date(end) : _this.state.end,
+                count: count ? Number(count) : _this.state.count
               };
-              _context3.next = 9;
+              _context3.next = 10;
               return _this.setStateAsync(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, init, {}, rest, {
                 startIsValid: init.start instanceof Date,
                 endIsValid: init.end instanceof Date
               }));
 
-            case 9:
+            case 10:
             case "end":
               return _context3.stop();
           }

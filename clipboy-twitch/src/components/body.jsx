@@ -156,10 +156,11 @@ class BodyComponent extends React.Component {
     };
 
     load = async () => {
-        const { start, end, ...rest } = await load(pkg.name);
+        const { start, end, count, ...rest } = await load(pkg.name);
         const init = {
             start: start ? new Date(start) : this.state.start,
-            end: end ? new Date(end) : this.state.end
+            end: end ? new Date(end) : this.state.end,
+            count: count ? Number(count) : this.state.count
         };
         await this.setStateAsync({
             ...init,
