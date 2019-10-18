@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="de_DE" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy für Twitch</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Laden Sie Twitch-Clips mit einem Klick direkt in Adobe herunter.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Laden Sie Twitch-Clips mit einem Klick direkt in Adobe herunter.</val>
+
+        </str>
+        <str name="update.message">
+            <val>Eine neue Version ist verfügbar.</val>
+
+        </str>
+        <str name="update.link">
+            <val>Jetzt aktualisieren.</val>
+
+        </str>
+        <str name="form.field.game.label">
+            <val>Spiel</val>
+
+        </str>
+        <str name="form.field.broadcaster.label">
+            <val>Sender</val>
+
+        </str>
+        <str name="form.field.startDate.label">
+            <val>Startdatum</val>
+
+        </str>
+        <str name="form.field.startDate.invalid">
+            <val>Ungültiges Datum</val>
+
+        </str>
+        <str name="form.field.endDate.label">
+            <val>Enddatum</val>
+
+        </str>
+        <str name="form.field.endDate.invalid">
+            <val>Ungültiges Datum</val>
+
+        </str>
+        <str name="form.field.clipCount.label">
+            <val>Clip-Zähler</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Importieren</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Super!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Erledigt.</val>
+
+        </str>
+        <str name="progress.progress.clipsleft">
+            <val>{{current}} von {{total}}</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Gefällt Ihnen {{name}}? Bewerten Sie uns!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Okay</val>
+
+        </str>
+        <str name="error.startdate.date.max">
+            <val>Startdatum muss vor dem Enddatum liegen</val>
+
+        </str>
+        <str name="error.startdate.date.isoDate">
+            <val>Ungültiges Startdatum</val>
+
+        </str>
+        <str name="error.startdate.any.required">
+            <val>Startdatum ist erforderlich</val>
+
+        </str>
+        <str name="error.enddate.date.less">
+            <val>Enddatum muss vor heute liegen</val>
+
+        </str>
+        <str name="error.enddate.date.isoDate">
+            <val>Ungültiges Enddatum</val>
+
+        </str>
+        <str name="error.clipcount.number.min">
+            <val>Ungültiger Clip-Zähler</val>
+
+        </str>
+        <str name="error.clipcount.number.max">
+            <val>Ungültiger Clip-Zähler</val>
+
+        </str>
+        <str name="error.clipcount.number.base">
+            <val>Ungültiger Clip-Zähler</val>
+
+        </str>
+        <str name="error.clipcount.any.required">
+            <val>Clip-Zähler ist erforderlich</val>
+
+        </str>
+        <str name="error.object.missing">
+            <val>Spiel oder Sender ist erforderlich</val>
+
+        </str>
+        <str name="error.broadcaster.notfound">
+            <val>Der angegebene Sender existiert nicht</val>
+
+        </str>
+        <str name="error.broadcaster.any.empty">
+            <val>Sender ist erforderlich</val>
+
+        </str>
+        <str name="error.game.notfound">
+            <val>Das angegebene Spiel existiert nicht</val>
+
+        </str>
+        <str name="error.game.any.empty">
+            <val>Spiel ist erforderlich</val>
+
+        </str>
+        <str name="error.clips.failed">
+            <val>Clips konnten nicht abgerufen werden</val>
+
+        </str>
+        <str name="error.clips.notfound">
+            <val>Keine Clips gefunden</val>
+
+        </str>
+        <str name="error.generic">
+            <val>Es ist ein Fehler aufgetreten, mehr wissen wir auch nicht</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>Es war nicht genug Festplattenspeicher vorhanden, um fortzufahren</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Der Zielordner konnte nicht beschrieben werden</val>
+
+        </str>
+        <str name="error.network.toomany">
+            <val>Zu viele Anfragen, versuchen Sie es später erneut</val>
+
+        </str>
+        <str name="error.network.forbidden">
+            <val>Sie haben keine Berechtigung, dies zu tun</val>
+
+        </str>
+        <str name="error.network.failed">
+            <val>Das Internet scheint down zu sein, versuchen Sie es später erneut</val>
+
+        </str>
+        <str name="error.twitch.generic">
+            <val>Twitch hat aktuell Probleme, versuchen Sie es später erneut</val>
+
+        </str>
+
+    </set>
+
+</asf>

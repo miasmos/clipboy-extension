@@ -15,7 +15,7 @@
     <license-agreement>
         <![CDATA[]]>
     </license-agreement>
-    <update>http://localhost/clipboy-youtube/latest</update>
+    <update>https://api.clipboy.dev/clipboy-youtube/latest</update>
     <ui-access>Download YouTube videos directly into Adobe with the click of a button.</ui-access>
     <products>
         <product familyname="Premiere" version="12"/>
