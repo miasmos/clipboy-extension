@@ -32,7 +32,7 @@ const config = async () => {
     }
 
     process.chdir(workingDir);
-    return { product, env };
+    return { product, env, workingDir };
 };
 
 const command = async (command, { env }) => {
@@ -58,15 +58,16 @@ const command = async (command, { env }) => {
         process.exit(1);
     }
 
-    const { product, env } = await config();
+    const { product, env, workingDir } = await config();
 
     switch (_[0]) {
         case 'deploy':
             await command(`node ${__dirname}\\deploy.js`, { product, env });
             break;
         case 'package':
+            const gulpParams = `--env=${env} --gulpfile ${__dirname}\\gulpfile.js --cwd ${workingDir}`;
             await command(
-                `gulp --env=${env} && node ${__dirname}\\sign.js && gulp zxp-zip`,
+                `gulp ${gulpParams} && node ${__dirname}\\sign.js && gulp ${gulpParams} zxp-zip`,
                 { product, env }
             );
             break;

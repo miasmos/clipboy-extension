@@ -1,33 +1,32 @@
 const gulp = require('gulp');
-const config = require('./package.json');
+const path = require('path');
+const getPath = subpath => path.resolve(process.cwd(), subpath);
+const config = require(getPath('./package.json'));
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
-const path = require('path');
 const merge = require('merge-stream');
 const jsonxml = require('jsontoxml');
 const dotenv = require('dotenv');
-const fs = require('fs');
 const fsp = require('fs').promises;
 const argv = require('yargs').argv;
-const del = require('del');
 const zip = require('gulp-zip');
 const pkg = require('./package.json');
 
-const destinationPath = './package/id.mxi_Resources';
+const destinationPath = getPath('./package/id.mxi_Resources');
 const environments = ['development', 'production', 'qa'];
 const defaultLocale = 'en_US';
 const { env } = argv;
 
 dotenv.config({
-    path: path.resolve(__dirname, `./.${argv.env}.env`)
+    path: getPath(`./.${argv.env}.env`)
 });
 
 const getResources = async () => {
-    const locales = await fsp.readdir('./static/locales');
+    const locales = await fsp.readdir(getPath('./static/locales'));
     const files = await Promise.all(
         locales.map(async locale => {
             const file = await fsp.readFile(
-                `./static/locales/${locale}/translations.json`
+                getPath(`./static/locales/${locale}/translations.json`)
             );
             return file;
         }, {})
@@ -95,7 +94,7 @@ gulp.task('default', async function() {
 
     return merge(
         gulp
-            .src('./template.mxi')
+            .src(getPath('./template.mxi'))
             .pipe(replace(/\{id\}/g, config.name))
             .pipe(replace(/\{title\}/g, defaultTranslations['app.store.name']))
             .pipe(replace(/\{author\}/g, config.author))
@@ -103,7 +102,7 @@ gulp.task('default', async function() {
             .pipe(
                 replace(
                     /\{update\}/g,
-                    `${process.env.DOMAIN}/${config.name}/latest`
+                    `${process.env.DOMAIN}/project/${config.name}/manifest`
                 )
             )
             .pipe(
@@ -125,23 +124,23 @@ gulp.task('default', async function() {
                 )
             )
             .pipe(rename({ basename: 'id' }))
-            .pipe(gulp.dest('package')),
-        gulp.src('./icon.png').pipe(gulp.dest('./package')),
+            .pipe(gulp.dest(getPath('package'))),
+        gulp.src(getPath('./icon.png')).pipe(gulp.dest(getPath('./package'))),
         gulp
-            .src('./template.xml')
+            .src(getPath('./template.xml'))
             .pipe(replace(/\{id\}/g, config.name))
             .pipe(replace(/\{title\}/g, defaultTranslations['app.store.name']))
             .pipe(replace(/\{width\}/g, config.extendscript.width))
             .pipe(replace(/\{height\}/g, config.extendscript.height))
             .pipe(replace(/\{version\}/g, pkg.version))
             .pipe(rename({ basename: 'manifest' }))
-            .pipe(gulp.dest('plugin/CSXS'))
+            .pipe(gulp.dest(getPath('plugin/CSXS')))
     );
 });
 
 gulp.task('zxp-zip', function() {
     return gulp
-        .src('./package/**/*')
+        .src(getPath('./package/**/*'))
         .pipe(zip('package.zip'))
-        .pipe(gulp.dest('./deploy'));
+        .pipe(gulp.dest(getPath('./deploy')));
 });
