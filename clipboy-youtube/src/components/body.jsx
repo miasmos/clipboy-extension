@@ -212,14 +212,26 @@ class BodyComponent extends React.Component {
     };
 
     onIdChange = async value => {
+        const oldId = this.state.id;
         let id = value;
-        const isUrl = value.includes('?');
+        const isUrl = value.includes('://');
+        const pastedId =
+            value.length - oldId.length === 11 ||
+            value.length - oldId.length === 12;
 
-        if (isUrl) {
-            const params = value.substring(value.indexOf('?') + 1);
-            const parsedQuery = qs.parse(params);
-            if ('v' in parsedQuery) {
-                id = parsedQuery.v;
+        if (pastedId) {
+            id = value.substring(oldId.length);
+        } else if (isUrl) {
+            const hasQuery = value.includes('?');
+            const isShortUrl = value.includes('youtu.be');
+            if (hasQuery) {
+                const params = value.substring(value.indexOf('?') + 1);
+                const parsedQuery = qs.parse(params);
+                if ('v' in parsedQuery) {
+                    id = parsedQuery.v;
+                }
+            } else if (isShortUrl) {
+                id = value.substring(value.lastIndexOf('/') + 1);
             }
         }
 

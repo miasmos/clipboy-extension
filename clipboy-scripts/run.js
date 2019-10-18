@@ -6,6 +6,7 @@ const spawn = require('child_process').spawn;
 const argv = require('yargs')
     .command('deploy <product>')
     .command('package <product>')
+    .command('build <product>')
     .help().argv;
 
 const envs = ['development', 'production', 'qa'];
@@ -61,16 +62,24 @@ const command = async (command, { env }) => {
     const { product, env, workingDir } = await config();
 
     switch (_[0]) {
-        case 'deploy':
+        case 'deploy': {
             await command(`node ${__dirname}\\deploy.js`, { product, env });
             break;
-        case 'package':
-            const gulpParams = `--env=${env} --gulpfile ${__dirname}\\gulpfile.js --cwd ${workingDir}`;
+        }
+        case 'package': {
+            const gulpParams = `--gulpfile ${__dirname}\\gulpfile.js --cwd ${workingDir}`;
             await command(
                 `gulp ${gulpParams} && node ${__dirname}\\sign.js && gulp ${gulpParams} zxp-zip`,
                 { product, env }
             );
             break;
+        }
+        case 'build': {
+            const gulpParams = `--gulpfile ${__dirname}\\gulpfile.js --cwd ${workingDir}`;
+
+            await command(`gulp ${gulpParams}`, { product, env });
+            break;
+        }
         default:
             console.error('command not found');
             break;

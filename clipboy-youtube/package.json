@@ -6,8 +6,8 @@
     "repository": "git@github.com:stephenpoole/clipboy-extension.git",
     "license": "NONE",
     "scripts": {
-        "start": "gulp --env=development && webpack --env.ENV=development --watch --mode=development",
-        "build": "gulp --env=production && webpack --env.ENV=production --mode=production",
+        "start": "node ../clipboy-scripts/run.js build clipboy-youtube --env=development && webpack --env.ENV=development --watch --mode=development",
+        "build": "node ../clipboy-scripts/run.js build clipboy-youtube --env=production && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
         "package": "node ../clipboy-scripts/run.js package clipboy-youtube --env=production",
         "deploy": "node ../clipboy-scripts/run.js deploy clipboy-youtube --env=production",
