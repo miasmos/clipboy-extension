@@ -1,0 +1,17 @@
+{
+  "name": "clipboy-scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-zip": "^5.0.1",
+    "inquirer": "^7.0.0",
+    "jsontoxml": "^1.0.1",
+    "merge-stream": "^2.0.0",
+    "yargs": "^14.2.0"
+  }
+}

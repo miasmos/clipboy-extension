@@ -1,1 +1,0 @@
-../ZXPSignCmd.exe -selfSignedCert CA Ontario ClipboyInc Clipboy fesomg90smg43 cert.debug.p12

@@ -1,8 +1,12 @@
 {
+  "scripts": {
+    "package": "gulp --env=production && gulp zxp-pre-clean && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean"
+  },
   "private": true,
   "workspaces": [
     "clipboy-twitch",
     "clipboy-youtube",
-    "clipboy-common"
+    "clipboy-common",
+    "clipboy-scripts"
   ]
 }

@@ -9,10 +9,10 @@
         "start": "gulp --env=development && webpack --env.ENV=development --watch --mode=development",
         "build": "gulp --env=production && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
-        "package": "gulp --env=production && gulp zxp-pre-clean && cd ./signing && node sign.js && gulp zxp && gulp zxp-zip && gulp zxp-clean",
-        "deploy": "node ./deploy/index.js --env=production",
-        "deploy:qa": "node ./deploy/index.js --env=qa",
-        "deploy:dev": "node ./deploy/index.js --env=development"
+        "package": "node ../clipboy-scripts/run.js package clipboy-twitch --env=production",
+        "deploy": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=production",
+        "deploy:qa": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=qa",
+        "deploy:dev": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=development"
     },
     "extendscript": {
         "width": 340,
@@ -29,22 +29,13 @@
         "babel-loader": "^8.0.6",
         "babel-plugin-styled-components": "^1.10.6",
         "copy-webpack-plugin": "^5.0.4",
-        "del": "^5.1.0",
         "dotenv": "^8.1.0",
         "dotenv-webpack": "^1.7.0",
         "file-loader": "^4.2.0",
-        "gulp": "^4.0.2",
-        "gulp-rename": "^1.4.0",
-        "gulp-replace": "^1.0.0",
-        "gulp-zip": "^5.0.1",
-        "inquirer": "^7.0.0",
-        "jsontoxml": "^1.0.1",
-        "merge-stream": "^2.0.0",
         "request": "^2.88.0",
         "request-promise": "^4.2.4",
         "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.8",
-        "yargs": "^14.0.0"
+        "webpack-cli": "^3.3.8"
     },
     "dependencies": {
         "@babel/runtime": "^7.6.0",
