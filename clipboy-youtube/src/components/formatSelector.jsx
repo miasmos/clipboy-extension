@@ -61,7 +61,8 @@ export class FormatSelector extends React.Component {
             audioValues,
             videoValue,
             videoValues,
-
+            audioLabel,
+            videoLabel,
             show = true
         } = this.props;
         return show ? (
@@ -73,7 +74,7 @@ export class FormatSelector extends React.Component {
             >
                 <Grid item xs={6}>
                     <Dropdown
-                        label="Video Format"
+                        label={videoLabel}
                         value={videoValue}
                         values={videoValues}
                         onChange={this.onVideoChange}
@@ -82,7 +83,7 @@ export class FormatSelector extends React.Component {
                 </Grid>
                 <Grid item xs={6}>
                     <Dropdown
-                        label="Audio Format"
+                        label={audioLabel}
                         value={audioValue}
                         values={audioValues}
                         onChange={this.onAudioChange}
@@ -105,5 +106,7 @@ FormatSelector.propTypes = {
     onVideoChange: PropTypes.func,
     audioEnabled: PropTypes.bool,
     videoEnabled: PropTypes.bool,
+    audioLabel: PropTypes.string,
+    videoLabel: PropTypes.string,
     show: PropTypes.bool
 };

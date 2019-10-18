@@ -7,11 +7,11 @@
 
         </str>
         <str name="app.store.name">
-            <val>Clipboy for Youtube</val>
+            <val>Clipboy for YouTube</val>
 
         </str>
         <str name="app.store.description">
-            <val>Download Youtube videos directly into Adobe with the click of a button.</val>
+            <val>Download YouTube videos directly into Adobe with the click of a button.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,11 +19,19 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Download Youtube videos directly into Adobe with the click of a button.</val>
+            <val>Download YouTube videos directly into Adobe with the click of a button.</val>
 
         </str>
         <str name="form.field.id.label">
             <val>Video ID</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>Audio Format</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>Video Format</val>
 
         </str>
         <str name="form.warning.speed">

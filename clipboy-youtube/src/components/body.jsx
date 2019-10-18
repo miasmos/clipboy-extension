@@ -360,6 +360,8 @@ class BodyComponent extends React.Component {
                     audioValues={audio}
                     audioEnabled={audio.length > 0 && !audioFormatDisabled}
                     videoEnabled={video.length > 0}
+                    audioLabel={t('form.field.audio.label')}
+                    videoLabel={t('form.field.video.label')}
                     onAudioChange={this.onAudioFormatChange}
                     onVideoChange={this.onVideoFormatChange}
                     show={idIsValid && video.length > 0}

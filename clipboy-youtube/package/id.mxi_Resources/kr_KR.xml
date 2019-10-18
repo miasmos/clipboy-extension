@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="kr_KR" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>YouTube를 위한 Clipboy</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>한 번의 버튼 클릭으로 YouTube 비디오를 Adobe에 직접 다운로드할 수 있습니다.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>한 번의 버튼 클릭으로 YouTube 비디오를 Adobe에 직접 다운로드할 수 있습니다.</val>
+
+        </str>
+        <str name="form.field.id.label">
+            <val>비디오 ID</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>오디오 포맷</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>비디오 포맷</val>
+
+        </str>
+        <str name="form.warning.speed">
+            <val>이 셀렉션을 위한 다운로드 스피드는 훨씬 느립니다. </val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>가져오기</val>
+
+        </str>
+        <str name="progress.progress.percent">
+            <val>{{percent}}%</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>놀랍습니다!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>완료.</val>
+
+        </str>
+        <str name="rating.message">
+            <val>{{name}}을 즐기셨나요? 저희를 평가해 주세요!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>좋아요</val>
+
+        </str>
+        <str name="error.generic">
+            <val>오류가 발생한 것으로 여겨집니다.</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>하드 드라이브 공간이 충분하지 않아 계속할 수 없습니다.</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>목표 폴더에 기록하지 못했습니다.</val>
+
+        </str>
+        <str name="error.youtube.payment">
+            <val>이 비디오는 유료입니다. </val>
+
+        </str>
+        <str name="error.youtube.unavailable">
+            <val>이 비디오는 이용할 수 없습니다. </val>
+
+        </str>
+
+    </set>
+
+</asf>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="kr_KR" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Twitch를 위한 Clipboy</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>한 번의 버튼 클릭으로 Twitch 클립을 Adobe에 직접 다운로드할 수 있습니다.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>한 번의 버튼 클릭으로 Twitch 클립을 Adobe에 직접 다운로드할 수 있습니다.</val>
+
+        </str>
+        <str name="update.message">
+            <val>새로운 버전을 사용할 수 있습니다.</val>
+
+        </str>
+        <str name="update.link">
+            <val>지금 업데이트하기</val>
+
+        </str>
+        <str name="form.field.game.label">
+            <val>게임</val>
+
+        </str>
+        <str name="form.field.broadcaster.label">
+            <val>방송</val>
+
+        </str>
+        <str name="form.field.startDate.label">
+            <val>시작 날짜</val>
+
+        </str>
+        <str name="form.field.startDate.invalid">
+            <val>무효한 날짜</val>
+
+        </str>
+        <str name="form.field.endDate.label">
+            <val>종료 날짜</val>
+
+        </str>
+        <str name="form.field.endDate.invalid">
+            <val>무효한 날짜</val>
+
+        </str>
+        <str name="form.field.clipCount.label">
+            <val>클립 숫자</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>가져오기</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>놀랍습니다!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>완료.</val>
+
+        </str>
+        <str name="progress.progress.clipsleft">
+            <val>{{total}}의 {{current}} </val>
+
+        </str>
+        <str name="rating.message">
+            <val>{{name}}을 즐기셨나요? 저희를 평가해 주세요!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>좋아요</val>
+
+        </str>
+        <str name="error.startdate.date.max">
+            <val>시작일은 반드시 종료일보다 빨라야 합니다. </val>
+
+        </str>
+        <str name="error.startdate.date.isoDate">
+            <val>무효한 시작일입니다.</val>
+
+        </str>
+        <str name="error.startdate.any.required">
+            <val>시작일은 필수입니다.</val>
+
+        </str>
+        <str name="error.enddate.date.less">
+            <val>종료일은 반드시 오늘보다 빨라야 합니다. </val>
+
+        </str>
+        <str name="error.enddate.date.isoDate">
+            <val>무효한 종료일 </val>
+
+        </str>
+        <str name="error.clipcount.number.min">
+            <val>무효한 클립 숫자 </val>
+
+        </str>
+        <str name="error.clipcount.number.max">
+            <val>무효한 클립 숫자</val>
+
+        </str>
+        <str name="error.clipcount.number.base">
+            <val>무효한 클립 숫자</val>
+
+        </str>
+        <str name="error.clipcount.any.required">
+            <val>클립 숫자는 필수입니다.</val>
+
+        </str>
+        <str name="error.object.missing">
+            <val>게임 또는 방송은 필수입니다. </val>
+
+        </str>
+        <str name="error.broadcaster.notfound">
+            <val>제공하신 방송은 존재하지 않습니다. </val>
+
+        </str>
+        <str name="error.broadcaster.any.empty">
+            <val>방송은 필수입니다.</val>
+
+        </str>
+        <str name="error.game.notfound">
+            <val>제공하신 게임은 존재하지 않습니다.</val>
+
+        </str>
+        <str name="error.game.any.empty">
+            <val>게임은 필수입니다.</val>
+
+        </str>
+        <str name="error.clips.failed">
+            <val>클립 가져오기 실패</val>
+
+        </str>
+        <str name="error.clips.notfound">
+            <val>클립을 찾지 못함 </val>
+
+        </str>
+        <str name="error.generic">
+            <val>오류가 발생한 것으로 여겨집니다.</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>하드 드라이브 공간이 충분하지 않아 계속할 수 없습니다.</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>목표 폴더에 기록하지 못했습니다. </val>
+
+        </str>
+        <str name="error.network.toomany">
+            <val>요청이 너무 많습니다, 나중에 다시 시도하세요.</val>
+
+        </str>
+        <str name="error.network.forbidden">
+            <val>이 과정에 대한 승인이 없습니다. </val>
+
+        </str>
+        <str name="error.network.failed">
+            <val>인터넷이 연결되지 않은 것 같습니다, 나중에 다시 시도하세요.</val>
+
+        </str>
+        <str name="error.twitch.generic">
+            <val>Twitch에 문제가 있습니다, 나중에 다시 시도하세요.</val>
+
+        </str>
+
+    </set>
+
+</asf>

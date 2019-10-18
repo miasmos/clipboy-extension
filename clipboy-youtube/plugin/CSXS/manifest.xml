@@ -15,7 +15,7 @@
 **************************************************************************/
 -->	
 <ExtensionManifest Version="5.0" ExtensionBundleId="clipboy-youtube" ExtensionBundleVersion="1.0.0"
-ExtensionBundleName="Clipboy for Youtube" 
+ExtensionBundleName="Clipboy for YouTube" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<ExtensionList>
 		<Extension Id="clipboy-youtube" Version="1.0.0" />
@@ -49,7 +49,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Clipboy for Youtube</Menu>
+					<Menu>Clipboy for YouTube</Menu>
 					<Geometry>
 						<Size>
 							<Height>420</Height>

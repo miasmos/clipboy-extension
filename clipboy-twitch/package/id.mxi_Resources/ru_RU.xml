@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="ru_RU" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy для Twitch</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Загружайте клипы с Twitch прямо в Adobe одним нажатием кнопки.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Загружайте клипы с Twitch прямо в Adobe одним нажатием кнопки.</val>
+
+        </str>
+        <str name="update.message">
+            <val>Доступна новая версия.</val>
+
+        </str>
+        <str name="update.link">
+            <val>Обновить сейчас</val>
+
+        </str>
+        <str name="form.field.game.label">
+            <val>Игра</val>
+
+        </str>
+        <str name="form.field.broadcaster.label">
+            <val>Канал вещания</val>
+
+        </str>
+        <str name="form.field.startDate.label">
+            <val>Дата начала</val>
+
+        </str>
+        <str name="form.field.startDate.invalid">
+            <val>Неверная дата</val>
+
+        </str>
+        <str name="form.field.endDate.label">
+            <val>Дата окончания</val>
+
+        </str>
+        <str name="form.field.endDate.invalid">
+            <val>Неверная дата</val>
+
+        </str>
+        <str name="form.field.clipCount.label">
+            <val>Количество клипов</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Импортировать</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Потрясающе!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Готово.</val>
+
+        </str>
+        <str name="progress.progress.clipsleft">
+            <val>{{current}} из {{total}}</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Нравится {{name}}? Оцените нас!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Хорошо</val>
+
+        </str>
+        <str name="error.startdate.date.max">
+            <val>Дата начала должна быть раньше даты окончания</val>
+
+        </str>
+        <str name="error.startdate.date.isoDate">
+            <val>Неверная дата начала</val>
+
+        </str>
+        <str name="error.startdate.any.required">
+            <val>Необходимо указать дату начала</val>
+
+        </str>
+        <str name="error.enddate.date.less">
+            <val>Дата окончания должна предшествовать сегодняшнему дню</val>
+
+        </str>
+        <str name="error.enddate.date.isoDate">
+            <val>Неверная дата окончания</val>
+
+        </str>
+        <str name="error.clipcount.number.min">
+            <val>Неверное количество клипов</val>
+
+        </str>
+        <str name="error.clipcount.number.max">
+            <val>Неверное количество клипов</val>
+
+        </str>
+        <str name="error.clipcount.number.base">
+            <val>Неверное количество клипов</val>
+
+        </str>
+        <str name="error.clipcount.any.required">
+            <val>Необходимо указать количество клипов</val>
+
+        </str>
+        <str name="error.object.missing">
+            <val>Необходимо указать игру или канал вещания</val>
+
+        </str>
+        <str name="error.broadcaster.notfound">
+            <val>Поставляемый канал вещания не существует</val>
+
+        </str>
+        <str name="error.broadcaster.any.empty">
+            <val>Необходимо указать канал вещания</val>
+
+        </str>
+        <str name="error.game.notfound">
+            <val>Поставляемая игра не существует</val>
+
+        </str>
+        <str name="error.game.any.empty">
+            <val>Необходимо указать игру</val>
+
+        </str>
+        <str name="error.clips.failed">
+            <val>Не удалось получить клипы</val>
+
+        </str>
+        <str name="error.clips.notfound">
+            <val>Клипы не найдены</val>
+
+        </str>
+        <str name="error.generic">
+            <val>Произошла ошибка, это все, что нам известно</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>Недостаточно места на жестком диске для продолжения</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Не удалось записать в целевую папку</val>
+
+        </str>
+        <str name="error.network.toomany">
+            <val>Слишком много запросов, повторите попытку позднее</val>
+
+        </str>
+        <str name="error.network.forbidden">
+            <val>У вас нет разрешения на выполнение этого действия</val>
+
+        </str>
+        <str name="error.network.failed">
+            <val>Кажется, Интернет не работает, повторите попытку позднее</val>
+
+        </str>
+        <str name="error.twitch.generic">
+            <val>У Twitch возникли проблемы, повторите попытку позднее</val>
+
+        </str>
+
+    </set>
+
+</asf>
