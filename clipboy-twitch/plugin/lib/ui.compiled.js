@@ -1500,7 +1500,7 @@ Switch.propTypes = {
 /*!***************************************************!*\
   !*** ../clipboy-common/src/extendscript/index.js ***!
   \***************************************************/
-/*! exports provided: getVersionInfo, getProjectPath, importMedia, addTwitchMetaData, loadSettings, saveSettings, log, clearLog, getSep, getLocale */
+/*! exports provided: getVersionInfo, getProjectPath, importMedia, addMediaMetaData, loadSettings, saveSettings, log, clearLog, getSep, getLocale */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1508,7 +1508,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getVersionInfo", function() { return getVersionInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjectPath", function() { return getProjectPath; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "importMedia", function() { return importMedia; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTwitchMetaData", function() { return addTwitchMetaData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMediaMetaData", function() { return addMediaMetaData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadSettings", function() { return loadSettings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveSettings", function() { return saveSettings; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log", function() { return log; });
@@ -1520,7 +1520,7 @@ __webpack_require__.r(__webpack_exports__);
 var getVersionInfo = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getVersionInfo,
     getProjectPath = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].getProjectPath,
     importMedia = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].importMedia,
-    addTwitchMetaData = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].addTwitchMetaData,
+    addMediaMetaData = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].addMediaMetaData,
     loadSettings = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].loadSettings,
     saveSettings = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].saveSettings,
     log = _common_util__WEBPACK_IMPORTED_MODULE_0__["evalJsxScript"].log,
@@ -20353,7 +20353,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!*************************************************************!*\
   !*** ../node_modules/@material-ui/core/esm/styles/index.js ***!
   \*************************************************************/
-/*! exports provided: createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
+/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -93089,15 +93089,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "../node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/FormGroup */ "../node_modules/@material-ui/core/esm/FormGroup/index.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "../node_modules/@material-ui/core/esm/Typography/index.js");
-/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
-/* harmony import */ var _common_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @common/components */ "../clipboy-common/src/components/index.js");
-/* harmony import */ var _common_components_message__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/components/message */ "../clipboy-common/src/components/message/index.js");
-/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
-/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
-/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../api */ "./src/api.js");
-
+/* harmony import */ var react_i18next__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-i18next */ "../node_modules/react-i18next/dist/es/index.js");
+/* harmony import */ var _common_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @common/components */ "../clipboy-common/src/components/index.js");
+/* harmony import */ var _common_components_message__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @common/components/message */ "../clipboy-common/src/components/message/index.js");
+/* harmony import */ var _common_extendscript__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @common/extendscript */ "../clipboy-common/src/extendscript/index.js");
+/* harmony import */ var _common_settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @common/settings */ "../clipboy-common/src/settings/index.js");
+/* harmony import */ var _environment_jsx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./environment.jsx */ "./src/components/environment.jsx");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../api */ "./src/api.js");
 
 
 
@@ -93126,7 +93124,7 @@ var BodyStyle = styled_components__WEBPACK_IMPORTED_MODULE_6__["default"].div.wi
   displayName: "body__BodyStyle",
   componentId: "sc-96m4yo-0"
 })(["display:flex;justify-content:center;flex-direction:column;padding:3.75rem 1.25rem 1.25rem 1.25rem;overflow-x:hidden;.target-group{position:relative;}.target-switch{position:absolute;right:0;top:50%;transform:translateY(-50%);margin-top:0.1875rem;}.target-input .MuiInputBase-input{padding-right:4.5rem;}"]);
-var ImportButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_6__["default"])(_common_components__WEBPACK_IMPORTED_MODULE_10__["Button"]).withConfig({
+var ImportButton = Object(styled_components__WEBPACK_IMPORTED_MODULE_6__["default"])(_common_components__WEBPACK_IMPORTED_MODULE_9__["Button"]).withConfig({
   displayName: "body__ImportButton",
   componentId: "sc-96m4yo-1"
 })(["&&{padding-left:0.3125rem;padding-right:0.3125rem;}"]);
@@ -93205,19 +93203,19 @@ function (_React$Component) {
 
             case 7:
               _context.next = 9;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["getSep"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getSep"])();
 
             case 9:
               seperator = _context.sent;
               _context.next = 12;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["getProjectPath"])();
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["getProjectPath"])();
 
             case 12:
               _ref2 = _context.sent;
               path = _ref2[0];
               fullPath = path.substring(0, path.lastIndexOf(seperator));
               _context.next = 17;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_15__["getClipMetadata"])(target, start, end, mode, count);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_14__["getClipMetadata"])(target, start, end, mode, count);
 
             case 17:
               data = _context.sent;
@@ -93230,7 +93228,7 @@ function (_React$Component) {
               filePath = "" + fullPath + seperator;
               _context.prev = 21;
               _context.next = 24;
-              return Object(_api__WEBPACK_IMPORTED_MODULE_15__["getClips"])(data, filePath, _this.updateProgress);
+              return Object(_api__WEBPACK_IMPORTED_MODULE_14__["getClips"])(data, filePath, _this.updateProgress);
 
             case 24:
               _context.next = 29;
@@ -93243,11 +93241,26 @@ function (_React$Component) {
 
             case 29:
               _context.next = 31;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["importMedia"])(fullPath, 'mp4');
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["importMedia"])(fullPath, 'mp4');
 
             case 31:
               _context.next = 33;
-              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_12__["addTwitchMetaData"])(data);
+              return Object(_common_extendscript__WEBPACK_IMPORTED_MODULE_11__["addMediaMetaData"])(data.map(function (_ref3) {
+                var broadcaster_name = _ref3.broadcaster_name,
+                    id = _ref3.id,
+                    title = _ref3.title,
+                    url = _ref3.url,
+                    view_count = _ref3.view_count,
+                    created_at = _ref3.created_at;
+                return {
+                  filename: id,
+                  identifier: view_count,
+                  source: url,
+                  title: title,
+                  contributor: broadcaster_name,
+                  date: created_at
+                };
+              }));
 
             case 33:
               _context.next = 35;
@@ -93292,7 +93305,7 @@ function (_React$Component) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_13__["save"])(_this.state, pkg.name);
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_12__["save"])(_this.state, pkg.name);
 
             case 2:
             case "end":
@@ -93306,20 +93319,20 @@ function (_React$Component) {
     _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3() {
-      var _ref5, start, end, rest, init;
+      var _ref6, start, end, rest, init;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_13__["load"])(pkg.name);
+              return Object(_common_settings__WEBPACK_IMPORTED_MODULE_12__["load"])(pkg.name);
 
             case 2:
-              _ref5 = _context3.sent;
-              start = _ref5.start;
-              end = _ref5.end;
-              rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_ref5, ["start", "end"]);
+              _ref6 = _context3.sent;
+              start = _ref6.start;
+              end = _ref6.end;
+              rest = _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1___default()(_ref6, ["start", "end"]);
               init = {
                 start: start ? new Date(start) : _this.state.start,
                 end: end ? new Date(end) : _this.state.end
@@ -93457,9 +93470,9 @@ function (_React$Component) {
     var t = this.props.t;
     return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(BodyStyle, {
       working: working
-    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_14__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_environment_jsx__WEBPACK_IMPORTED_MODULE_13__["Environment"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Logo"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_material_ui_core_FormGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: "target-group"
-    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Input"], {
       className: "target-input",
       value: target,
       name: "target",
@@ -93467,7 +93480,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref7 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
+        var _ref8 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee6(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee6$(_context6) {
@@ -93492,17 +93505,17 @@ function (_React$Component) {
         }));
 
         return function (_x) {
-          return _ref7.apply(this, arguments);
+          return _ref8.apply(this, arguments);
         };
       }(),
       onStill: this.save,
       enabled: !working
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Switch"], {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Switch"], {
       className: "target-switch",
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref8 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
+        var _ref9 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee7(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee7$(_context7) {
@@ -93529,17 +93542,17 @@ function (_React$Component) {
         }));
 
         return function (_x2) {
-          return _ref8.apply(this, arguments);
+          return _ref9.apply(this, arguments);
         };
       }(),
       enabled: !working,
       value: mode
-    })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["DateDisplay"], {
+    })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["DateDisplay"], {
       value: start,
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref9 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
+        var _ref10 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee8(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee8$(_context8) {
@@ -93566,7 +93579,7 @@ function (_React$Component) {
         }));
 
         return function (_x3) {
-          return _ref9.apply(this, arguments);
+          return _ref10.apply(this, arguments);
         };
       }(),
       onStill: this.save,
@@ -93575,12 +93588,12 @@ function (_React$Component) {
       label: t('form.field.startDate.label'),
       name: "startDate",
       error: t('form.field.startDate.invalid')
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["DateDisplay"], {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["DateDisplay"], {
       value: end,
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref10 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
+        var _ref11 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee9(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee9$(_context9) {
@@ -93607,7 +93620,7 @@ function (_React$Component) {
         }));
 
         return function (_x4) {
-          return _ref10.apply(this, arguments);
+          return _ref11.apply(this, arguments);
         };
       }(),
       enabled: !working,
@@ -93615,7 +93628,7 @@ function (_React$Component) {
       label: t('form.field.endDate.label'),
       name: "endDate",
       error: t('form.field.endDate.invalid')
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["Slider"], {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["Slider"], {
       defaultValue: count,
       step: 10,
       min: 10,
@@ -93624,7 +93637,7 @@ function (_React$Component) {
       onChange:
       /*#__PURE__*/
       function () {
-        var _ref11 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
+        var _ref12 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3___default()(
         /*#__PURE__*/
         _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee10(value) {
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee10$(_context10) {
@@ -93651,19 +93664,19 @@ function (_React$Component) {
         }));
 
         return function (_x5) {
-          return _ref11.apply(this, arguments);
+          return _ref12.apply(this, arguments);
         };
       }(),
       enabled: !working,
       label: t('form.field.clipCount.label'),
       name: "clipCount"
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components_message__WEBPACK_IMPORTED_MODULE_11__["ErrorMessage"], {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components_message__WEBPACK_IMPORTED_MODULE_10__["ErrorMessage"], {
       show: hasError
     }, t(error)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(ImportButton, {
       label: t('form.button.submit'),
       enabled: !working && formIsValid,
       onClick: this.importClips
-    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_10__["ProgressModal"], {
+    }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_common_components__WEBPACK_IMPORTED_MODULE_9__["ProgressModal"], {
       open: working,
       onClose: this.resetProgress,
       message: t('progress.progress.clipsleft', {
@@ -93679,7 +93692,7 @@ function (_React$Component) {
   return BodyComponent;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
-var Body = Object(react_i18next__WEBPACK_IMPORTED_MODULE_9__["withTranslation"])()(BodyComponent);
+var Body = Object(react_i18next__WEBPACK_IMPORTED_MODULE_8__["withTranslation"])()(BodyComponent);
 
 /***/ }),
 

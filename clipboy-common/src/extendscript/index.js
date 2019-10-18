@@ -3,7 +3,7 @@ export const {
     getVersionInfo,
     getProjectPath,
     importMedia,
-    addTwitchMetaData,
+    addMediaMetaData,
     loadSettings,
     saveSettings,
     log,

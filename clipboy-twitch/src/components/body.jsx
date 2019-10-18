@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import FormGroup from '@material-ui/core/FormGroup';
-import Typography from '@material-ui/core/Typography';
 import { withTranslation } from 'react-i18next';
 import {
     Logo,
@@ -16,7 +15,7 @@ import { ErrorMessage } from '@common/components/message';
 import {
     importMedia,
     getProjectPath,
-    addTwitchMetaData,
+    addMediaMetaData,
     getSep
 } from '@common/extendscript';
 import { save, load } from '@common/settings';
@@ -109,7 +108,25 @@ class BodyComponent extends React.Component {
                 console.error(error);
             }
             await importMedia(fullPath, 'mp4');
-            await addTwitchMetaData(data);
+            await addMediaMetaData(
+                data.map(
+                    ({
+                        broadcaster_name,
+                        id,
+                        title,
+                        url,
+                        view_count,
+                        created_at
+                    }) => ({
+                        filename: id,
+                        identifier: view_count,
+                        source: url,
+                        title,
+                        contributor: broadcaster_name,
+                        date: created_at
+                    })
+                )
+            );
             await this.setStateAsync({
                 complete: true
             });

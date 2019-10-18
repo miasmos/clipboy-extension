@@ -183,7 +183,7 @@ $._PPP_ = {
         }
     },
 
-    addTwitchMetaData: function(data) {
+    addMediaMetaData: function(data) {
         if (ExternalObject.AdobeXMPScript === undefined) {
             ExternalObject.AdobeXMPScript = new ExternalObject(
                 'lib:AdobeXMPScript'
@@ -191,35 +191,63 @@ $._PPP_ = {
         }
 
         if (app.project) {
+            var filetypes = ['mp4', 'm4a'];
             for (var i = 0; i < data.length; i++) {
                 var metadata = data[i];
-                var item = $._PPP_.findClip(metadata['id'] + '.mp4');
 
-                if (item) {
-                    var xmpBlob = item.getXMPMetadata();
-                    var xmp = new XMPMeta(xmpBlob);
+                for (var j = 0; j < filetypes.length; j++) {
+                    var filetype = filetypes[j];
+                    if (!('filename' in metadata)) {
+                        continue;
+                    }
+                    var item = $._PPP_.findClip(
+                        metadata['filename'] + '.' + filetype
+                    );
 
-                    xmp.setProperty(
-                        XMPConst.NS_DC,
-                        'identifier',
-                        metadata['view_count']
-                    );
-                    xmp.setProperty(XMPConst.NS_DC, 'source', metadata['url']);
-                    xmp.deleteProperty(XMPConst.NS_DC, 'title');
-                    xmp.setProperty(XMPConst.NS_DC, 'title', metadata['title']);
-                    xmp.deleteProperty(XMPConst.NS_DC, 'contributor');
-                    xmp.setProperty(
-                        XMPConst.NS_DC,
-                        'contributor',
-                        metadata['broadcaster_name']
-                    );
-                    xmp.deleteProperty(XMPConst.NS_DC, 'date');
-                    xmp.setProperty(
-                        XMPConst.NS_DC,
-                        'date',
-                        metadata['created_at']
-                    );
-                    item.setXMPMetadata(xmp.serialize());
+                    if (item) {
+                        var xmpBlob = item.getXMPMetadata();
+                        var xmp = new XMPMeta(xmpBlob);
+
+                        if ('identifier' in metadata) {
+                            xmp.setProperty(
+                                XMPConst.NS_DC,
+                                'identifier',
+                                metadata['identifier']
+                            );
+                        }
+                        if ('source' in metadata) {
+                            xmp.setProperty(
+                                XMPConst.NS_DC,
+                                'source',
+                                metadata['source']
+                            );
+                        }
+                        if ('title' in metadata) {
+                            xmp.deleteProperty(XMPConst.NS_DC, 'title');
+                            xmp.setProperty(
+                                XMPConst.NS_DC,
+                                'title',
+                                metadata['title']
+                            );
+                        }
+                        if ('contributor' in metadata) {
+                            xmp.deleteProperty(XMPConst.NS_DC, 'contributor');
+                            xmp.setProperty(
+                                XMPConst.NS_DC,
+                                'contributor',
+                                metadata['contributor']
+                            );
+                        }
+                        if ('date' in metadata) {
+                            xmp.deleteProperty(XMPConst.NS_DC, 'date');
+                            xmp.setProperty(
+                                XMPConst.NS_DC,
+                                'date',
+                                metadata['created_at']
+                            );
+                        }
+                        item.setXMPMetadata(xmp.serialize());
+                    }
                 }
             }
         }

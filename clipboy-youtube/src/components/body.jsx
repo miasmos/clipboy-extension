@@ -6,7 +6,7 @@ import { WarningMessage, ErrorMessage } from '@common/components/message';
 import {
     importMedia,
     getProjectPath,
-    addTwitchMetaData,
+    addMediaMetaData,
     getSep
 } from '@common/extendscript';
 import { FormatSelector } from './formatSelector.jsx';
@@ -97,6 +97,7 @@ class BodyComponent extends React.Component {
             try {
                 const videoFormatData = this.getFormat(videoFormat);
                 const audioFormatData = this.getFormat(audioFormat);
+                console.log(videoFormatData);
 
                 let bytesTotal = 0;
                 let { clen = 0 } = videoFormatData;
@@ -129,7 +130,17 @@ class BodyComponent extends React.Component {
                 console.error(error);
             }
             await importMedia(fullPath, 'mp4|m4a|mp3');
-            // await addTwitchMetaData(data);
+
+            const { author, title, url, views } = this.state.videoInfo;
+            await addMediaMetaData([
+                {
+                    filename: id,
+                    identifier: views,
+                    source: url,
+                    title,
+                    contributor: author
+                }
+            ]);
             await this.setStateAsync({
                 complete: true
             });
@@ -237,7 +248,6 @@ class BodyComponent extends React.Component {
     updateVideoInfo = async id => {
         try {
             const videoInfo = await getVideoInfo(id);
-            console.log(videoInfo);
             await this.setStateAsync({
                 videoInfo,
                 loading: false

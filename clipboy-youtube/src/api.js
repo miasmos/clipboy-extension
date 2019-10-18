@@ -43,13 +43,17 @@ export const getMedia = async (id, format, path, callback) => {
 };
 
 export const getVideoInfo = async id => {
-    const { length_seconds = 0, player_response, formats } = await ytdl.getInfo(
-        `https://youtube.com/watch?v=${id}`
-    );
+    const {
+        length_seconds = 0,
+        player_response,
+        formats,
+        video_url
+    } = await ytdl.getInfo(`https://youtube.com/watch?v=${id}`);
     const {
         videoDetails: {
             author,
             title,
+            viewCount,
             thumbnail: { thumbnails = [] }
         }
     } = player_response;
@@ -132,6 +136,8 @@ export const getVideoInfo = async id => {
         duration: formatDuration(length_seconds),
         title,
         author,
+        url: video_url,
+        views: viewCount,
         thumbnail: thumbnailUrl
     };
 };
