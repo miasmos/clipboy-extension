@@ -1,22 +1,22 @@
 {
-    "name": "clipboy-twitch",
+    "name": "clipboy-vimeo",
     "version": "1.0.0",
     "main": "plugin/lib/ui.compiled.js",
     "author": "Clipboy Software Inc.",
     "repository": "git@github.com:stephenpoole/clipboy-extension.git",
     "license": "NONE",
     "scripts": {
-        "start": "node ../clipboy-scripts/run.js build clipboy-twitch --env=development && webpack --env.ENV=development --watch --mode=development",
-        "build": "node ../clipboy-scripts/run.js build clipboy-twitch --env=production && webpack --env.ENV=production --mode=production",
+        "start": "node ../clipboy-scripts/run.js build clipboy-vimeo --env=development && webpack --env.ENV=development --watch --mode=development",
+        "build": "node ../clipboy-scripts/run.js build clipboy-vimeo --env=production && webpack --env.ENV=production --mode=production",
         "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
-        "package": "node ../clipboy-scripts/run.js package clipboy-twitch --env=production",
-        "deploy": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=production",
-        "deploy:qa": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=qa",
-        "deploy:dev": "node ../clipboy-scripts/run.js deploy clipboy-twitch --env=development"
+        "package": "node ../clipboy-scripts/run.js package clipboy-vimeo --env=production",
+        "deploy": "node ../clipboy-scripts/run.js deploy clipboy-vimeo --env=production",
+        "deploy:qa": "node ../clipboy-scripts/run.js deploy clipboy-vimeo --env=qa",
+        "deploy:dev": "node ../clipboy-scripts/run.js deploy clipboy-vimeo --env=development"
     },
     "extendscript": {
-        "width": 340,
-        "height": 475
+        "width": 335,
+        "height": 420
     },
     "devDependencies": {
         "@babel/core": "^7.6.0",
@@ -39,16 +39,14 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.6.0",
-        "@date-io/date-fns": "^1.3.11",
         "@material-ui/core": "^4.4.3",
         "@material-ui/icons": "^4.4.3",
-        "@material-ui/pickers": "^3.2.6",
+        "@material-ui/lab": "^4.0.0-alpha.29",
         "color": "^3.1.2",
-        "date-fns": "^2.0.0-beta.5",
-        "dayjs": "^1.8.16",
         "fetch": "^1.1.0",
         "i18next": "^17.0.17",
         "prop-types": "^15.7.2",
+        "qs": "^6.9.0",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
         "react-i18next": "^10.13.1",

@@ -17,6 +17,12 @@
       "port": 7778
     },
     {
+      "type": "node",
+      "request": "attach",
+      "name": "Debug Vimeo",
+      "port": 7779
+    },
+    {
       "type": "extendscript-debug",
       "request": "launch",
       "name": "Debug in PPro",

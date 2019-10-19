@@ -34,7 +34,8 @@ const getAppInfo = () => {
 
 const appColors = {
     'clipboy-youtube': 'rgba(204, 0, 0, 1)',
-    'clipboy-twitch': 'rgba(145, 71, 255, 1)'
+    'clipboy-twitch': 'rgba(145, 71, 255, 1)',
+    'clipboy-vimeo': 'rgba(0, 173, 239, 1)'
 };
 
 const light = app => ({

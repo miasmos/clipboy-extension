@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <macromedia-extension
-    id="clipboy-twitch"
+    id="{id}"
     icon="icon.png"
-    name="Clipboy for Twitch"
+    name="{title}"
     name_resid="app.store.name"
     requires-restart="true"
-    version="1.0.0"
+    version="{version}"
     ismultilingual="true">
-    <author name="Clipboy Software Inc."/>
+    <author name="{author}"/>
     <description>
         <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        Download Twitch clips directly into Adobe with the click of a button.]]>
+        {description}]]>
     </description>
     <license-agreement>
-        <![CDATA[]]>
+        <![CDATA[{license}]]>
     </license-agreement>
-    <update>http://localhost/project/clipboy-twitch/manifest</update>
-    <ui-access>Download Twitch clips directly into Adobe with the click of a button.</ui-access>
+    <update>{update}</update>
+    <ui-access>{uidescription}</ui-access>
     <products>
         <product familyname="Premiere" version="12"/>
     </products>

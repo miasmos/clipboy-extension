@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="en_US" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy for Vimeo</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Download Vimeo videos directly into Adobe with the click of a button.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Download Vimeo videos directly into Adobe with the click of a button.</val>
+
+        </str>
+        <str name="form.field.id.label">
+            <val>Video ID</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>Audio Format</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>Video Format</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Import</val>
+
+        </str>
+        <str name="progress.progress.percent">
+            <val>{{percent}}%</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Awesome!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Done.</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Enjoying {{name}}? Leave us a rating!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Alright</val>
+
+        </str>
+        <str name="error.generic">
+            <val>An error occurred, that's all we know</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>There wasn't enough hard drive space to continue</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Couldn't write to the target folder</val>
+
+        </str>
+        <str name="error.vimeo.dne">
+            <val>This video does not exist</val>
+
+        </str>
+
+    </set>
+
+</asf>

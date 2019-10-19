@@ -1,0 +1,26 @@
+{
+    "plugins": [
+        "@babel/plugin-transform-runtime",
+        [
+            "@babel/plugin-proposal-class-properties",
+            {
+                "loose": true
+            }
+        ],
+        "babel-plugin-styled-components",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-nullish-coalescing-operator"
+    ],
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "loose": true,
+                "targets": {
+                    "ie": "8"
+                }
+            }
+        ],
+        "@babel/preset-react"
+    ]
+}

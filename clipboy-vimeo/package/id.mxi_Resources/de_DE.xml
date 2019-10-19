@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="de_DE" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy für Vimeo</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Laden Sie Vimeo-Videos mit einem Klick direkt in Adobe herunter.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Laden Sie Vimeo-Videos mit einem Klick direkt in Adobe herunter.</val>
+
+        </str>
+        <str name="form.field.id.label">
+            <val>Video-ID</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>Audio-Format</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>Video-Format</val>
+
+        </str>
+        <str name="form.warning.speed">
+            <val>Die Download-Geschwindigkeit für diese Auswahl ist viel langsamer</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Importieren</val>
+
+        </str>
+        <str name="progress.progress.percent">
+            <val>{{percent}} %</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Super!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Erledigt.</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Gefällt Ihnen {{name}}? Bewerten Sie uns!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Okay</val>
+
+        </str>
+        <str name="error.generic">
+            <val>Es ist ein Fehler aufgetreten, mehr wissen wir auch nicht</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>Es war nicht genug Festplattenspeicher vorhanden, um fortzufahren</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Der Zielordner konnte nicht beschrieben werden</val>
+
+        </str>
+        <str name="error.vimeo.dne">
+            <val>Dieses Video ist nicht verfügbar</val>
+
+        </str>
+
+    </set>
+
+</asf>

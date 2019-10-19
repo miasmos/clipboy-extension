@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <macromedia-extension
-    id="clipboy-twitch"
+    id="clipboy-vimeo"
     icon="icon.png"
-    name="Clipboy for Twitch"
+    name="Clipboy for Vimeo"
     name_resid="app.store.name"
     requires-restart="true"
     version="1.0.0"
@@ -10,13 +10,13 @@
     <author name="Clipboy Software Inc."/>
     <description>
         <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        Download Twitch clips directly into Adobe with the click of a button.]]>
+        Download Vimeo videos directly into Adobe with the click of a button.]]>
     </description>
     <license-agreement>
         <![CDATA[]]>
     </license-agreement>
-    <update>http://localhost/project/clipboy-twitch/manifest</update>
-    <ui-access>Download Twitch clips directly into Adobe with the click of a button.</ui-access>
+    <update>http://localhost/project/clipboy-vimeo/manifest</update>
+    <ui-access>Download Vimeo videos directly into Adobe with the click of a button.</ui-access>
     <products>
         <product familyname="Premiere" version="12"/>
     </products>
