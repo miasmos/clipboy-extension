@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Twitch를 위한 Clipboy",
-    "app.store.description": "한 번의 버튼 클릭으로 Twitch 클립을 Adobe에 직접 다운로드할 수 있습니다.",
+    "app.store.description": "한 번의 버튼 클릭으로 Twitch 클립을 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.",
     "app.store.license": "",
-    "app.store.ui.description": "한 번의 버튼 클릭으로 Twitch 클립을 Adobe에 직접 다운로드할 수 있습니다.",
+    "app.store.ui.description": "한 번의 버튼 클릭으로 Twitch 클립을 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.",
     "update.message": "새로운 버전을 사용할 수 있습니다.",
     "update.link": "지금 업데이트하기",
     "form.field.game.label": "게임",

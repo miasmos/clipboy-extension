@@ -11,7 +11,7 @@
 
         </str>
         <str name="app.store.description">
-            <val>Descargue vídeos de Vimeo directamente en Adobe con solo hacer clic en un botón.</val>
+            <val>Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,7 +19,7 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Descargue vídeos de Vimeo directamente en Adobe con solo hacer clic en un botón.</val>
+            <val>Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="form.field.id.label">

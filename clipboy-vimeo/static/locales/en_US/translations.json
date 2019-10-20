@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Clipboy for Vimeo",
-    "app.store.description": "Download Vimeo videos directly into Adobe with the click of a button.",
+    "app.store.description": "Download Vimeo videos directly into Adobe Creative Cloud with the click of a button.",
     "app.store.license": "",
-    "app.store.ui.description": "Download Vimeo videos directly into Adobe with the click of a button.",
+    "app.store.ui.description": "Download Vimeo videos directly into Adobe Creative Cloud with the click of a button.",
     "form.field.id.label": "Video ID",
     "form.field.audio.label": "Audio Format",
     "form.field.video.label": "Video Format",

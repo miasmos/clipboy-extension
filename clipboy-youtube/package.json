@@ -8,7 +8,8 @@
     "scripts": {
         "start": "node ../clipboy-scripts/run.js build clipboy-youtube --env=development && webpack --env.ENV=development --watch --mode=development",
         "build": "node ../clipboy-scripts/run.js build clipboy-youtube --env=production && webpack --env.ENV=production --mode=production",
-        "start:qa": "gulp && webpack --env.ENV=qa --watch --mode=production",
+        "build:qa": "node ../clipboy-scripts/run.js build clipboy-youtube --env=production && webpack --env.ENV=qa --mode=production",
+        "start:qa": "node ../clipboy-scripts/run.js build clipboy-youtube --env=production && webpack --env.ENV=qa --watch --mode=production",
         "package": "node ../clipboy-scripts/run.js package clipboy-youtube --env=production",
         "deploy": "node ../clipboy-scripts/run.js deploy clipboy-youtube --env=production",
         "deploy:qa": "node ../clipboy-scripts/run.js deploy clipboy-youtube --env=qa",

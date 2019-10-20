@@ -10,13 +10,13 @@
     <author name="Clipboy Software Inc."/>
     <description>
         <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        Download YouTube videos directly into Adobe with the click of a button.]]>
+        Download YouTube videos directly into Adobe Creative Cloud with the click of a button.]]>
     </description>
     <license-agreement>
         <![CDATA[]]>
     </license-agreement>
-    <update>http://localhost/project/clipboy-youtube/manifest</update>
-    <ui-access>Download YouTube videos directly into Adobe with the click of a button.</ui-access>
+    <update>https://api.clipboy.dev/project/clipboy-youtube/manifest</update>
+    <ui-access>Download YouTube videos directly into Adobe Creative Cloud with the click of a button.</ui-access>
     <products>
         <product familyname="Premiere" version="12"/>
     </products>

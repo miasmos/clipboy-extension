@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Clipboy для Vimeo",
-    "app.store.description": "Загружайте видео с Vimeo прямо в Adobe одним нажатием кнопки",
+    "app.store.description": "Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки",
     "app.store.license": "",
-    "app.store.ui.description": "Загружайте видео с Vimeo прямо в Adobe одним нажатием кнопки",
+    "app.store.ui.description": "Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки",
     "form.field.id.label": "Идентификатор видео",
     "form.field.audio.label": "Аудиоформат",
     "form.field.video.label": "Видеоформат",

@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Clipboy для Twitch",
-    "app.store.description": "Загружайте клипы с Twitch прямо в Adobe одним нажатием кнопки.",
+    "app.store.description": "Загружайте клипы с Twitch прямо в Adobe Creative Cloud одним нажатием кнопки.",
     "app.store.license": "",
-    "app.store.ui.description": "Загружайте клипы с Twitch прямо в Adobe одним нажатием кнопки.",
+    "app.store.ui.description": "Загружайте клипы с Twitch прямо в Adobe Creative Cloud одним нажатием кнопки.",
     "update.message": "Доступна новая версия.",
     "update.link": "Обновить сейчас",
     "form.field.game.label": "Игра",

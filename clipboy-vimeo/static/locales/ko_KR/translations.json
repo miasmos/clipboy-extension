@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Vimeo를 위한 Clipboy",
-    "app.store.description": "한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe에 직접 다운로드할 수 있습니다.",
+    "app.store.description": "한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.",
     "app.store.license": "",
-    "app.store.ui.description": "한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe에 직접 다운로드할 수 있습니다.",
+    "app.store.ui.description": "한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.",
     "form.field.id.label": "비디오 ID",
     "form.field.audio.label": "오디오 포맷",
     "form.field.video.label": "비디오 포맷",

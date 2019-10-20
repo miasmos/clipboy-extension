@@ -11,7 +11,7 @@
 
         </str>
         <str name="app.store.description">
-            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe에 직접 다운로드할 수 있습니다.</val>
+            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,7 +19,7 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe에 직접 다운로드할 수 있습니다.</val>
+            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="form.field.id.label">

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
-<asf locale="fr_FR" version="1.0" xmlns="//ns.adobe.com/asf">
+<asf locale="ko_KR" version="1.0" xmlns="//ns.adobe.com/asf">
     <set name="DefaultSet">
         <str name="app.name">
             <val>Clipboy</val>
 
         </str>
         <str name="app.store.name">
-            <val>Clipboy pour Twitch</val>
+            <val>Twitch를 위한 Clipboy</val>
 
         </str>
         <str name="app.store.description">
-            <val>Téléchargez des clips Twitch directement dans Adobe Creative Cloud en un clic.</val>
+            <val>한 번의 버튼 클릭으로 Twitch 클립을 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,159 +19,159 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Téléchargez des clips Twitch directement dans Adobe Creative Cloud en un clic.</val>
+            <val>한 번의 버튼 클릭으로 Twitch 클립을 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="update.message">
-            <val>Une nouvelle version est disponible.</val>
+            <val>새로운 버전을 사용할 수 있습니다.</val>
 
         </str>
         <str name="update.link">
-            <val>Mettre à jour maintenant</val>
+            <val>지금 업데이트하기</val>
 
         </str>
         <str name="form.field.game.label">
-            <val>Jeu</val>
+            <val>게임</val>
 
         </str>
         <str name="form.field.broadcaster.label">
-            <val>Diffuseur</val>
+            <val>방송</val>
 
         </str>
         <str name="form.field.startDate.label">
-            <val>Date de début</val>
+            <val>시작 날짜</val>
 
         </str>
         <str name="form.field.startDate.invalid">
-            <val>Date invalide</val>
+            <val>무효한 날짜</val>
 
         </str>
         <str name="form.field.endDate.label">
-            <val>Date de fin</val>
+            <val>종료 날짜</val>
 
         </str>
         <str name="form.field.endDate.invalid">
-            <val>Date invalide</val>
+            <val>무효한 날짜</val>
 
         </str>
         <str name="form.field.clipCount.label">
-            <val>Nombre de clips</val>
+            <val>클립 숫자</val>
 
         </str>
         <str name="form.button.submit">
-            <val>Importer</val>
+            <val>가져오기</val>
 
         </str>
         <str name="progress.button.done">
-            <val>Génial !</val>
+            <val>놀랍습니다!</val>
 
         </str>
         <str name="progress.message.done">
-            <val>Terminé.</val>
+            <val>완료.</val>
 
         </str>
         <str name="progress.progress.clipsleft">
-            <val>{{current}} de {{total}}</val>
+            <val>{{total}}의 {{current}} </val>
 
         </str>
         <str name="rating.message">
-            <val>Vous appréciez {{name}} ? Laissez-nous une évaluation !</val>
+            <val>{{name}}을 즐기셨나요? 저희를 평가해 주세요!</val>
 
         </str>
         <str name="rating.ok">
-            <val>Bien</val>
+            <val>좋아요</val>
 
         </str>
         <str name="error.startdate.date.max">
-            <val>La date de début doit être antérieure à la date de fin</val>
+            <val>시작일은 반드시 종료일보다 빨라야 합니다. </val>
 
         </str>
         <str name="error.startdate.date.isoDate">
-            <val>Date de début invalide</val>
+            <val>무효한 시작일입니다.</val>
 
         </str>
         <str name="error.startdate.any.required">
-            <val>La date de début est requise</val>
+            <val>시작일은 필수입니다.</val>
 
         </str>
         <str name="error.enddate.date.less">
-            <val>La date de fin doit être antérieure à aujourd'hui</val>
+            <val>종료일은 반드시 오늘보다 빨라야 합니다. </val>
 
         </str>
         <str name="error.enddate.date.isoDate">
-            <val>Date de fin invalide</val>
+            <val>무효한 종료일 </val>
 
         </str>
         <str name="error.clipcount.number.min">
-            <val>Nombre de clips invalide</val>
+            <val>무효한 클립 숫자 </val>
 
         </str>
         <str name="error.clipcount.number.max">
-            <val>Nombre de clips invalide</val>
+            <val>무효한 클립 숫자</val>
 
         </str>
         <str name="error.clipcount.number.base">
-            <val>Nombre de clips invalide</val>
+            <val>무효한 클립 숫자</val>
 
         </str>
         <str name="error.clipcount.any.required">
-            <val>Le nombre de clips est requis</val>
+            <val>클립 숫자는 필수입니다.</val>
 
         </str>
         <str name="error.object.missing">
-            <val>Le jeu ou le diffuseur est requis</val>
+            <val>게임 또는 방송은 필수입니다. </val>
 
         </str>
         <str name="error.broadcaster.notfound">
-            <val>Le diffuseur fourni n'existe pas</val>
+            <val>제공하신 방송은 존재하지 않습니다. </val>
 
         </str>
         <str name="error.broadcaster.any.empty">
-            <val>Le diffuseur est requis</val>
+            <val>방송은 필수입니다.</val>
 
         </str>
         <str name="error.game.notfound">
-            <val>Le jeu fourni n'existe pas</val>
+            <val>제공하신 게임은 존재하지 않습니다.</val>
 
         </str>
         <str name="error.game.any.empty">
-            <val>Le jeu est requis</val>
+            <val>게임은 필수입니다.</val>
 
         </str>
         <str name="error.clips.failed">
-            <val>Échec d'obtention de clip(s)</val>
+            <val>클립 가져오기 실패</val>
 
         </str>
         <str name="error.clips.notfound">
-            <val>Aucun clip trouvé</val>
+            <val>클립을 찾지 못함 </val>
 
         </str>
         <str name="error.generic">
-            <val>Une erreur est survenue, c'est tout ce que nous savons</val>
+            <val>오류가 발생한 것으로 여겨집니다.</val>
 
         </str>
         <str name="error.system.space">
-            <val>Il n'y avait pas assez d'espace disque pour continuer</val>
+            <val>하드 드라이브 공간이 충분하지 않아 계속할 수 없습니다.</val>
 
         </str>
         <str name="error.system.permission">
-            <val>Impossible d'écrire dans le dossier cible</val>
+            <val>목표 폴더에 기록하지 못했습니다. </val>
 
         </str>
         <str name="error.network.toomany">
-            <val>Trop de demandes, veuillez réessayer plus tard</val>
+            <val>요청이 너무 많습니다, 나중에 다시 시도하세요.</val>
 
         </str>
         <str name="error.network.forbidden">
-            <val>Vous n'êtes pas autorisé à le faire</val>
+            <val>이 과정에 대한 승인이 없습니다. </val>
 
         </str>
         <str name="error.network.failed">
-            <val>Internet semble hors service, veuillez réessayer plus tard</val>
+            <val>인터넷이 연결되지 않은 것 같습니다, 나중에 다시 시도하세요.</val>
 
         </str>
         <str name="error.twitch.generic">
-            <val>Twitch rencontre des problèmes, veuillez réessayer plus tard</val>
+            <val>Twitch에 문제가 있습니다, 나중에 다시 시도하세요.</val>
 
         </str>
 

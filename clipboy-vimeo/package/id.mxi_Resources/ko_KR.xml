@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
-<asf locale="fr_FR" version="1.0" xmlns="//ns.adobe.com/asf">
+<asf locale="ko_KR" version="1.0" xmlns="//ns.adobe.com/asf">
     <set name="DefaultSet">
         <str name="app.name">
             <val>Clipboy</val>
 
         </str>
         <str name="app.store.name">
-            <val>Clipboy pour Vimeo</val>
+            <val>Vimeo를 위한 Clipboy</val>
 
         </str>
         <str name="app.store.description">
-            <val>Téléchargez des vidéos Vimeo directement dans Adobe Creative Cloud en un clic.</val>
+            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,63 +19,63 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Téléchargez des vidéos Vimeo directement dans Adobe Creative Cloud en un clic.</val>
+            <val>한 번의 버튼 클릭으로 Vimeo 비디오를 Adobe Creative Cloud에 직접 다운로드할 수 있습니다.</val>
 
         </str>
         <str name="form.field.id.label">
-            <val>ID vidéo</val>
+            <val>비디오 ID</val>
 
         </str>
         <str name="form.field.audio.label">
-            <val>Format audio</val>
+            <val>오디오 포맷</val>
 
         </str>
         <str name="form.field.video.label">
-            <val>Format vidéo</val>
+            <val>비디오 포맷</val>
 
         </str>
         <str name="form.warning.speed">
-            <val>La vitesse de téléchargement de cette sélection est beaucoup plus lente</val>
+            <val>이 셀렉션을 위한 다운로드 스피드는 훨씬 느립니다. </val>
 
         </str>
         <str name="form.button.submit">
-            <val>Importer</val>
+            <val>가져오기</val>
 
         </str>
         <str name="progress.progress.percent">
-            <val>{{percent}} %</val>
+            <val>{{percent}}%</val>
 
         </str>
         <str name="progress.button.done">
-            <val>Génial !</val>
+            <val>놀랍습니다!</val>
 
         </str>
         <str name="progress.message.done">
-            <val>Terminé.</val>
+            <val>완료.</val>
 
         </str>
         <str name="rating.message">
-            <val>Vous appréciez {{name}} ? Laissez-nous une évaluation !</val>
+            <val>{{name}}을 즐기셨나요? 저희를 평가해 주세요!</val>
 
         </str>
         <str name="rating.ok">
-            <val>Bien</val>
+            <val>좋아요</val>
 
         </str>
         <str name="error.generic">
-            <val>Une erreur est survenue, c'est tout ce que nous savons</val>
+            <val>오류가 발생한 것으로 여겨집니다.</val>
 
         </str>
         <str name="error.system.space">
-            <val>Il n'y avait pas assez d'espace disque pour continuer</val>
+            <val>하드 드라이브 공간이 충분하지 않아 계속할 수 없습니다.</val>
 
         </str>
         <str name="error.system.permission">
-            <val>Impossible d'écrire dans le dossier cible</val>
+            <val>목표 폴더에 기록하지 못했습니다.</val>
 
         </str>
         <str name="error.vimeo.dne">
-            <val>Cette vidéo n'est pas disponible</val>
+            <val>이 비디오는 이용할 수 없습니다. </val>
 
         </str>
 

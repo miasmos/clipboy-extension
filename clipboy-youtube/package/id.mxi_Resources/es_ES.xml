@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
-<asf locale="en_US" version="1.0" xmlns="//ns.adobe.com/asf">
+<asf locale="es_ES" version="1.0" xmlns="//ns.adobe.com/asf">
     <set name="DefaultSet">
         <str name="app.name">
             <val>Clipboy</val>
 
         </str>
         <str name="app.store.name">
-            <val>Clipboy for YouTube</val>
+            <val>Clipboy para YouTube</val>
 
         </str>
         <str name="app.store.description">
-            <val>Download YouTube videos directly into Adobe Creative Cloud with the click of a button.</val>
+            <val>Descargue vídeos de YouTube directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,27 +19,27 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Download YouTube videos directly into Adobe Creative Cloud with the click of a button.</val>
+            <val>Descargue vídeos de YouTube directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="form.field.id.label">
-            <val>Video ID</val>
+            <val>ID del vídeo</val>
 
         </str>
         <str name="form.field.audio.label">
-            <val>Audio Format</val>
+            <val>Formato de audio</val>
 
         </str>
         <str name="form.field.video.label">
-            <val>Video Format</val>
+            <val>Formato de vídeo</val>
 
         </str>
         <str name="form.warning.speed">
-            <val>Download speed for this selection is much slower</val>
+            <val>La velocidad de descarga para esta selección es mucho más lenta</val>
 
         </str>
         <str name="form.button.submit">
-            <val>Import</val>
+            <val>Importar</val>
 
         </str>
         <str name="progress.progress.percent">
@@ -47,39 +47,39 @@
 
         </str>
         <str name="progress.button.done">
-            <val>Awesome!</val>
+            <val>¡Maravilloso!</val>
 
         </str>
         <str name="progress.message.done">
-            <val>Done.</val>
+            <val>Listo.</val>
 
         </str>
         <str name="rating.message">
-            <val>Enjoying {{name}}? Leave us a rating!</val>
+            <val>¿Está disfrutando de {{name}}? ¡Déjenos una calificación!</val>
 
         </str>
         <str name="rating.ok">
-            <val>Alright</val>
+            <val>Correcto</val>
 
         </str>
         <str name="error.generic">
-            <val>An error occurred, that's all we know</val>
+            <val>Se produjo un error, eso es todo lo que sabemos.</val>
 
         </str>
         <str name="error.system.space">
-            <val>There wasn't enough hard drive space to continue</val>
+            <val>No había suficiente espacio en el disco duro para continuar</val>
 
         </str>
         <str name="error.system.permission">
-            <val>Couldn't write to the target folder</val>
+            <val>No se pudo escribir en la carpeta de destino</val>
 
         </str>
         <str name="error.youtube.payment">
-            <val>This video requires payment</val>
+            <val>Este vídeo es de pago</val>
 
         </str>
         <str name="error.youtube.unavailable">
-            <val>This video is unavailable</val>
+            <val>Este vídeo no está disponible</val>
 
         </str>
 

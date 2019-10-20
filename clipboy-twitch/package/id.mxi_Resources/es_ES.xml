@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
-<asf locale="fr_FR" version="1.0" xmlns="//ns.adobe.com/asf">
+<asf locale="es_ES" version="1.0" xmlns="//ns.adobe.com/asf">
     <set name="DefaultSet">
         <str name="app.name">
             <val>Clipboy</val>
 
         </str>
         <str name="app.store.name">
-            <val>Clipboy pour Twitch</val>
+            <val>Clipboy para Twitch</val>
 
         </str>
         <str name="app.store.description">
-            <val>Téléchargez des clips Twitch directement dans Adobe Creative Cloud en un clic.</val>
+            <val>Descargue los clips de Twitch directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,55 +19,55 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Téléchargez des clips Twitch directement dans Adobe Creative Cloud en un clic.</val>
+            <val>Descargue los clips de Twitch directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
 
         </str>
         <str name="update.message">
-            <val>Une nouvelle version est disponible.</val>
+            <val>Una nueva version esta disponible.</val>
 
         </str>
         <str name="update.link">
-            <val>Mettre à jour maintenant</val>
+            <val>Actualizar ahora</val>
 
         </str>
         <str name="form.field.game.label">
-            <val>Jeu</val>
+            <val>Juego</val>
 
         </str>
         <str name="form.field.broadcaster.label">
-            <val>Diffuseur</val>
+            <val>Emisora</val>
 
         </str>
         <str name="form.field.startDate.label">
-            <val>Date de début</val>
+            <val>Fecha de inicio</val>
 
         </str>
         <str name="form.field.startDate.invalid">
-            <val>Date invalide</val>
+            <val>Fecha no válida</val>
 
         </str>
         <str name="form.field.endDate.label">
-            <val>Date de fin</val>
+            <val>Fecha de finalización</val>
 
         </str>
         <str name="form.field.endDate.invalid">
-            <val>Date invalide</val>
+            <val>Fecha no válida</val>
 
         </str>
         <str name="form.field.clipCount.label">
-            <val>Nombre de clips</val>
+            <val>Recuento de clip</val>
 
         </str>
         <str name="form.button.submit">
-            <val>Importer</val>
+            <val>Importar</val>
 
         </str>
         <str name="progress.button.done">
-            <val>Génial !</val>
+            <val>¡Maravilloso!</val>
 
         </str>
         <str name="progress.message.done">
-            <val>Terminé.</val>
+            <val>Listo.</val>
 
         </str>
         <str name="progress.progress.clipsleft">
@@ -75,103 +75,103 @@
 
         </str>
         <str name="rating.message">
-            <val>Vous appréciez {{name}} ? Laissez-nous une évaluation !</val>
+            <val>¿Está disfrutando de {{name}}? ¡Déjenos una calificación!</val>
 
         </str>
         <str name="rating.ok">
-            <val>Bien</val>
+            <val>Correcto</val>
 
         </str>
         <str name="error.startdate.date.max">
-            <val>La date de début doit être antérieure à la date de fin</val>
+            <val>La fecha de inicio debe ser anterior a la fecha de finalización</val>
 
         </str>
         <str name="error.startdate.date.isoDate">
-            <val>Date de début invalide</val>
+            <val>Fecha de inicio no válida</val>
 
         </str>
         <str name="error.startdate.any.required">
-            <val>La date de début est requise</val>
+            <val>Se requiere la fecha de inicio</val>
 
         </str>
         <str name="error.enddate.date.less">
-            <val>La date de fin doit être antérieure à aujourd'hui</val>
+            <val>La fecha de finalización debe ser anterior a hoy</val>
 
         </str>
         <str name="error.enddate.date.isoDate">
-            <val>Date de fin invalide</val>
+            <val>Fecha de finalización no válida</val>
 
         </str>
         <str name="error.clipcount.number.min">
-            <val>Nombre de clips invalide</val>
+            <val>Recuento de clips no válido</val>
 
         </str>
         <str name="error.clipcount.number.max">
-            <val>Nombre de clips invalide</val>
+            <val>Recuento de clips no válido</val>
 
         </str>
         <str name="error.clipcount.number.base">
-            <val>Nombre de clips invalide</val>
+            <val>Recuento de clips no válido</val>
 
         </str>
         <str name="error.clipcount.any.required">
-            <val>Le nombre de clips est requis</val>
+            <val>Se requiere recuento de clips</val>
 
         </str>
         <str name="error.object.missing">
-            <val>Le jeu ou le diffuseur est requis</val>
+            <val>Se requiere juego o emisora</val>
 
         </str>
         <str name="error.broadcaster.notfound">
-            <val>Le diffuseur fourni n'existe pas</val>
+            <val>La emisora suministrada no existe</val>
 
         </str>
         <str name="error.broadcaster.any.empty">
-            <val>Le diffuseur est requis</val>
+            <val>Se requiere una emisora</val>
 
         </str>
         <str name="error.game.notfound">
-            <val>Le jeu fourni n'existe pas</val>
+            <val>El juego suministrado no existe</val>
 
         </str>
         <str name="error.game.any.empty">
-            <val>Le jeu est requis</val>
+            <val>Se requiere un juego</val>
 
         </str>
         <str name="error.clips.failed">
-            <val>Échec d'obtention de clip(s)</val>
+            <val>Error al obtener clips</val>
 
         </str>
         <str name="error.clips.notfound">
-            <val>Aucun clip trouvé</val>
+            <val>No se han encontrado clips</val>
 
         </str>
         <str name="error.generic">
-            <val>Une erreur est survenue, c'est tout ce que nous savons</val>
+            <val>Se produjo un error, eso es todo lo que sabemos.</val>
 
         </str>
         <str name="error.system.space">
-            <val>Il n'y avait pas assez d'espace disque pour continuer</val>
+            <val>No había suficiente espacio en el disco duro para continuar</val>
 
         </str>
         <str name="error.system.permission">
-            <val>Impossible d'écrire dans le dossier cible</val>
+            <val>No se pudo escribir en la carpeta de destino</val>
 
         </str>
         <str name="error.network.toomany">
-            <val>Trop de demandes, veuillez réessayer plus tard</val>
+            <val>Demasiadas solicitudes, inténtelo de nuevo más tarde</val>
 
         </str>
         <str name="error.network.forbidden">
-            <val>Vous n'êtes pas autorisé à le faire</val>
+            <val>No tiene permiso para hacer eso</val>
 
         </str>
         <str name="error.network.failed">
-            <val>Internet semble hors service, veuillez réessayer plus tard</val>
+            <val>Parece que se ha caído el internet, inténtelo de nuevo más tarde</val>
 
         </str>
         <str name="error.twitch.generic">
-            <val>Twitch rencontre des problèmes, veuillez réessayer plus tard</val>
+            <val>Twitch está teniendo problemas, inténtelo de nuevo más tarde</val>
 
         </str>
 

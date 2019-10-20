@@ -11,7 +11,7 @@
 
         </str>
         <str name="app.store.description">
-            <val>Download Vimeo videos directly into Adobe with the click of a button.</val>
+            <val>Download Vimeo videos directly into Adobe Creative Cloud with the click of a button.</val>
 
         </str>
         <str name="app.store.license">
@@ -19,7 +19,7 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Download Vimeo videos directly into Adobe with the click of a button.</val>
+            <val>Download Vimeo videos directly into Adobe Creative Cloud with the click of a button.</val>
 
         </str>
         <str name="form.field.id.label">

@@ -11,7 +11,7 @@
 
         </str>
         <str name="app.store.description">
-            <val>Загружайте видео с YouTube прямо в Adobe одним нажатием кнопки</val>
+            <val>Загружайте видео с YouTube прямо в Adobe Creative Cloud одним нажатием кнопки</val>
 
         </str>
         <str name="app.store.license">
@@ -19,7 +19,7 @@
 
         </str>
         <str name="app.store.ui.description">
-            <val>Загружайте видео с YouTube прямо в Adobe одним нажатием кнопки</val>
+            <val>Загружайте видео с YouTube прямо в Adobe Creative Cloud одним нажатием кнопки</val>
 
         </str>
         <str name="form.field.id.label">

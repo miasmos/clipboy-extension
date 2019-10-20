@@ -1,9 +1,9 @@
 {
     "app.name": "Clipboy",
     "app.store.name": "Clipboy para YouTube",
-    "app.store.description": "Descargue vídeos de YouTube directamente en Adobe con solo hacer clic en un botón.",
+    "app.store.description": "Descargue vídeos de YouTube directamente en Adobe Creative Cloud con solo hacer clic en un botón.",
     "app.store.license": "",
-    "app.store.ui.description": "Descargue vídeos de YouTube directamente en Adobe con solo hacer clic en un botón.",
+    "app.store.ui.description": "Descargue vídeos de YouTube directamente en Adobe Creative Cloud con solo hacer clic en un botón.",
     "form.field.id.label": "ID del vídeo",
     "form.field.audio.label": "Formato de audio",
     "form.field.video.label": "Formato de vídeo",
