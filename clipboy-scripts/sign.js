@@ -11,7 +11,17 @@ const exec = util.promisify(require('child_process').exec);
     console.log('Signing', targetFolder);
     let stdout, stderr;
     ({ stdout, stderr } = await exec(
-        `cd ${outputPath} && ${zxpSignExePath} -sign ${targetFolder} package.zxp ${certPath} fesomg90smg43 -tsa http://timestamp.digicert.com`
+        `${zxpSignExePath} -selfSignedCert CA Ontario "Clipboy Software Inc." "Clipboy Software Inc." "password" ${certPath} -validityDays 365`
+    ));
+
+    if (stderr) {
+        console.error(stderr);
+    } else {
+        console.log(stdout);
+    }
+
+    ({ stdout, stderr } = await exec(
+        `cd ${outputPath} && del package.zxp && ${zxpSignExePath} -sign ${targetFolder} package.zxp ${certPath} password -tsa http://timestamp.digicert.com`
     ));
 
     if (stderr) {
