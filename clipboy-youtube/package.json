@@ -1,6 +1,6 @@
 {
     "name": "clipboy-youtube",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "plugin/lib/ui.compiled.js",
     "author": "Clipboy Software Inc.",
     "repository": "git@github.com:stephenpoole/clipboy-extension.git",

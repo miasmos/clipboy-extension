@@ -5,7 +5,7 @@
     name="Clipboy for Twitch"
     name_resid="app.store.name"
     requires-restart="true"
-    version="1.0.0"
+    version="1.0.1"
     ismultilingual="true">
     <author name="Clipboy Software Inc."/>
     <description>
