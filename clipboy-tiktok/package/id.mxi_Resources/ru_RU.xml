@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="ru_RU" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy для Vimeo</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки</val>
+
+        </str>
+        <str name="form.field.id.label">
+            <val>Идентификатор видео</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>Аудиоформат</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>Видеоформат</val>
+
+        </str>
+        <str name="form.warning.speed">
+            <val>Скорость загрузки для этого выбора намного медленнее</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Импортировать</val>
+
+        </str>
+        <str name="progress.progress.percent">
+            <val>{{percent}}%</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>Потрясающе!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Готово.</val>
+
+        </str>
+        <str name="rating.message">
+            <val>Нравится {{name}}? Оцените нас!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Хорошо</val>
+
+        </str>
+        <str name="error.generic">
+            <val>Произошла ошибка, это все, что нам известно</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>Недостаточно места на жестком диске для продолжения</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>Не удалось записать в целевую папку</val>
+
+        </str>
+        <str name="error.vimeo.dne">
+            <val>Это видео недоступно</val>
+
+        </str>
+
+    </set>
+
+</asf>

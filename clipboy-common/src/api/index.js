@@ -1,7 +1,11 @@
-export const get = (uri, body, method = 'GET') =>
+export const get = (uri, body, headers = {}, method = 'GET') =>
     fetch(uri, {
         method,
-        headers: { Origin: 'null', 'Content-Type': 'application/json' },
+        headers: {
+            ...headers,
+            Origin: 'null',
+            'Content-Type': 'application/json'
+        },
         ...(body && { body: JSON.stringify(body) })
     })
         .then(response => response.json())
@@ -34,4 +38,4 @@ export const get = (uri, body, method = 'GET') =>
             throw new Error(result);
         });
 
-export const post = (uri, body) => get(uri, body, 'POST');
+export const post = (uri, body, headers) => get(uri, body, headers, 'POST');

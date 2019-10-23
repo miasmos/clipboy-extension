@@ -1,0 +1,59 @@
+{
+    "name": "clipboy-tiktok",
+    "version": "1.0.0",
+    "main": "plugin/lib/ui.compiled.js",
+    "author": "Clipboy Software Inc.",
+    "repository": "git@github.com:stephenpoole/clipboy-extension.git",
+    "license": "NONE",
+    "scripts": {
+        "start": "node ../clipboy-scripts/run.js build clipboy-tiktok --env=development && webpack --env.ENV=development --watch --mode=development",
+        "build": "node ../clipboy-scripts/run.js build clipboy-tiktok --env=production && webpack --env.ENV=production --mode=production",
+        "start:qa": "node ../clipboy-scripts/run.js build clipboy-tiktok --env=production && webpack --env.ENV=qa --watch --mode=production",
+        "build:qa": "node ../clipboy-scripts/run.js build clipboy-tiktok --env=production && webpack --env.ENV=qa --mode=production",
+        "package": "node ../clipboy-scripts/run.js package clipboy-tiktok --env=production",
+        "deploy": "node ../clipboy-scripts/run.js deploy clipboy-tiktok --env=production",
+        "deploy:qa": "node ../clipboy-scripts/run.js deploy clipboy-tiktok --env=qa",
+        "deploy:dev": "node ../clipboy-scripts/run.js deploy clipboy-tiktok --env=development"
+    },
+    "extendscript": {
+        "width": 335,
+        "height": 420
+    },
+    "devDependencies": {
+        "@babel/core": "^7.6.0",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
+        "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+        "@babel/plugin-transform-runtime": "^7.6.0",
+        "@babel/preset-env": "^7.6.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.6",
+        "babel-plugin-styled-components": "^1.10.6",
+        "copy-webpack-plugin": "^5.0.4",
+        "dotenv": "^8.1.0",
+        "dotenv-webpack": "^1.7.0",
+        "file-loader": "^4.2.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4",
+        "webpack": "^4.39.3",
+        "webpack-cli": "^3.3.8"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.6.0",
+        "@material-ui/core": "^4.4.3",
+        "@material-ui/icons": "^4.4.3",
+        "@material-ui/lab": "^4.0.0-alpha.29",
+        "color": "^3.1.2",
+        "fetch": "^1.1.0",
+        "i18next": "^17.0.17",
+        "prop-types": "^15.7.2",
+        "qs": "^6.9.0",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-i18next": "^10.13.1",
+        "react-transition-group": "^4.3.0",
+        "request-promise": "^4.2.4",
+        "styled-components": "^4.3.2",
+        "styled-reset": "^4.0.0"
+    }
+}

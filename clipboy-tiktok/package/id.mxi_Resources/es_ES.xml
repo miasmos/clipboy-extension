@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE asf SYSTEM "//ns.adobe.com/asf/asf_1_0.dtd">
+<asf locale="es_ES" version="1.0" xmlns="//ns.adobe.com/asf">
+    <set name="DefaultSet">
+        <str name="app.name">
+            <val>Clipboy</val>
+
+        </str>
+        <str name="app.store.name">
+            <val>Clipboy para Vimeo</val>
+
+        </str>
+        <str name="app.store.description">
+            <val>Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
+
+        </str>
+        <str name="app.store.license">
+            <val/>
+
+        </str>
+        <str name="app.store.ui.description">
+            <val>Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.</val>
+
+        </str>
+        <str name="form.field.id.label">
+            <val>ID del vídeo</val>
+
+        </str>
+        <str name="form.field.audio.label">
+            <val>Formato de audio</val>
+
+        </str>
+        <str name="form.field.video.label">
+            <val>Formato de vídeo</val>
+
+        </str>
+        <str name="form.warning.speed">
+            <val>La velocidad de descarga para esta selección es mucho más lenta</val>
+
+        </str>
+        <str name="form.button.submit">
+            <val>Importar</val>
+
+        </str>
+        <str name="progress.progress.percent">
+            <val>{{percent}}%</val>
+
+        </str>
+        <str name="progress.button.done">
+            <val>¡Maravilloso!</val>
+
+        </str>
+        <str name="progress.message.done">
+            <val>Listo.</val>
+
+        </str>
+        <str name="rating.message">
+            <val>¿Está disfrutando de {{name}}? ¡Déjenos una calificación!</val>
+
+        </str>
+        <str name="rating.ok">
+            <val>Correcto</val>
+
+        </str>
+        <str name="error.generic">
+            <val>Se produjo un error, eso es todo lo que sabemos.</val>
+
+        </str>
+        <str name="error.system.space">
+            <val>No había suficiente espacio en el disco duro para continuar</val>
+
+        </str>
+        <str name="error.system.permission">
+            <val>No se pudo escribir en la carpeta de destino</val>
+
+        </str>
+        <str name="error.vimeo.dne">
+            <val>Este vídeo no está disponible</val>
+
+        </str>
+
+    </set>
+
+</asf>

@@ -23,6 +23,12 @@
       "port": 7779
     },
     {
+      "type": "node",
+      "request": "attach",
+      "name": "Debug Tiktok",
+      "port": 7780
+    },
+    {
       "type": "extendscript-debug",
       "request": "launch",
       "name": "Debug in PPro",

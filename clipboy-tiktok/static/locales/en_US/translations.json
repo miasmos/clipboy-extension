@@ -1,0 +1,20 @@
+{
+    "app.name": "Clipboy",
+    "app.store.name": "Clipboy for Tiktok",
+    "app.store.description": "Download Tiktok content directly into Adobe Creative Cloud with the click of a button.",
+    "app.store.license": "",
+    "app.store.ui.description": "Download Tiktok content directly into Adobe Creative Cloud with the click of a button.",
+    "form.field.id.label": "Video ID",
+    "form.field.audio.label": "Audio Format",
+    "form.field.video.label": "Video Format",
+    "form.button.submit": "Import",
+    "progress.progress.percent": "{{percent}}%",
+    "progress.button.done": "Awesome!",
+    "progress.message.done": "Done.",
+    "rating.message": "Enjoying {{name}}? Leave us a rating!",
+    "rating.ok": "Alright",
+    "error.generic": "An error occurred, that's all we know",
+    "error.system.space": "There wasn't enough hard drive space to continue",
+    "error.system.permission": "Couldn't write to the target folder",
+    "error.vimeo.dne": "This video does not exist"
+}

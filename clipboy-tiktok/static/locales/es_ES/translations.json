@@ -1,0 +1,21 @@
+{
+    "app.name": "Clipboy",
+    "app.store.name": "Clipboy para Vimeo",
+    "app.store.description": "Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.",
+    "app.store.license": "",
+    "app.store.ui.description": "Descargue vídeos de Vimeo directamente en Adobe Creative Cloud con solo hacer clic en un botón.",
+    "form.field.id.label": "ID del vídeo",
+    "form.field.audio.label": "Formato de audio",
+    "form.field.video.label": "Formato de vídeo",
+    "form.warning.speed": "La velocidad de descarga para esta selección es mucho más lenta",
+    "form.button.submit": "Importar",
+    "progress.progress.percent": "{{percent}}%",
+    "progress.button.done": "¡Maravilloso!",
+    "progress.message.done": "Listo.",
+    "rating.message": "¿Está disfrutando de {{name}}? ¡Déjenos una calificación!",
+    "rating.ok": "Correcto",
+    "error.generic": "Se produjo un error, eso es todo lo que sabemos.",
+    "error.system.space": "No había suficiente espacio en el disco duro para continuar",
+    "error.system.permission": "No se pudo escribir en la carpeta de destino",
+    "error.vimeo.dne": "Este vídeo no está disponible"
+}

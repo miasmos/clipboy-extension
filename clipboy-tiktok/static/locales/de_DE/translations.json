@@ -1,0 +1,21 @@
+{
+    "app.name": "Clipboy",
+    "app.store.name": "Clipboy für Vimeo",
+    "app.store.description": "Laden Sie Vimeo-Videos mit einem Klick direkt in Adobe Creative Cloud herunter.",
+    "app.store.license": "",
+    "app.store.ui.description": "Laden Sie Vimeo-Videos mit einem Klick direkt in Adobe Creative Cloud herunter.",
+    "form.field.id.label": "Video-ID",
+    "form.field.audio.label": "Audio-Format",
+    "form.field.video.label": "Video-Format",
+    "form.warning.speed": "Die Download-Geschwindigkeit für diese Auswahl ist viel langsamer",
+    "form.button.submit": "Importieren",
+    "progress.progress.percent": "{{percent}} %",
+    "progress.button.done": "Super!",
+    "progress.message.done": "Erledigt.",
+    "rating.message": "Gefällt Ihnen {{name}}? Bewerten Sie uns!",
+    "rating.ok": "Okay",
+    "error.generic": "Es ist ein Fehler aufgetreten, mehr wissen wir auch nicht",
+    "error.system.space": "Es war nicht genug Festplattenspeicher vorhanden, um fortzufahren",
+    "error.system.permission": "Der Zielordner konnte nicht beschrieben werden",
+    "error.vimeo.dne": "Dieses Video ist nicht verfügbar"
+}

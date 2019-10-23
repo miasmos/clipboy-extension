@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macromedia-extension
+    id="clipboy-tiktok"
+    icon="icon.png"
+    name="Clipboy for Tiktok"
+    name_resid="app.store.name"
+    requires-restart="true"
+    version="1.0.0"
+    ismultilingual="true">
+    <author name="Clipboy Software Inc."/>
+    <description>
+        <![CDATA[<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        Download Tiktok content directly into Adobe Creative Cloud with the click of a button.]]>
+    </description>
+    <license-agreement>
+        <![CDATA[]]>
+    </license-agreement>
+    <update>http://localhost/project/clipboy-tiktok/manifest</update>
+    <ui-access>Download Tiktok content directly into Adobe Creative Cloud with the click of a button.</ui-access>
+    <products>
+        <product familyname="Premiere" version="12"/>
+    </products>
+    <files>
+        <file source="Extension/package.zxp"
+            destination=""
+            file-type="CSXS"
+            products="Premiere"
+            minVersion="12.0" />
+        <file source="id.mxi_Resources" destination="$resourceroot" isresourcefile="true" />
+        <file source="icon.png" destination="$ExtensionSpecificEMStore" />
+    </files>
+</macromedia-extension>

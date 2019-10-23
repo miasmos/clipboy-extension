@@ -1,0 +1,21 @@
+{
+    "app.name": "Clipboy",
+    "app.store.name": "Clipboy для Vimeo",
+    "app.store.description": "Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки",
+    "app.store.license": "",
+    "app.store.ui.description": "Загружайте видео с Vimeo прямо в Adobe Creative Cloud одним нажатием кнопки",
+    "form.field.id.label": "Идентификатор видео",
+    "form.field.audio.label": "Аудиоформат",
+    "form.field.video.label": "Видеоформат",
+    "form.warning.speed": "Скорость загрузки для этого выбора намного медленнее",
+    "form.button.submit": "Импортировать",
+    "progress.progress.percent": "{{percent}}%",
+    "progress.button.done": "Потрясающе!",
+    "progress.message.done": "Готово.",
+    "rating.message": "Нравится {{name}}? Оцените нас!",
+    "rating.ok": "Хорошо",
+    "error.generic": "Произошла ошибка, это все, что нам известно",
+    "error.system.space": "Недостаточно места на жестком диске для продолжения",
+    "error.system.permission": "Не удалось записать в целевую папку",
+    "error.vimeo.dne": "Это видео недоступно"
+}
