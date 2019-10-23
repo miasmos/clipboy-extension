@@ -29,15 +29,22 @@ export const getClipMetadata = (
     startDate,
     endDate,
     mode,
-    clipCount = 30
+    clipCount = 30,
+    clientId
 ) =>
-    post(`${DOMAIN}/twitch/clips`, {
-        ...(!mode && { game: target }),
-        ...(mode && { broadcaster: target }),
-        startDate: format(startDate, 'yyyy-MM-dd'),
-        endDate: format(endDate, 'yyyy-MM-dd'),
-        clipCount
-    });
+    post(
+        `${DOMAIN}/twitch/clips`,
+        {
+            ...(!mode && { game: target }),
+            ...(mode && { broadcaster: target }),
+            startDate: format(startDate, 'yyyy-MM-dd'),
+            endDate: format(endDate, 'yyyy-MM-dd'),
+            clipCount
+        },
+        {
+            'x-client-id': clientId
+        }
+    );
 
 export const getClips = (data, path, onItemCompleted) =>
     Promise.series(

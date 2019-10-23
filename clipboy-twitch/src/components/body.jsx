@@ -76,7 +76,10 @@ class BodyComponent extends React.Component {
         currentItem: 0,
         totalItems: 1,
         progress: 0,
-        complete: false
+        complete: false,
+        clientId: Math.random()
+            .toString(36)
+            .substring(2)
     };
 
     setStateAsync = state =>
@@ -89,7 +92,7 @@ class BodyComponent extends React.Component {
         }
 
         try {
-            const { target, start, end, count, mode } = this.state;
+            const { target, start, end, count, mode, clientId } = this.state;
             await this.setStateAsync({
                 working: true,
                 complete: false,
@@ -99,7 +102,14 @@ class BodyComponent extends React.Component {
             const seperator = await getSep();
             const [path] = await getProjectPath();
             const fullPath = path.substring(0, path.lastIndexOf(seperator));
-            const data = await getClipMetadata(target, start, end, mode, count);
+            const data = await getClipMetadata(
+                target,
+                start,
+                end,
+                mode,
+                count,
+                clientId
+            );
             await this.setStateAsync({ totalItems: data.length || 1 });
             const filePath = `${fullPath}${seperator}`;
             try {
